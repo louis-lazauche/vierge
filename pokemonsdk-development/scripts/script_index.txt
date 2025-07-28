@@ -1,0 +1,1345 @@
+pokemonsdk/scripts/000 PSDK_CONFIG.rb
+pokemonsdk/scripts/003 SafeExec.rb
+pokemonsdk/scripts/010 Hooks.rb
+pokemonsdk/scripts/020 Config.rb
+pokemonsdk/scripts/021 ProjectConfig.rb
+pokemonsdk/scripts/100 Error Logger.rb
+pokemonsdk/scripts/0 Dependencies/001 Object.rb
+pokemonsdk/scripts/0 Dependencies/002 PatchRuby.rb
+pokemonsdk/scripts/0 Dependencies/100 Scheduler.rb
+pokemonsdk/scripts/0 Dependencies/180 Switch IDs.rb
+pokemonsdk/scripts/0 Dependencies/190 Variable IDs.rb
+pokemonsdk/scripts/0 Dependencies/210 ElapsedTime.rb
+pokemonsdk/scripts/0 Dependencies/900 Yuki__VD.rb
+pokemonsdk/scripts/0 Dependencies/1 LiteRGSS2/000 DataClasses.rb
+pokemonsdk/scripts/0 Dependencies/1 LiteRGSS2/001 Graphics.rb
+pokemonsdk/scripts/0 Dependencies/1 LiteRGSS2/001 Input.rb
+pokemonsdk/scripts/0 Dependencies/1 LiteRGSS2/001 Mouse.rb
+pokemonsdk/scripts/0 Dependencies/1 LiteRGSS2/002 Viewport.rb
+pokemonsdk/scripts/0 Dependencies/1 LiteRGSS2/003 Drawable.rb
+pokemonsdk/scripts/0 Dependencies/1 LiteRGSS2/009 Fonts.rb
+pokemonsdk/scripts/0 Dependencies/1 LiteRGSS2/010 Fake3D.rb
+pokemonsdk/scripts/0 Dependencies/1 LiteRGSS2/011 Shader.rb
+pokemonsdk/scripts/0 Dependencies/1 LiteRGSS2/300 Text Util Constants.rb
+pokemonsdk/scripts/0 Dependencies/1 LiteRGSS2/400 Text multiline_text.rb
+pokemonsdk/scripts/0 Dependencies/1 LiteRGSS2/580 XXX_simple_mouse_in_.rb
+pokemonsdk/scripts/0 Dependencies/1 LiteRGSS2/581 GifReader.rb
+pokemonsdk/scripts/0 Dependencies/1 LiteRGSS2/901 RPG__Cache.rb
+pokemonsdk/scripts/0 Dependencies/1 LiteRGSS2/999 RMXP_DATA.rb
+pokemonsdk/scripts/0 Dependencies/2 Audio/001 AudioDriverBase.rb
+pokemonsdk/scripts/0 Dependencies/2 Audio/002 Audio.rb
+pokemonsdk/scripts/0 Dependencies/2 Audio/003 AudioVolumes.rb
+pokemonsdk/scripts/0 Dependencies/2 Audio/004 AudioChannels.rb
+pokemonsdk/scripts/0 Dependencies/2 Audio/101 SFMLAudioDriver.rb
+pokemonsdk/scripts/0 Dependencies/2 Audio/102 FMODDriver.rb
+pokemonsdk/scripts/0 Dependencies/3 Graphics module Improvements/00001 FPS+Mouse.rb
+pokemonsdk/scripts/0 Dependencies/3 Graphics module Improvements/00001 Window Icon.rb
+pokemonsdk/scripts/0 Dependencies/3 Graphics module Improvements/00002 FPSBalancer.rb
+pokemonsdk/scripts/1 RMXP Scripts/001 Event_Living_Data.rb
+pokemonsdk/scripts/1 RMXP Scripts/006 Game_Battler.rb
+pokemonsdk/scripts/1 RMXP Scripts/013 Game_CommonEvent.rb
+pokemonsdk/scripts/1 RMXP Scripts/017 Game_Party.rb
+pokemonsdk/scripts/1 RMXP Scripts/021 Game_System.rb
+pokemonsdk/scripts/1 RMXP Scripts/022 Game_Temp.rb
+pokemonsdk/scripts/1 RMXP Scripts/024 Interpreter_1.rb
+pokemonsdk/scripts/1 RMXP Scripts/025 Interpreter_2.rb
+pokemonsdk/scripts/1 RMXP Scripts/026 Interpreter_3.rb
+pokemonsdk/scripts/1 RMXP Scripts/027 Interpreter_4.rb
+pokemonsdk/scripts/1 RMXP Scripts/028 Interpreter_5.rb
+pokemonsdk/scripts/1 RMXP Scripts/029 Interpreter_6.rb
+pokemonsdk/scripts/1 RMXP Scripts/030 Interpreter_7.rb
+pokemonsdk/scripts/1 RMXP Scripts/031 Game_SelfVariables.rb
+pokemonsdk/scripts/2 PSDK Event Interpreter/100 Interpreter_Environnement.rb
+pokemonsdk/scripts/2 PSDK Event Interpreter/110 Interpreter_Pokemon.rb
+pokemonsdk/scripts/2 PSDK Event Interpreter/111 Interpreter_Pokemon Internal.rb
+pokemonsdk/scripts/2 PSDK Event Interpreter/112 Interpreter_Move_Reminder.rb
+pokemonsdk/scripts/2 PSDK Event Interpreter/120 Interpreter_Shortcut.rb
+pokemonsdk/scripts/2 PSDK Event Interpreter/121 Interpreter_add_item.rb
+pokemonsdk/scripts/2 PSDK Event Interpreter/125 Interpreter_Fiber.rb
+pokemonsdk/scripts/2 PSDK Event Interpreter/130 Interpreter_Sequences.rb
+pokemonsdk/scripts/2 PSDK Event Interpreter/131 Interpreter_Shop.rb
+pokemonsdk/scripts/2 PSDK Event Interpreter/140 Interpreter_Player.rb
+pokemonsdk/scripts/2 PSDK Event Interpreter/150 Interpreter_Time.rb
+pokemonsdk/scripts/2 PSDK Event Interpreter/160 Interpreter_Overlay.rb
+pokemonsdk/scripts/3 Studio/001 Accessors.rb
+pokemonsdk/scripts/3 Studio/400 Text.rb
+pokemonsdk/scripts/3 Studio/1 Configs/003 States.rb
+pokemonsdk/scripts/3 Studio/1 Configs/004 Stats.rb
+pokemonsdk/scripts/3 Studio/1 Configs/005 Window.rb
+pokemonsdk/scripts/3 Studio/2 Data/001 Ability.rb
+pokemonsdk/scripts/3 Studio/2 Data/011 Group.rb
+pokemonsdk/scripts/3 Studio/2 Data/021 Item.rb
+pokemonsdk/scripts/3 Studio/2 Data/031 Move.rb
+pokemonsdk/scripts/3 Studio/2 Data/041 Creature.rb
+pokemonsdk/scripts/3 Studio/2 Data/042 CreatureForm.rb
+pokemonsdk/scripts/3 Studio/2 Data/043 Dex.rb
+pokemonsdk/scripts/3 Studio/2 Data/044 Nature.rb
+pokemonsdk/scripts/3 Studio/2 Data/051 Quest.rb
+pokemonsdk/scripts/3 Studio/2 Data/061 Trainer.rb
+pokemonsdk/scripts/3 Studio/2 Data/071 Type.rb
+pokemonsdk/scripts/3 Studio/2 Data/081 WorldMap.rb
+pokemonsdk/scripts/3 Studio/2 Data/091 Zone.rb
+pokemonsdk/scripts/3 Studio/2 Data/092 MapLink.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/000 ItemDescriptor.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/001 EventItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/001 FleeingItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/001 RepelItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/001 StoneItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/001 TechItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/002 BallItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/003 HealingItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/300 ConstantHealItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/300 ExpGiveItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/300 LevelIncreaseItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/300 PPHealItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/300 PPIncreaseItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/300 RateHealItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/300 StatBoostItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/300 StatusHealItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/301 AllPPHealItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/301 EVBoostItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/301 StatusConstantHealItem.rb
+pokemonsdk/scripts/3 Studio/2 Data/0 Item/301 StatusRateHealItem.rb
+pokemonsdk/scripts/4 Systems/000 General/000 Generic functions.rb
+pokemonsdk/scripts/4 Systems/000 General/100 GamePlay.rb
+pokemonsdk/scripts/4 Systems/000 General/200 PFM.rb
+pokemonsdk/scripts/4 Systems/000 General/300 Random.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/1 Helpers/100 Text.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/1 Helpers/200 Choice_Helper.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/1 Helpers/310 SkillProcess.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/001 Initialize.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/002 Properties.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/200 Pokemon Graphics.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/300 Pokemon EV.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/400 Pokemon exp & evolve.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/401 ExpList.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/500 Pokemon Forms.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/600 Pokemon Skills.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/700 Pokemon Stats.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/800 Pokemon Status.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/900 Pokemon Types.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/901 Pokemon Params (generate).rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/902 Pokemon Text.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/903 Pokemon Flavors.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/904 Skill.rb
+pokemonsdk/scripts/4 Systems/000 General/2 GamePlay__Base/000 GamePlay__Base.rb
+pokemonsdk/scripts/4 Systems/000 General/2 GamePlay__Base/001 GamePlay__StateMachine.rb
+pokemonsdk/scripts/4 Systems/000 General/3 GameState/200 Accessors.rb
+pokemonsdk/scripts/4 Systems/000 General/3 GameState/201 Management.rb
+pokemonsdk/scripts/4 Systems/000 General/4 UI Generics/099 SpriteSheet.rb
+pokemonsdk/scripts/4 Systems/000 General/4 UI Generics/100 SpriteStack.rb
+pokemonsdk/scripts/4 Systems/000 General/4 UI Generics/200 Window.rb
+pokemonsdk/scripts/4 Systems/000 General/4 UI Generics/300 Bar.rb
+pokemonsdk/scripts/4 Systems/000 General/4 UI Generics/400 GenericBase.rb
+pokemonsdk/scripts/4 Systems/000 General/4 UI Generics/500 HelperSprites.rb
+pokemonsdk/scripts/4 Systems/000 General/4 UI Generics/600 KeyShortcut.rb
+pokemonsdk/scripts/4 Systems/000 General/4 UI Generics/700 ThrowingBallSprite.rb
+pokemonsdk/scripts/4 Systems/000 General/4 UI Generics/701 ThrowingBaitMudSprite.rb
+pokemonsdk/scripts/4 Systems/000 General/4 UI Generics/702 UserInput.rb
+pokemonsdk/scripts/4 Systems/000 General/4 UI Generics/710 TextScroller.rb
+pokemonsdk/scripts/4 Systems/000 General/4 UI Generics/800 ChoiceWindow.rb
+pokemonsdk/scripts/4 Systems/000 General/4 UI Generics/801 ChoiceWindow__But.rb
+pokemonsdk/scripts/4 Systems/000 General/4 UI Generics/901 CreatureShader.rb
+pokemonsdk/scripts/4 Systems/000 General/4 UI Generics/950 BlurScreenshot.rb
+pokemonsdk/scripts/4 Systems/001 Title/001 Configs.rb
+pokemonsdk/scripts/4 Systems/001 Title/002 Scene_Title.rb
+pokemonsdk/scripts/4 Systems/001 Title/003 Actions.rb
+pokemonsdk/scripts/4 Systems/001 Title/004 IntroMovie.rb
+pokemonsdk/scripts/4 Systems/001 Title/010 Splashes.rb
+pokemonsdk/scripts/4 Systems/001 Title/020 Title Animation.rb
+pokemonsdk/scripts/4 Systems/001 Title/100 TitleControls.rb
+pokemonsdk/scripts/4 Systems/002 Credits/001 Configs.rb
+pokemonsdk/scripts/4 Systems/002 Credits/002 Credit Scene.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/100 SystemTags.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/600 Util_Warp.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/060 MapPanel.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/180 Game_Picture.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/200 Game_Screen.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/320 Sprite_Character.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/330 Sprite_Picture.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/340 Sprite_Timer.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/350 Spriteset_Map.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/351 Converter.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/352 MapTransitions.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/353 DayNightTint.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/902 Overworld Weather.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/1 Particles/500 Yuki__Particles.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/1 Particles/501 Particles_Def.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/1 Particles/502 Yuki_Particles Action Handlers.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/1 Particles/503 Particle_Object.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/1 Particles/504 Parallax_Object.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/1 Graphics/1 Particles/505 Building_Object.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/101 EventTasks.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/400 MapLinker.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/01 FollowMe/001 Config.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/01 FollowMe/300 Core.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/02 Tilemap/001 Tilemap.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/02 Tilemap/010 MapData.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/03 Berries/700 BerryTrees.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/100 Game_Character_1.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/105 Game_Character_passable.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/110 Game_Character_2.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/120 Game_Character_move.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/125 Game_Character_turn.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/130 Game_Character_appearance.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/140 Game_Character_state.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/145 Game_Character_follower.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/150 Game_Character_Ext.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/155 Game_Character_bridge.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/160 Game_Character_particles.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/170 Game_Character_pathfinding.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/200 Game_Event.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/400 Game_Player.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/405 Game_Player_passable.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/410 Game_Player_check_trigger.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/420 Game_Player_update_move.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/430 Game_Player_appearance.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/435 Game_Player_particles.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/445 Game_Player_follower.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/450 Game_Player_Ext.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/455 Game_Player_bridge.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/460 Game_Player_state.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/465 Game_Player_hole.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/600 Game_Map.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/650 Game_Map_Ext.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/700 Pathfinding.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/705 Pathfinding_cursor.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/2 Logic/50 RMXP/710 Pathfinding_targets.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/3 GamePlay/200 Scene_Map.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/3 GamePlay/201 Scene_Map calling.rb
+pokemonsdk/scripts/4 Systems/003 Map Engine/3 GamePlay/202 Scene_Map warp.rb
+pokemonsdk/scripts/4 Systems/004 Message/650 SystemMessage.rb
+pokemonsdk/scripts/4 Systems/004 Message/1 Logic/001 Parser.rb
+pokemonsdk/scripts/4 Systems/004 Message/1 Logic/002 Properties.rb
+pokemonsdk/scripts/4 Systems/004 Message/1 Logic/003 Instructions.rb
+pokemonsdk/scripts/4 Systems/004 Message/1 Logic/004 WitdhComputer.rb
+pokemonsdk/scripts/4 Systems/004 Message/1 Logic/090 State.rb
+pokemonsdk/scripts/4 Systems/004 Message/2 UI/001 TemporaryOverwrites.rb
+pokemonsdk/scripts/4 Systems/004 Message/2 UI/002 Layout.rb
+pokemonsdk/scripts/4 Systems/004 Message/2 UI/003 Layout sub.rb
+pokemonsdk/scripts/4 Systems/004 Message/2 UI/004 Transition.rb
+pokemonsdk/scripts/4 Systems/004 Message/2 UI/005 Draw.rb
+pokemonsdk/scripts/4 Systems/004 Message/2 UI/007 Markers.rb
+pokemonsdk/scripts/4 Systems/004 Message/2 UI/010 WaitUserInput.rb
+pokemonsdk/scripts/4 Systems/004 Message/2 UI/100 Window.rb
+pokemonsdk/scripts/4 Systems/004 Message/3 GamePlay/001 DisplayMessage.rb
+pokemonsdk/scripts/4 Systems/005 Animation/001 Clock.rb
+pokemonsdk/scripts/4 Systems/005 Animation/099 Distortions.rb
+pokemonsdk/scripts/4 Systems/005 Animation/100 Animation.rb
+pokemonsdk/scripts/4 Systems/005 Animation/101 Commands.rb
+pokemonsdk/scripts/4 Systems/005 Animation/102 MessageLocked.rb
+pokemonsdk/scripts/4 Systems/005 Animation/103 Handler.rb
+pokemonsdk/scripts/4 Systems/005 Animation/104 MoveAnimationHelper.rb
+pokemonsdk/scripts/4 Systems/005 Animation/105 SignalWaiter.rb
+pokemonsdk/scripts/4 Systems/005 Animation/200 EllipseAnimation.rb
+pokemonsdk/scripts/4 Systems/005 Animation/200 FallingAnimation.rb
+pokemonsdk/scripts/4 Systems/005 Animation/200 RadialAnimation.rb
+pokemonsdk/scripts/4 Systems/005 Animation/200 ToneAnimation.rb
+pokemonsdk/scripts/4 Systems/100 Menu/099 MenuMixin.rb
+pokemonsdk/scripts/4 Systems/100 Menu/100 Menu.rb
+pokemonsdk/scripts/4 Systems/100 Menu/300 MenuButtonBase.rb
+pokemonsdk/scripts/4 Systems/100 Menu/301 GirlBagMenuButton.rb
+pokemonsdk/scripts/4 Systems/101 Dex/001 Pokedex.rb
+pokemonsdk/scripts/4 Systems/101 Dex/010 Dex UIs.rb
+pokemonsdk/scripts/4 Systems/101 Dex/100 Dex.rb
+pokemonsdk/scripts/4 Systems/101 Dex/101 Dex_Graphics.rb
+pokemonsdk/scripts/4 Systems/102 Party/101 GiveTakeItem.rb
+pokemonsdk/scripts/4 Systems/102 Party/2 UI/100 Summary_Top.rb
+pokemonsdk/scripts/4 Systems/102 Party/2 UI/200 Summary_Memo.rb
+pokemonsdk/scripts/4 Systems/102 Party/2 UI/300 Summary_Stat.rb
+pokemonsdk/scripts/4 Systems/102 Party/2 UI/400 LevelUpWindow.rb
+pokemonsdk/scripts/4 Systems/102 Party/2 UI/400 Summary_Skills.rb
+pokemonsdk/scripts/4 Systems/102 Party/2 UI/500 Summary_Remind.rb
+pokemonsdk/scripts/4 Systems/102 Party/2 UI/600 TeamButton.rb
+pokemonsdk/scripts/4 Systems/102 Party/3 GamePlay/001 PartyMenuMixin.rb
+pokemonsdk/scripts/4 Systems/102 Party/3 GamePlay/100 Party_Menu.rb
+pokemonsdk/scripts/4 Systems/102 Party/3 GamePlay/101 Party_Menu Input.rb
+pokemonsdk/scripts/4 Systems/102 Party/3 GamePlay/102 Party_Menu Choice & Process.rb
+pokemonsdk/scripts/4 Systems/102 Party/3 GamePlay/200 Summary.rb
+pokemonsdk/scripts/4 Systems/102 Party/3 GamePlay/201 Summary_update.rb
+pokemonsdk/scripts/4 Systems/102 Party/3 GamePlay/202 Summary_Mouse.rb
+pokemonsdk/scripts/4 Systems/103 Bag/100 Util__Item.rb
+pokemonsdk/scripts/4 Systems/103 Bag/1 PFM/300 Bag.rb
+pokemonsdk/scripts/4 Systems/103 Bag/2 UI/010 PocketList.rb
+pokemonsdk/scripts/4 Systems/103 Bag/2 UI/020 WinPocket.rb
+pokemonsdk/scripts/4 Systems/103 Bag/2 UI/030 ScrollBar.rb
+pokemonsdk/scripts/4 Systems/103 Bag/2 UI/040 BagSprite.rb
+pokemonsdk/scripts/4 Systems/103 Bag/2 UI/060 ButtonList.rb
+pokemonsdk/scripts/4 Systems/103 Bag/2 UI/070 Arrow.rb
+pokemonsdk/scripts/4 Systems/103 Bag/2 UI/080 InfoCompact.rb
+pokemonsdk/scripts/4 Systems/103 Bag/2 UI/090 InfoWide.rb
+pokemonsdk/scripts/4 Systems/103 Bag/2 UI/100 SearchBar.rb
+pokemonsdk/scripts/4 Systems/103 Bag/3 GamePlay/000 BagMixin.rb
+pokemonsdk/scripts/4 Systems/103 Bag/3 GamePlay/300 Bag.rb
+pokemonsdk/scripts/4 Systems/103 Bag/3 GamePlay/301 Bag_Graphics.rb
+pokemonsdk/scripts/4 Systems/103 Bag/3 GamePlay/302 Bag_Inputs.rb
+pokemonsdk/scripts/4 Systems/103 Bag/3 GamePlay/310 Bag_Animations.rb
+pokemonsdk/scripts/4 Systems/103 Bag/3 GamePlay/320 Bag_Choices.rb
+pokemonsdk/scripts/4 Systems/103 Bag/3 GamePlay/330 Bag_Actions.rb
+pokemonsdk/scripts/4 Systems/103 Bag/3 GamePlay/340 Bag_Mouse.rb
+pokemonsdk/scripts/4 Systems/103 Bag/3 GamePlay/400 BattleBag.rb
+pokemonsdk/scripts/4 Systems/104 Trainer/100 TCard.rb
+pokemonsdk/scripts/4 Systems/104 Trainer/400 Trainer.rb
+pokemonsdk/scripts/4 Systems/105 Options/1 PFM/500 Options.rb
+pokemonsdk/scripts/4 Systems/105 Options/2 UI/001 Description.rb
+pokemonsdk/scripts/4 Systems/105 Options/2 UI/002 Arrow.rb
+pokemonsdk/scripts/4 Systems/105 Options/2 UI/003 Button.rb
+pokemonsdk/scripts/4 Systems/105 Options/2 UI/100 KeyBindingViewer.rb
+pokemonsdk/scripts/4 Systems/105 Options/3 GamePlay/001 OptionsMixin.rb
+pokemonsdk/scripts/4 Systems/105 Options/3 GamePlay/011 Options_Helper.rb
+pokemonsdk/scripts/4 Systems/105 Options/3 GamePlay/012 Options Scene.rb
+pokemonsdk/scripts/4 Systems/105 Options/3 GamePlay/048 KeyBinding.rb
+pokemonsdk/scripts/4 Systems/105 Options/3 GamePlay/049 KeyBinding_LS.rb
+pokemonsdk/scripts/4 Systems/106 Save Load/001 Configs.rb
+pokemonsdk/scripts/4 Systems/106 Save Load/2 UI/001 SaveSign.rb
+pokemonsdk/scripts/4 Systems/106 Save Load/3 GamePlay/200 Load.rb
+pokemonsdk/scripts/4 Systems/106 Save Load/3 GamePlay/201 Load load_all_saves.rb
+pokemonsdk/scripts/4 Systems/106 Save Load/3 GamePlay/202 Load input.rb
+pokemonsdk/scripts/4 Systems/106 Save Load/3 GamePlay/203 Load logic.rb
+pokemonsdk/scripts/4 Systems/106 Save Load/3 GamePlay/300 Language_Choice.rb
+pokemonsdk/scripts/4 Systems/106 Save Load/3 GamePlay/400 Save.rb
+pokemonsdk/scripts/4 Systems/106 Save Load/3 GamePlay/401 Save input.rb
+pokemonsdk/scripts/4 Systems/106 Save Load/3 GamePlay/402 Save logic.rb
+pokemonsdk/scripts/4 Systems/200 Storage/1 PFM/001 Main.rb
+pokemonsdk/scripts/4 Systems/200 Storage/1 PFM/002 Box.rb
+pokemonsdk/scripts/4 Systems/200 Storage/1 PFM/003 BattleBox.rb
+pokemonsdk/scripts/4 Systems/200 Storage/2 UI/001 ModeSprite.rb
+pokemonsdk/scripts/4 Systems/200 Storage/2 UI/002 SelectionModeSprite.rb
+pokemonsdk/scripts/4 Systems/200 Storage/2 UI/003 WinMode.rb
+pokemonsdk/scripts/4 Systems/200 Storage/2 UI/004 BoxBackground.rb
+pokemonsdk/scripts/4 Systems/200 Storage/2 UI/005 BoxNameBackground.rb
+pokemonsdk/scripts/4 Systems/200 Storage/2 UI/006 RapidSearch.rb
+pokemonsdk/scripts/4 Systems/200 Storage/2 UI/007 DetailedSearch.rb
+pokemonsdk/scripts/4 Systems/200 Storage/2 UI/008 Cursor.rb
+pokemonsdk/scripts/4 Systems/200 Storage/2 UI/010 ModeHandler.rb
+pokemonsdk/scripts/4 Systems/200 Storage/2 UI/011 CursorHandler.rb
+pokemonsdk/scripts/4 Systems/200 Storage/2 UI/012 SelectionHandler.rb
+pokemonsdk/scripts/4 Systems/200 Storage/2 UI/100 Composition.rb
+pokemonsdk/scripts/4 Systems/200 Storage/2 UI/200 BoxStack.rb
+pokemonsdk/scripts/4 Systems/200 Storage/2 UI/201 PokemonIcon.rb
+pokemonsdk/scripts/4 Systems/200 Storage/2 UI/202 PartyStack.rb
+pokemonsdk/scripts/4 Systems/200 Storage/2 UI/203 Summary.rb
+pokemonsdk/scripts/4 Systems/200 Storage/3 GamePlay/001 Main.rb
+pokemonsdk/scripts/4 Systems/200 Storage/3 GamePlay/002 Logic.rb
+pokemonsdk/scripts/4 Systems/200 Storage/3 GamePlay/003 Inputs.rb
+pokemonsdk/scripts/4 Systems/200 Storage/3 GamePlay/004 Mouse.rb
+pokemonsdk/scripts/4 Systems/200 Storage/3 GamePlay/005 Choice.rb
+pokemonsdk/scripts/4 Systems/200 Storage/3 GamePlay/006 Actions.rb
+pokemonsdk/scripts/4 Systems/200 Storage/3 GamePlay/099 TradeMixin.rb
+pokemonsdk/scripts/4 Systems/200 Storage/3 GamePlay/100 Trade.rb
+pokemonsdk/scripts/4 Systems/201 Daycare/011 Daycare.rb
+pokemonsdk/scripts/4 Systems/202 Environment/120 Environnement.rb
+pokemonsdk/scripts/4 Systems/202 Environment/121 Weather.rb
+pokemonsdk/scripts/4 Systems/203 Shop/1 PFM/700 Shop.rb
+pokemonsdk/scripts/4 Systems/203 Shop/2 ItemShop UI/010 MoneyWindow.rb
+pokemonsdk/scripts/4 Systems/203 Shop/2 ItemShop UI/020 ShopBanner.rb
+pokemonsdk/scripts/4 Systems/203 Shop/2 ItemShop UI/030 ItemList.rb
+pokemonsdk/scripts/4 Systems/203 Shop/2 ItemShop UI/040 Arrow.rb
+pokemonsdk/scripts/4 Systems/203 Shop/2 ItemShop UI/050 ItemDescWindow.rb
+pokemonsdk/scripts/4 Systems/203 Shop/2 ItemShop UI/060 ScrollBar.rb
+pokemonsdk/scripts/4 Systems/203 Shop/2 PokemonShop UI/010 ItemList.rb
+pokemonsdk/scripts/4 Systems/203 Shop/2 PokemonShop UI/020 ItemDescWindow.rb
+pokemonsdk/scripts/4 Systems/203 Shop/2 PokemonShop UI/030 ScrollBar.rb
+pokemonsdk/scripts/4 Systems/203 Shop/3 GamePlay/100 Shop.rb
+pokemonsdk/scripts/4 Systems/203 Shop/3 GamePlay/101 Shop_Graphics.rb
+pokemonsdk/scripts/4 Systems/203 Shop/3 GamePlay/102 Shop_Inputs.rb
+pokemonsdk/scripts/4 Systems/203 Shop/3 GamePlay/110 Shop_Animations.rb
+pokemonsdk/scripts/4 Systems/203 Shop/3 GamePlay/130 Shop_Actions.rb
+pokemonsdk/scripts/4 Systems/203 Shop/3 GamePlay/140 Shop_Mouse.rb
+pokemonsdk/scripts/4 Systems/203 Shop/3 GamePlay/200 Pokemon_Shop.rb
+pokemonsdk/scripts/4 Systems/203 Shop/3 GamePlay/210 Pokemon_Shop_Graphics.rb
+pokemonsdk/scripts/4 Systems/203 Shop/3 GamePlay/220 Pokemon_Shop_Inputs.rb
+pokemonsdk/scripts/4 Systems/203 Shop/3 GamePlay/230 Pokemon_Shop_Actions.rb
+pokemonsdk/scripts/4 Systems/203 Shop/3 GamePlay/240 Pokemon_Shop_Mouse.rb
+pokemonsdk/scripts/4 Systems/204 Nuzlocke/016 Nuzlocke.rb
+pokemonsdk/scripts/4 Systems/205 Input/2 UI/001 NameInputBaseUI.rb
+pokemonsdk/scripts/4 Systems/205 Input/2 UI/002 NameInputUI.rb
+pokemonsdk/scripts/4 Systems/205 Input/2 UI/100 NumberInput.rb
+pokemonsdk/scripts/4 Systems/205 Input/3 GamePlay/001 NameInputMixin.rb
+pokemonsdk/scripts/4 Systems/205 Input/3 GamePlay/700 NameInput.rb
+pokemonsdk/scripts/4 Systems/205 Input/3 GamePlay/701 NumberInput.rb
+pokemonsdk/scripts/4 Systems/206 TownMap/400 WorldMap.rb
+pokemonsdk/scripts/4 Systems/207 Shortcut/2 UI/500 Shortcut.rb
+pokemonsdk/scripts/4 Systems/207 Shortcut/3 GamePlay/100 Shortcut.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/1 PFM/020 Hall_of_Fame.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/2 UI/001 Type_Background.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/2 UI/002 Pokemon_Battler_Stack.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/2 UI/003 Stars_Animation.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/2 UI/004 Pokemon_Text_Box.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/2 UI/005 Congratulation_Text_Box.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/2 UI/006 Pokemon_Stars_Animation.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/2 UI/010 Graveyard_Stack.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/2 UI/011 Dead_Pokemon_Text.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/2 UI/020 Turning_Pokeball.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/2 UI/021 Party_Battler_Stack.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/2 UI/022 League_Champion_Text_Box.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/2 UI/023 Trainer_Infos_Text_Box.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/2 UI/024 End_Stars_Animation.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/3 GamePlay/001 Initialize.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/3 GamePlay/002 Graphics.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/3 GamePlay/003 Animation_Phase_1.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/3 GamePlay/004 Animation_Phase_2.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/3 GamePlay/005 Animation_Phase_3.rb
+pokemonsdk/scripts/4 Systems/300 Hall of fame/3 GamePlay/006 Inputs.rb
+pokemonsdk/scripts/4 Systems/301 MoveTeaching/2 UI/010 BaseBackground.rb
+pokemonsdk/scripts/4 Systems/301 MoveTeaching/2 UI/020 PokemonInfos.rb
+pokemonsdk/scripts/4 Systems/301 MoveTeaching/2 UI/030 SkillDescription.rb
+pokemonsdk/scripts/4 Systems/301 MoveTeaching/2 UI/040 NewSkill.rb
+pokemonsdk/scripts/4 Systems/301 MoveTeaching/2 UI/050 Skill.rb
+pokemonsdk/scripts/4 Systems/301 MoveTeaching/3 GamePlay/001 MoveTeachingMixin.rb
+pokemonsdk/scripts/4 Systems/301 MoveTeaching/3 GamePlay/300 scene Initialize.rb
+pokemonsdk/scripts/4 Systems/301 MoveTeaching/3 GamePlay/301 scene Graphics.rb
+pokemonsdk/scripts/4 Systems/301 MoveTeaching/3 GamePlay/302 scene Inputs.rb
+pokemonsdk/scripts/4 Systems/301 MoveTeaching/3 GamePlay/303 scene Processes.rb
+pokemonsdk/scripts/4 Systems/301 MoveTeaching/3 GamePlay/304 scene Mouse.rb
+pokemonsdk/scripts/4 Systems/302 MoveReminder/001 MoveReminderMixin.rb
+pokemonsdk/scripts/4 Systems/302 MoveReminder/600 MoveReminder.rb
+pokemonsdk/scripts/4 Systems/303 Evolve/001 EvolveMixin.rb
+pokemonsdk/scripts/4 Systems/303 Evolve/100 Evolve.rb
+pokemonsdk/scripts/4 Systems/303 Evolve/200 Hatch.rb
+pokemonsdk/scripts/4 Systems/304 HMBarScene/2 UI/001 HMBarAnimation.rb
+pokemonsdk/scripts/4 Systems/304 HMBarScene/3 GamePlay/001 Initialize.rb
+pokemonsdk/scripts/4 Systems/304 HMBarScene/3 GamePlay/002 Graphics.rb
+pokemonsdk/scripts/4 Systems/400 RSE Clock/001 RSEClockLogic.rb
+pokemonsdk/scripts/4 Systems/400 RSE Clock/002 RSEClockUI.rb
+pokemonsdk/scripts/4 Systems/400 RSE Clock/003 RSEClockQuestions.rb
+pokemonsdk/scripts/4 Systems/400 RSE Clock/004 RSEClock.rb
+pokemonsdk/scripts/4 Systems/800 Quest/1 PFM/001 PFM Quests.rb
+pokemonsdk/scripts/4 Systems/800 Quest/1 PFM/002 PFM Quests Quest.rb
+pokemonsdk/scripts/4 Systems/800 Quest/2 UI/060 ScrollBar.rb
+pokemonsdk/scripts/4 Systems/800 Quest/2 UI/070 Arrow.rb
+pokemonsdk/scripts/4 Systems/800 Quest/2 UI/100 Quest_Button.rb
+pokemonsdk/scripts/4 Systems/800 Quest/2 UI/110 RewardScreen.rb
+pokemonsdk/scripts/4 Systems/800 Quest/2 UI/200 Category_Display.rb
+pokemonsdk/scripts/4 Systems/800 Quest/2 UI/200 QuestInformer.rb
+pokemonsdk/scripts/4 Systems/800 Quest/2 UI/300 QuestBanner.rb
+pokemonsdk/scripts/4 Systems/800 Quest/2 UI/500 Quest_List.rb
+pokemonsdk/scripts/4 Systems/800 Quest/2 UI/600 ObjectiveList.rb
+pokemonsdk/scripts/4 Systems/800 Quest/2 UI/999 Composition.rb
+pokemonsdk/scripts/4 Systems/800 Quest/3 GamePlay/001 Main.rb
+pokemonsdk/scripts/4 Systems/800 Quest/3 GamePlay/002 Logic.rb
+pokemonsdk/scripts/4 Systems/800 Quest/3 GamePlay/003 Inputs.rb
+pokemonsdk/scripts/4 Systems/800 Quest/3 GamePlay/004 Mouse.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/1 GameData/001 MiningGame.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/1 PFM/001 MiningGame.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/1 PFM/002 MiningGame_GridHandler.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/2 UI/001 Background.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/2 UI/002 Diggable_Sprite.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/2 UI/003 Diggable_Stack.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/2 UI/004 Hit_Counter_Sprite.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/2 UI/005 Hit_Counter_Stack.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/2 UI/006 Tiles.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/2 UI/007 Tiles_Stack.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/2 UI/008 Tool_Sprite.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/2 UI/009 Tool_Buttons.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/2 UI/010 Tool_Hit_Sprite.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/2 UI/011 Keyboard_Cursor.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/3 GamePlay/001 MiningGame_Initialize.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/3 GamePlay/002 MiningGame_Graphics.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/3 GamePlay/003 MiningGame_Actions.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/3 GamePlay/004 MiningGame_Animations.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/3 GamePlay/005 MiningGame_Input.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/3 GamePlay/006 MiningGame_Mouse.rb
+pokemonsdk/scripts/4 Systems/801 Mining Game/3 GamePlay/007 MiningGame_Logic.rb
+pokemonsdk/scripts/4 Systems/900 Games/01 Slot Machines/00002 UI/00001 NumberDisplay.rb
+pokemonsdk/scripts/4 Systems/900 Games/01 Slot Machines/00002 UI/00002 BandDisplay.rb
+pokemonsdk/scripts/4 Systems/900 Games/01 Slot Machines/00002 UI/00004 BaseUI.rb
+pokemonsdk/scripts/4 Systems/900 Games/01 Slot Machines/00003 GamePlay/00003 Casino__SlotMachine.rb
+pokemonsdk/scripts/4 Systems/900 Games/02 VoltorbFlip/00001 Casino__VoltorbFlip.rb
+pokemonsdk/scripts/4 Systems/900 Games/02 VoltorbFlip/02200 VoltorbFlipSprites.rb
+pokemonsdk/scripts/4 Systems/900 Games/03 Ruine Alpha/00002 Ruine_Alpha_by_FL0RENT_.rb
+pokemonsdk/scripts/4 Systems/901 GTS/09000 GTS.rb
+pokemonsdk/scripts/4 Systems/950 Movie/099 Movie.rb
+pokemonsdk/scripts/4 Systems/951 DynamicLight/001 DynamicLight.rb
+pokemonsdk/scripts/4 Systems/951 DynamicLight/002 DynamicLightSprite.rb
+pokemonsdk/scripts/4 Systems/951 DynamicLight/003 DL PokemonParty.rb
+pokemonsdk/scripts/4 Systems/951 DynamicLight/004 ScalableDynamicLight.rb
+pokemonsdk/scripts/4 Systems/952 MapOverlay/001 Overlay.rb
+pokemonsdk/scripts/4 Systems/952 MapOverlay/002 Overlay UI.rb
+pokemonsdk/scripts/4 Systems/952 MapOverlay/003 Overlay Presets.rb
+pokemonsdk/scripts/4 Systems/952 MapOverlay/004 Overlay UI Space.rb
+pokemonsdk/scripts/4 Systems/952 MapOverlay/005 Overlay UV Resolver.rb
+pokemonsdk/scripts/4 Systems/998 Global Systems/015 HoneyTree.rb
+pokemonsdk/scripts/4 Systems/999 Wild/100 Wild Battle (manager).rb
+pokemonsdk/scripts/4 Systems/999 Wild/101 Wild Battle (configuration).rb
+pokemonsdk/scripts/4 Systems/999 Wild/102 Encounter Count.rb
+pokemonsdk/scripts/4 Systems/999 Wild/300 Wild_RoamingInfo.rb
+pokemonsdk/scripts/5 Battle/01 Scene/100 Scene.rb
+pokemonsdk/scripts/5 Battle/01 Scene/101 Scene Choice.rb
+pokemonsdk/scripts/5 Battle/01 Scene/102 Scene AI trigger.rb
+pokemonsdk/scripts/5 Battle/01 Scene/103 Scene Battle Phase.rb
+pokemonsdk/scripts/5 Battle/01 Scene/104 Scene Event.rb
+pokemonsdk/scripts/5 Battle/01 Scene/105 Safari.rb
+pokemonsdk/scripts/5 Battle/01 Scene/200 Message.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/001 GoingInOut.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/002 HideShow.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/003 MultiplePosition.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/050 ExpDistributionAbstraction.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/050 PlayerChoiceAbstraction.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/050 PlayerChoiceAbstractionSafari.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/050 SkillChoiceAbstraction.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/050 TargetSelectionAbstraction.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/100 PokemonSprite.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/101 InfoBar.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/102 TrainerPartyBalls.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/103 TrainerSprite.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/104 AbilityBar.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/105 ItemBar.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/106 Cursor.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/107 GenericChoice.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/200 PlayerChoice.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/201 PlayerChoiceSafari.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/300 SkillChoice.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/400 TargetSelection.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/500 ExpDistribution.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/600 BattleBack3D.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/601 PokemonSprite3D.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/602 TrainerSprite3D.rb
+pokemonsdk/scripts/5 Battle/01 Scene/0 BattleUI/700 BattleBackForest3D.rb
+pokemonsdk/scripts/5 Battle/02 Visual/050 RecenterSprite.rb
+pokemonsdk/scripts/5 Battle/02 Visual/200 Visual.rb
+pokemonsdk/scripts/5 Battle/02 Visual/201 Trainer_transition.rb
+pokemonsdk/scripts/5 Battle/02 Visual/202 Show_player_choice.rb
+pokemonsdk/scripts/5 Battle/02 Visual/203 Show_skill_or_target_choice.rb
+pokemonsdk/scripts/5 Battle/02 Visual/204 Show_item_or_pokemon_choice.rb
+pokemonsdk/scripts/5 Battle/02 Visual/205 Info_Bars.rb
+pokemonsdk/scripts/5 Battle/02 Visual/206 Show_stuff.rb
+pokemonsdk/scripts/5 Battle/02 Visual/207 Show_Safari_stuff.rb
+pokemonsdk/scripts/5 Battle/02 Visual/300 Visual3D.rb
+pokemonsdk/scripts/5 Battle/02 Visual/301 Show_stuff3D.rb
+pokemonsdk/scripts/5 Battle/02 Visual/302 Show_Safari_stuff3D.rb
+pokemonsdk/scripts/5 Battle/02 Visual/350 Camera_Positionner.rb
+pokemonsdk/scripts/5 Battle/02 Visual/400 Camera_movement.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/100 IdlePokemonAnimation.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/101 HPAnimation.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/102 FakeHPAnimation.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/150 StatAnimation.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/151 StatusAnimation.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/160 PoisonAnimation.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/161 SleepAnimation.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/162 FreezeAnimation.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/163 BurnAnimation.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/164 ParalyzeAnimation.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/165 AttractAnimation.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/166 ConfusionAnimation.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/170 ThrowingBallSprite3D.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/175 BallStars.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/176 BallBurst.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/177 BallCatch.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/178 RetrieveBurst.rb
+pokemonsdk/scripts/5 Battle/02 Visual/1 Animations/180 MegaEvolveAnimation.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/000 Transition.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/001 BattleStart.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/100 RBYTrainer.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/100 RBYWild.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/110 GSCWild.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/120 RSWild.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/121 RSCave.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/124 RSTrainer.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/140 DPPWild.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/141 DPPCave.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/142 DPPSea.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/144 DPPTrainer.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/145 DPPGymLeader.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/150 HGSSWild.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/151 HGSSCave.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/152 HGSSSea.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/154 HGSSTrainer.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/155 HGSSGymLeader.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/160 BWWild.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/162 BWSea.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/164 BWTrainer.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/174 XYTrainer.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/300 BattleFrontier.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/300 Red.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/300 TeamRocket.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/501 Transition3D.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/502 Trainer3D.rb
+pokemonsdk/scripts/5 Battle/02 Visual/2 Transition/503 Wild3D.rb
+pokemonsdk/scripts/5 Battle/03 PokemonBattler/001 PokemonBattler.rb
+pokemonsdk/scripts/5 Battle/03 PokemonBattler/002 Properties.rb
+pokemonsdk/scripts/5 Battle/03 PokemonBattler/003 Statistics.rb
+pokemonsdk/scripts/5 Battle/03 PokemonBattler/004 Grounded.rb
+pokemonsdk/scripts/5 Battle/03 PokemonBattler/005 Effects.rb
+pokemonsdk/scripts/5 Battle/03 PokemonBattler/100 MoveHistory.rb
+pokemonsdk/scripts/5 Battle/03 PokemonBattler/101 DamageHistory.rb
+pokemonsdk/scripts/5 Battle/03 PokemonBattler/102 StatsHistory.rb
+pokemonsdk/scripts/5 Battle/04 Logic/100 Logic.rb
+pokemonsdk/scripts/5 Battle/04 Logic/101 Battler.rb
+pokemonsdk/scripts/5 Battle/04 Logic/102 Actions.rb
+pokemonsdk/scripts/5 Battle/04 Logic/103 Critical_hit.rb
+pokemonsdk/scripts/5 Battle/04 Logic/104 end of battle phase & switch choice.rb
+pokemonsdk/scripts/5 Battle/04 Logic/105 Handlers.rb
+pokemonsdk/scripts/5 Battle/04 Logic/106 Effects.rb
+pokemonsdk/scripts/5 Battle/04 Logic/400 MegaEvolve.rb
+pokemonsdk/scripts/5 Battle/04 Logic/0 Battle Info/001 Battle_Info.rb
+pokemonsdk/scripts/5 Battle/04 Logic/0 Battle Info/010 Background.rb
+pokemonsdk/scripts/5 Battle/04 Logic/1 Handlers/100 ChangeHandler.rb
+pokemonsdk/scripts/5 Battle/04 Logic/1 Handlers/101 StatChangeHandler.rb
+pokemonsdk/scripts/5 Battle/04 Logic/1 Handlers/102 ItemChangeHandler.rb
+pokemonsdk/scripts/5 Battle/04 Logic/1 Handlers/103 StatusChangeHandler.rb
+pokemonsdk/scripts/5 Battle/04 Logic/1 Handlers/104 DamageHandler.rb
+pokemonsdk/scripts/5 Battle/04 Logic/1 Handlers/105 SwitchHandler.rb
+pokemonsdk/scripts/5 Battle/04 Logic/1 Handlers/106 EndTurnHandler.rb
+pokemonsdk/scripts/5 Battle/04 Logic/1 Handlers/107 WeatherChangeHandler.rb
+pokemonsdk/scripts/5 Battle/04 Logic/1 Handlers/108 FleeHandler.rb
+pokemonsdk/scripts/5 Battle/04 Logic/1 Handlers/109 CatchHandler.rb
+pokemonsdk/scripts/5 Battle/04 Logic/1 Handlers/110 AbilityChangeHandler.rb
+pokemonsdk/scripts/5 Battle/04 Logic/1 Handlers/111 BattleEndHandler.rb
+pokemonsdk/scripts/5 Battle/04 Logic/1 Handlers/111 BattleEndHandlerConstants.rb
+pokemonsdk/scripts/5 Battle/04 Logic/1 Handlers/112 FTerrainChangeHandler.rb
+pokemonsdk/scripts/5 Battle/04 Logic/1 Handlers/113 TransformHandler.rb
+pokemonsdk/scripts/5 Battle/04 Logic/1 Handlers/200 ExpHandler.rb
+pokemonsdk/scripts/5 Battle/05 Actions/001 Actions.rb
+pokemonsdk/scripts/5 Battle/05 Actions/002 Attack.rb
+pokemonsdk/scripts/5 Battle/05 Actions/002 PreAttack.rb
+pokemonsdk/scripts/5 Battle/05 Actions/003 Mega.rb
+pokemonsdk/scripts/5 Battle/05 Actions/004 Item.rb
+pokemonsdk/scripts/5 Battle/05 Actions/005 Switch.rb
+pokemonsdk/scripts/5 Battle/05 Actions/006 Flee.rb
+pokemonsdk/scripts/5 Battle/05 Actions/007 HighPriorityItem.rb
+pokemonsdk/scripts/5 Battle/05 Actions/008 NoAction.rb
+pokemonsdk/scripts/5 Battle/06 Effects/001 EffectsHandler.rb
+pokemonsdk/scripts/5 Battle/06 Effects/100 EffectBase.rb
+pokemonsdk/scripts/5 Battle/06 Effects/200 PokemonTiedEffectBase.rb
+pokemonsdk/scripts/5 Battle/06 Effects/200 PositionTiedEffectBase.rb
+pokemonsdk/scripts/5 Battle/06 Effects/01 Mechanics/100 ForceFlying.rb
+pokemonsdk/scripts/5 Battle/06 Effects/01 Mechanics/100 ForceNextMove.rb
+pokemonsdk/scripts/5 Battle/06 Effects/01 Mechanics/100 Mark.rb
+pokemonsdk/scripts/5 Battle/06 Effects/01 Mechanics/100 NeutralizeType.rb
+pokemonsdk/scripts/5 Battle/06 Effects/01 Mechanics/100 OutOfReach.rb
+pokemonsdk/scripts/5 Battle/06 Effects/01 Mechanics/100 SuccessiveSuccessfulUses.rb
+pokemonsdk/scripts/5 Battle/06 Effects/01 Mechanics/100 WithTargets.rb
+pokemonsdk/scripts/5 Battle/06 Effects/01 Mechanics/200 WithMarkedTargets.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 AbilitySuppressed.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 AquaRing.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Attract.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Autotomize.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 BatonPass.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 BeakBlast.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Bestow.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Bind.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 BurnUp.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 CantSwitch.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 CenterOfAttention.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 ChangeType.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Charge.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Confusion.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 CraftyShield.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Curse.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 DestinyBond.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Disable.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 DragonCheer.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Drowsiness.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 EchoedVoice.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Electrify.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Embargo.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Flinch.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 FocusEnergy.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 FocusPunch.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 ForceNextMove effects.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Foresight.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 FuryCutter.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 FutureSight.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 GlaiveRush.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Gravity.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Grudge.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 HappyHour.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 HealBlock.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 HealingWish.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 HelpingHand.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Imprison.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Ingrain.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Instruct.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Ion Deluge.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 ItemBurnt.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 ItemStolen.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 LaserFocus.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 LeechSeed.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 LightScreen Reflect.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 LockOn.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 LuckyChant.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 LunarDance.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 MagicCoat.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 MagicRoom.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 MagnetRise.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Minimize.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 MiracleEye.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Mist.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 MudSport.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Nightmare.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 NoRetreat.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Octolock.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 OutOfReachBase.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 PerishSong.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Powder.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 PreventTargetsMove.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Protect.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Rage.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Roost.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Safeguard.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 SaltCure.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 ShedTail.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 ShellTrap.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 SmackDown.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Snatch.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Spikes.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 StealthRock.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 StickyWeb.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Stockpile.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Substitute.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 SyrupBomb.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Tailwind.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 TarShot.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Taunt.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Telekinesis.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 ThroatChop.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Torment.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 ToxicSpikes.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Transform.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 TrickRoom.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Triple Arrows.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 UpRoar.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Wish.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 WonderRoom.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Pledge Effects/001 Rainbow.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Pledge Effects/001 SeaOfFire.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Pledge Effects/001 Swamp.rb
+pokemonsdk/scripts/5 Battle/06 Effects/03 Status Effects/001 StatusBase.rb
+pokemonsdk/scripts/5 Battle/06 Effects/03 Status Effects/101 Poison.rb
+pokemonsdk/scripts/5 Battle/06 Effects/03 Status Effects/102 Paralysis.rb
+pokemonsdk/scripts/5 Battle/06 Effects/03 Status Effects/103 Burn.rb
+pokemonsdk/scripts/5 Battle/06 Effects/03 Status Effects/104 Asleep.rb
+pokemonsdk/scripts/5 Battle/06 Effects/03 Status Effects/105 Frozen.rb
+pokemonsdk/scripts/5 Battle/06 Effects/03 Status Effects/108 Toxic.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/001 AbilityBase.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/050 BoostingMoveType.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/050 FieldTerrain Setting Abilities.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/050 NonVolatileStatusImmunity.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/050 PreventingSwitchAbilities.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/050 SuperEffectivePowerReduction.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/050 Weather Setting Abilitites.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/051 ChangingMoveType.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Aftermath.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Air Lock - Cloud Nine.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Analytic.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Anger Point.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Anger Shell.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Anticipation.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 ApplyStatusToMoveTarget.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Armor Tail.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Auras.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Bad Dreams.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 BallFetch.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Battery.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Battle Bond.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Beast Boost.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Berserk.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Big Pecks.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Bulletproof.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Chlorophyll.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Clear Body.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Color Change.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Comatose.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Commander.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Compound Eyes.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Contrary.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Costar.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Cotton Down.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Cud Chew.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Curious Medicine.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Cursed Body.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Cute Charm.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Dancer.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Dauntless Shield.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Defeatist.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Defiant.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Disguise.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Download.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Dry Skin.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Effect Spore.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Electromorphosis.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Embody Aspect.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Emergency Exit - Wimp Out.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Flame Body.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Flare Boost.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Flash Fire.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Flower Gift.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Flower Veil.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Fluffy.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Forecast.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Forewarn.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Friend Guard.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Frisk.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Full Metal Body.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Fur Coat.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Gale Wings.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 GoodAsGold.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Gooey.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Gorilla Tactics.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Grass Pelt.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 GuardDog.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 GulpMissile.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Guts.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 HadronEngine.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Harvest.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Healer.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Heatproof.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Hospitality.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Hunger Switch.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Hustle.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Hydration.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Hyper Cutter.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Ice Body.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Ice Face.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Ice Scales.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Imposter.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Innards Out.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Inner Focus.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Intimidate.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Intrepid Sword.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Iron Fist.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Justified.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Keen Eye.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Leaf Guard.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Libero - Protean.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Lightning Rod - Storm Drain.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Liquid Ooze.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Liquid Voice.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Marvel Scale.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Mega Launcher.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Mental Immunity.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Mimicry.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Mirror Armor.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Mold Breaker.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Moody.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Motor Drive.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Moxie.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Multiscale - Shadow Shield.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Mummy.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Natural Cure.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Neuroforce.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 NeutralizingGas.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Normalize.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Opportunist.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 OrichalcumPulse.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Overcoat.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Own Tempo.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Parental Bond.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Pastel Veil.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Perish Body.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Pickpocket - Magician.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Plus - Minus.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Poison Point.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Poison Puppeteer.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Power Construct.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Power of Alchemy - Receiver.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 PowerSpot.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Prankster.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Pressure.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Primal Weathers.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Protosynthesis.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Punk Rock.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Pure Power - Huge Power.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 PurifyingSalt.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 QuarkDrive.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Queenly Majesty - Dazzling.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Quick Feet.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Rain Dish.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Rattled.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Reckless.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Regenerator.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Ripen.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Rivalry.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Rough Skin - Iron Barbs.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Sand Force.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Sand Rush.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Sand Spit.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 SandVeil.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Sap Sipper.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 ScreenCleaner.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 SeedSower.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 SereneGrace.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Sharpness.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Shed Skin.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 SheerForce.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 ShieldDust.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Simple.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Slow Start.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Slush Rush.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Snow Cloak.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Solar Power.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Soul-Heart.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Soundproof.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Speed Boost.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Stakeout.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Stalwart.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Stamina.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Stance Change.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Static.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Steadfast.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Steam Engine.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Steely Spirit.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Stench.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Strong Jaw.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Sturdy.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Supersweet Syrup.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 SupremeOverlord.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Surge Surfer.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Sweet Veil.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Swift Swim.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Symbiosis.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Synchronize.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 TabletsOfRuin.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Tangled Feet.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Technician.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Telepathy.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Tera Shift.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 TeraShell.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Teraform Zero.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 ThermalExchange.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Thick Fat.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Tinted Lens.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Tough Claws.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Toxic Boost.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 ToxicDebris.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Trace.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Triage.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Truant.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 TypeAbsorb.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Unaware.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Unburden.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Unnerve.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Victory Star.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Wandering Spirit.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Water Bubble.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Water Compaction.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Weak Armor.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 WellBaked Body.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 White Smoke.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 WindPower.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 WindRider.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Wonder Guard.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Wonder Skin.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 Zen Mode.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/100 ZeroToHero.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/101 AsOne.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/101 Commander Effects.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/101 Cud Chew Effect.rb
+pokemonsdk/scripts/5 Battle/06 Effects/04 Ability Effects/101 TabletsOfRuin.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/001 ItemBase.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/002 Berry.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/050 Drives.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/050 Gems.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/050 HalfSpeedItems.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/050 HpTriggered Healing Berries.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/050 HpTriggered Stat Berries.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/050 ItemAttackMultiplier.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/050 ItemBasePowerMultiplier.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/050 ItemDefenseMultiplier.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/050 StatusBerry.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/050 TerrainSeeds.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/050 TypeResistingBerry.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Air Balloon.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Berserk Gene.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Big Root.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Black Sludge.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 ChoiceItemMultiplier.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Deep Sea Scale.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Deep Sea Tooth.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Eject Button.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Enigma Berry.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Eviolite.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Expert Belt.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Flame Orb.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Focus Band.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Focus Sash.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Jaboca Berry.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Kee Berry - Maranga Berry.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Kings Rock - Razor Fang.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Lansat Berry.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Lax Incense.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Leftovers.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Leppa Berry.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Life Orb.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 LightBall.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Lum Berry.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Luminous Moss - Snowball.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 MentalHerb.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Metal Powder.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Metronome.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Micle Berry.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 MirrorHerb.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Persim Berry.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 PoisonBarb.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 PowerHerb.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Quick Powder.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Red Card.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Rocky Helmet.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 SafetyGoggles.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Shed Shell.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Shell Bell.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Sticky Barb.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Thick Club.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Throat Spray.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Toxic Orb.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Weakness Policy.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 White Herb.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Wide Lens.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Zoom Lens.rb
+pokemonsdk/scripts/5 Battle/06 Effects/06 Weather Effects/001 WeatherBase.rb
+pokemonsdk/scripts/5 Battle/06 Effects/06 Weather Effects/100 Fog.rb
+pokemonsdk/scripts/5 Battle/06 Effects/06 Weather Effects/100 Hail.rb
+pokemonsdk/scripts/5 Battle/06 Effects/06 Weather Effects/100 Hardrain.rb
+pokemonsdk/scripts/5 Battle/06 Effects/06 Weather Effects/100 Hardsun.rb
+pokemonsdk/scripts/5 Battle/06 Effects/06 Weather Effects/100 Rain.rb
+pokemonsdk/scripts/5 Battle/06 Effects/06 Weather Effects/100 Sandstorm.rb
+pokemonsdk/scripts/5 Battle/06 Effects/06 Weather Effects/100 Snow.rb
+pokemonsdk/scripts/5 Battle/06 Effects/06 Weather Effects/100 StrongWinds.rb
+pokemonsdk/scripts/5 Battle/06 Effects/06 Weather Effects/100 Sunny.rb
+pokemonsdk/scripts/5 Battle/06 Effects/07 Field Terrain Effects/001 FieldTerrainBase.rb
+pokemonsdk/scripts/5 Battle/06 Effects/07 Field Terrain Effects/100 Electric.rb
+pokemonsdk/scripts/5 Battle/06 Effects/07 Field Terrain Effects/100 Grassy.rb
+pokemonsdk/scripts/5 Battle/06 Effects/07 Field Terrain Effects/100 Misty.rb
+pokemonsdk/scripts/5 Battle/06 Effects/07 Field Terrain Effects/100 Psychic.rb
+pokemonsdk/scripts/5 Battle/10 Move/100 Move.rb
+pokemonsdk/scripts/5 Battle/10 Move/101 Damage_Calc.rb
+pokemonsdk/scripts/5 Battle/10 Move/102 Type.rb
+pokemonsdk/scripts/5 Battle/10 Move/103 Type Processing.rb
+pokemonsdk/scripts/5 Battle/10 Move/104 Chance of Hit.rb
+pokemonsdk/scripts/5 Battle/10 Move/110 Target.rb
+pokemonsdk/scripts/5 Battle/10 Move/120 Procedure.rb
+pokemonsdk/scripts/5 Battle/10 Move/121 Specific Procedure.rb
+pokemonsdk/scripts/5 Battle/10 Move/130 Move Prevention.rb
+pokemonsdk/scripts/5 Battle/10 Move/1 Mechanics/050 Counter.rb
+pokemonsdk/scripts/5 Battle/10 Move/1 Mechanics/050 ItemBased.rb
+pokemonsdk/scripts/5 Battle/10 Move/1 Mechanics/050 LocationBased.rb
+pokemonsdk/scripts/5 Battle/10 Move/1 Mechanics/050 TwoTurn.rb
+pokemonsdk/scripts/5 Battle/10 Move/1 Mechanics/100 Basic.rb
+pokemonsdk/scripts/5 Battle/10 Move/1 Mechanics/101 Self.rb
+pokemonsdk/scripts/5 Battle/10 Move/1 Mechanics/102 Status Stat.rb
+pokemonsdk/scripts/5 Battle/10 Move/1 Mechanics/103 TwoHit MultiHit.rb
+pokemonsdk/scripts/5 Battle/10 Move/1 Mechanics/105 Heal.rb
+pokemonsdk/scripts/5 Battle/10 Move/1 Mechanics/110 TwoTurnBase.rb
+pokemonsdk/scripts/5 Battle/10 Move/1 Mechanics/120 StatAndStageEdit.rb
+pokemonsdk/scripts/5 Battle/10 Move/1 Mechanics/130 Pledge.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 AbilityChanging.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Absorb.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Acrobatics.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Acupressure.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 AddThirdType.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 After you.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 AlluringVoice.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 AllySwitch.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 AquaRing.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Assist.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Assurance.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Attract.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 AuraWheel.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Autotomize.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Avalanche.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 BatonPass.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 BeatUp.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Belch.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 BellyDrum.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Bestow.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Bide.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Bind.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 BodyPress.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 BrickBreak.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Brine.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 BurnUp.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Camouflage.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 CantSwitch.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Captivate.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 ChangeType.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Charge.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 ChillyReception.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 ClangorousSoul.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Conversion.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 CoreEnforcer.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 CorrosiveGas.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Counter moves.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 CourtChange.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 CraftyShield.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Curse.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 CustomStatsBased.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Defog.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 DestinyBond.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Disable.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 DoubleIronBash.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 DragonCheer.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 DragonDarts.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 EchoedVoice.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 EerieSpell.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Electrify.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 ElectroBall.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 ElectroShot.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Embargo.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Encore.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Endeavor.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Eruption.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FakeOut.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FalseSwipe.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Fangs.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Feint.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FellStinger.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FickleBeam.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FinalGambit.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FishiousRend.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FixedDamages.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Flail.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FlameBurst.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Fling.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FloralHealing.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FlowerShield.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FlyingPress.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FocusEnergy.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FollowMe.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 ForceSwitch.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Foresight.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FoulPlay.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FreezyFrost.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Frustration.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FullCrit.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FuryCutter.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FusionFlareBolt.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FutureSight.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 GastroAcid.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 GearUp.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 GeniesStorm.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Geomancy.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 GigatonHammer.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 GlaiveRush.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 GlitzyGlow.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 GravApple.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Gravity.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Growth.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Grudge.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 GyroBall.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 HPEqLevel.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 HappyHour.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 HazardsSetting.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Haze.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 HealBell.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 HealBlock.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 HealWeather.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 HealingSacrifice.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 HeavySlam.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 HelpingHand.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Hex.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 HiddenPower.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 HighJumpKick.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 HitThenCureStatus.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 IceSpinner SteelRoller.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Imprison.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Incinerate.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Ingrain.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Instruct.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Ion Deluge.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 IvyCudgel.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 JawLock.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Judgment.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 KnockOff.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 LaserFocus.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 LashOut.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 LastResort.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 LastRespects.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 LeechSeed.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 LifeDew.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 LightScreen Reflect.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 LockOn.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 LowKick.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 LuckyChant.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 MagicCoat.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 MagicPowder.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 MagicRoom.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 MagnetRise.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 MagneticFlux.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Magnitude.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 MakeItRain.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Me First.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Memento.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Metronome.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Mimic.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 MindBlown.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Minimize.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 MiracleEye.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 MirrorMove.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Mist.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 MudSport.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 MultiAttack.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 NaturalGift.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 NaturePower.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Nightmare.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 NoRetreat.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 OHKO.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Octolock.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 OrderUp.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 PainSplit.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 PartingShot.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 PayBack.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Payday.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 PerishSong.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 PhotonGeyser.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 PlasmaFists.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Pluck.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 PollenPuff.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Poltergeist.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Powder.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 PowerTrick.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 PreAttackMoves.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Present.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Protect.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 PsychUp.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 PsychicNoise.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 PsychoShift.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Purify.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Pursuit.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Quash.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Rage.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 RageFist.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 RapidSpin.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 RecoilMove.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Recycle.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 ReflectType.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 RelicSong.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Reload.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Rest.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Retaliate.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Return.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 RevelationDance.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Revenge.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 RevivalBlessing.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Rollout.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Roost.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Rototiller.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Round.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SacredSword.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Safeguard.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SaltCure.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SappySeed.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 ScaleShot.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SecretPower.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SelfDestruct.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 ShellSideArm.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Shore Up.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Sketch.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SkyDrop.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SleepTalk.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SmackDown.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Snatch.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Snore.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SolarBeam.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SparklingAria.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SparklySwirl.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SpectralThief.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Spikes.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SpitUp.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Spite.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Splash.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Stages split moves.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Stages swap moves.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 StatusBoostedMove.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 StealthRock.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 StickyWeb.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Stockpile.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Stomp.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 StompingTantrum.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 StoredPower.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 StrengthSap.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 StuffCheeks.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Substitute.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SuckerPunch.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SuperDuperEffective.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SuperFang.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Swallow.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Switcheroo.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Synchronoise.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 SyrupBomb.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Tailwind.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 TakeHeart.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 TarShot.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Taunt.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 TeaTime.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 TechnoBlast.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Telekinesis.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Teleport.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 TerrainBoosting.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 TerrainDamageMoves.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 TerrainMove.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 TerrainPulse.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Thief.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Thrash.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 ThroatChop.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Thunder.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 TidyUp.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 TopsyTurvy.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Torment.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 ToxicThread.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Toxic_Spikes.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Transform.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 TriAttack.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 TrickRoom.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 TripleArrows.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 TrumpCard.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 UTurn.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 UpRoar.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 UpperHand.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 VenomDrench.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Venoshock.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 WeatherBall.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 WeatherMove.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Wish.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 WonderRoom.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 WringOut.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Yawn.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/000 MoveAnimation.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/001 UserBankRelativeAnimation.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/002 MoveAnimation3D.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/003 Util_CameraMove3D.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/004 Util_SetupAnimation.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/050 PokemonSpriteAnimation.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/060 MoveParticleAnimation.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/060 ParticleOnSpriteAnimation.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/060 ParticleZoomAnimation.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/060 ScalarFromSprite.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 AcidArmor.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 Acrobatics.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 AerialAce.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 AirSlash.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 AquaRing.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 AquaTail.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 Assurance.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 Astonish.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 Avalanche.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 KarateChop.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 LeechSeed.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 Poison Powder.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 Sleep Powder.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 Stun Spore.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 Tail_Whip.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 Thunder_wave.rb
+pokemonsdk/scripts/5 Battle/20 MoveAnimation/100 VineWhip.rb
+pokemonsdk/scripts/5 Battle/30 AI/001 BattleSceneMock.rb
+pokemonsdk/scripts/5 Battle/30 AI/002 BattleVisualMock.rb
+pokemonsdk/scripts/5 Battle/30 AI/003 BattleLogicMock.rb
+pokemonsdk/scripts/5 Battle/30 AI/100 Base.rb
+pokemonsdk/scripts/5 Battle/30 AI/101 MoveActionFor.rb
+pokemonsdk/scripts/5 Battle/30 AI/102 MegaEvolve.rb
+pokemonsdk/scripts/5 Battle/30 AI/103 Switch.rb
+pokemonsdk/scripts/5 Battle/30 AI/104 Item.rb
+pokemonsdk/scripts/5 Battle/30 AI/105 Flee.rb
+pokemonsdk/scripts/5 Battle/30 AI/200 GenericAI.rb
+pokemonsdk/scripts/5 Battle/30 AI/1 MoveHeuristic/001 MoveHeuristicBase.rb
+pokemonsdk/scripts/5 Battle/30 AI/1 MoveHeuristic/002 MultiHitMoves.rb
+pokemonsdk/scripts/5 Battle/30 AI/1 MoveHeuristic/002 Rest.rb
+pokemonsdk/scripts/5 Battle/30 AI/1 MoveHeuristic/002 SleepMoves.rb
+pokemonsdk/scripts/5 Battle/30 AI/1 MoveHeuristic/003 HealingMoves.rb
+pokemonsdk/scripts/5 Battle/30 AI/1 MoveHeuristic/004 CuringMoves.rb
+pokemonsdk/scripts/5 Battle/30 AI/1 MoveHeuristic/005 ReflectMoves.rb
+pokemonsdk/scripts/5 Battle/99 Pokemon Script Project/00100 RPG__Sprite.rb
+pokemonsdk/scripts/5 Battle/99 Pokemon Script Project/00200 Scene_Battle___PSP_add.rb
+pokemonsdk/scripts/9 Loaded Last/000 Rustine.rb
+pokemonsdk/scripts/9 Loaded Last/100 PSDK Tasks.rb
+pokemonsdk/scripts/9 Loaded Last/200 SoftReset.rb

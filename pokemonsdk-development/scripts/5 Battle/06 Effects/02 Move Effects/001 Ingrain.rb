@@ -1,0 +1,80 @@
+module Battle
+  module Effects
+    # Ingrain Effect
+    class Ingrain < CantSwitch
+      # Create a new Pokemon tied effect
+      # @param logic [Battle::Logic]
+      # @param pokemon [PFM::PokemonBattler]
+      # @param origin [PFM::PokemonBattler] Pokemon that used the move dealing this effect
+      # @param move [Battle::Move] move responsive of the effect
+      def initialize(logic, pokemon, origin, move)
+        super
+
+        kill_flying_effects(pokemon)
+      end
+
+      # Function called when testing if pokemon can switch (when he couldn't passthrough)
+      # @param handler [Battle::Logic::SwitchHandler]
+      # @param pokemon [PFM::PokemonBattler]
+      # @param skill [Battle::Move, nil] potential skill used to switch
+      # @param reason [Symbol] the reason why the SwitchHandler is called
+      # @return [:prevent, nil] if :prevent, can_switch? will return false
+      def on_switch_prevention(handler, pokemon, skill, reason)
+        return false unless pokemon.effects.has?(:ingrain)
+        return true if pokemon.type_ghost? && (!skill || !skill&.force_switch?)
+        return true if skill&.be_method == :s_teleport
+
+        return handler.prevent_change do
+          handler.scene.display_message_and_wait(flee_message)
+        end
+      end
+
+      # Function called at the end of a turn
+      # @param logic [Battle::Logic] logic of the battle
+      # @param scene [Battle::Scene] battle scene
+      # @param battlers [Array<PFM::PokemonBattler>] all alive battlers
+      def on_end_turn_event(logic, scene, battlers)
+        return unless battlers.include?(@pokemon)
+        return if @pokemon.dead?
+
+        heal_hp = (@pokemon.max_hp / hp_factor).clamp(1, Float::INFINITY)
+        heal_hp += heal_hp * 30 / 100 if @pokemon.hold_item?(:big_root)
+        logic.damage_handler.heal(@pokemon, heal_hp) do
+          @logic.scene.display_message_and_wait(message)
+        end
+      end
+
+      # Get the name of the effect
+      # @return [Symbol]
+      def name
+        return :ingrain
+      end
+
+      private
+
+      # Get the message text
+      # @return [String]
+      def message
+        return parse_text_with_pokemon(19, 739, @pokemon)
+      end
+
+      # Get the flee message text
+      # @return [String]
+      def flee_message
+        return parse_text_with_pokemon(19, 742, @pokemon)
+      end
+
+      # Get the HP factor delt by the move
+      # @return [Integer]
+      def hp_factor
+        return 16
+      end
+
+      # kill effects that force battlers to fly
+      # @param battlers [PFM::PokemonBattler]
+      def kill_flying_effects(pokemon)
+        pokemon.effects.get(:magnet_rise)&.kill
+      end
+    end
+  end
+end

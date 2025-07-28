@@ -1,0 +1,355 @@
+module Battle
+  class Logic
+    # Handler responsive of handling the end of the battle
+    class BattleEndHandler < ChangeHandlerBase
+      include Hooks
+
+      # Process the battle end
+      def process
+        log_debug('Exiting battle process')
+        @scene.message_window.blocking = true
+        players_pokemon = @logic.all_battlers.select(&:from_party?)
+        players_pokemon.concat($actors.map { |creature| PFM::PokemonBattler.new(creature, $scene) }) if players_pokemon.empty?
+        $game_temp.battle_can_lose = false if PFM.game_state.nuzlocke.enabled? && !$game_switches[Yuki::Sw::BT_AUTHORIZE_DEFEAT_NUZLOCKE]
+        exec_hooks(BattleEndHandler, :battle_end, binding)
+        exec_hooks(BattleEndHandler, :battle_end_no_defeat, binding) if @logic.battle_result != 2
+        battlers = @logic.all_battlers.reject { |creature| creature == @scene.battle_info.caught_pokemon }
+        battlers.each(&:copy_properties_back_to_original)
+        exec_hooks(BattleEndHandler, :battle_end_nuzlocke, binding) if PFM.game_state.nuzlocke.enabled?
+        exec_hooks(BattleEndHandler, :battle_end_last, binding)
+        unless $scene.is_a?(Yuki::SoftReset) || $scene.is_a?(Scene_Title)
+          $game_system.bgm_play($game_system.playing_bgm)
+          $game_system.bgs_play($game_system.playing_bgs)
+        end
+      end
+
+      # Get the item to pick up
+      # @param pokemon [PFM::Pokemon]
+      # @return [Integer]
+      def pickup_item(pokemon)
+        off = (((pokemon.level - 1.0) / Configs.settings.max_level) * 10).round # Offset should always depends on the final max level
+        ind = pickup_index(@logic.generic_rng.rand(100))
+        env = $env
+        return GrassItem[off][ind] if env.tall_grass? || env.grass?
+        return CaveItem[off][ind] if env.cave? || env.mount?
+        return WaterItem[off][ind] if env.sea? || env.pond?
+
+        return CommonItem[off][ind]
+      end
+
+      # Process the loose sequence when the battle doesn't allow defeat
+      def player_loose_sequence
+        lost_money = calculate_lost_money
+        variables = { PFM::Text::TRNAME[0] => $trainer.name, PFM::Text::NUMXR => lost_money.to_s }
+        PFM.game_state.lose_money(lost_money)
+        @scene.message_window.stay_visible = true
+        @scene.visual.lock do
+          @scene.display_message(parse_text(18, 56, variables))
+          @scene.display_message(parse_text(18, @scene.battle_info.trainer_battle? ? 58 : 57, variables))
+          @scene.display_message(parse_text(18, 59, variables))
+        end
+      end
+
+      private
+
+      # Get the right pickup index
+      # @param seed [Integer]
+      # @return [Integer]
+      def pickup_index(seed)
+        return 0 if seed < 30
+        return (1 + (seed - 30) / 10) if seed < 80
+        return 6 if seed < 88
+        return 7 if seed < 94
+        return 8 if seed < 99
+
+        return 9
+      end
+
+      # Get the money the player looses when he lose a battle
+      # @return [Integer]
+      def calculate_lost_money
+        base_payout * @logic.battler(0, 0).level
+      end
+
+      # Get the base payout to calculate the lost money
+      # @return [Integer]
+      def base_payout
+        return [8, 16, 24, 36, 48, 64, 80, 100, 120][$trainer.badge_counter] || 120
+      end
+
+      class << self
+        # Function that registers a battle end procedure
+        # @param reason [String] reason of the battle_end registration
+        # @yieldparam handler [BattleEndHandler]
+        # @yieldparam players_pokemon [Array<PFM::PokemonBattler>]
+        def register(reason)
+          Hooks.register(BattleEndHandler, :battle_end, reason) do |hook_binding|
+            yield(self, hook_binding.local_variable_get(:players_pokemon))
+          end
+        end
+
+        # Function that registers a battle end procedure when it's not a defeat
+        # @param reason [String] reason of the battle_end_no_defeat registration
+        # @yieldparam handler [BattleEndHandler]
+        # @yieldparam players_pokemon [Array<PFM::PokemonBattler>]
+        def register_no_defeat(reason)
+          Hooks.register(BattleEndHandler, :battle_end_no_defeat, reason) do |hook_binding|
+            yield(self, hook_binding.local_variable_get(:players_pokemon))
+          end
+        end
+
+        # Function that registers a battle end procedure when nuzlocke mode is enabled
+        # @param reason [String] reason of the battle_end_nuzlocke registration
+        # @yieldparam handler [BattleEndHandler]
+        # @yieldparam players_pokemon [Array<PFM::PokemonBattler>]
+        def register_nuzlocke(reason)
+          Hooks.register(BattleEndHandler, :battle_end_nuzlocke, reason) do |hook_binding|
+            yield(self, hook_binding.local_variable_get(:players_pokemon))
+          end
+        end
+
+        # Function that registers a battle end procedure after properties have been copied back onto actors
+        # @param reason [String] reason of the battle_end_last registration
+        # @yieldparam handler [BattleEndHandler]
+        # @yieldparam players_pokemon [Array<PFM::PokemonBattler>]
+        def register_battle_last(reason)
+          Hooks.register(BattleEndHandler, :battle_end_last, reason) do |hook_binding|
+            yield(self, hook_binding.local_variable_get(:players_pokemon))
+          end
+        end
+      end
+    end
+
+    BattleEndHandler.register('PSDK set switches') do |handler|
+      $game_switches[Yuki::Sw::BT_Catch] = !handler.logic.battle_info.caught_pokemon.nil?
+      $game_switches[Yuki::Sw::BT_Defeat] = handler.logic.battle_result == 2
+      $game_switches[Yuki::Sw::BT_Victory] = handler.logic.battle_result == 0
+      $game_switches[Yuki::Sw::BT_Player_Flee] = handler.logic.battle_result == 1
+      $game_switches[Yuki::Sw::BT_Wild_Flee] = handler.logic.battle_result == 3
+      $game_switches[Yuki::Sw::BT_NoEscape] = false
+    end
+
+    BattleEndHandler.register('PSDK reset weather to normal') do
+      next if $game_switches[Yuki::Sw::MixWeather]
+
+      forced_weather = data_zone($env.current_zone).forced_weather
+      $env.apply_weather(forced_weather && forced_weather != 0 ? forced_weather : 0)
+    end
+
+    BattleEndHandler.register('PSDK trainer messages') do |handler|
+      next unless $game_temp.trainer_battle
+
+      # Showing trainers
+      $game_temp.vs_type.times.map do |i|
+        next handler.scene.visual.battler_sprite(1, -i - 1)
+      end.compact.each(&:go_in)
+
+      if handler.logic.battle_result == 0
+        handler.logic.battle_phase_exp
+        defeat_bgm = handler.scene.battle_info.defeat_bgm
+        Audio.bgm_play(*defeat_bgm) if defeat_bgm
+        handler.scene.visual.show_transition_battle_end
+        # Trainer defeat message
+        handler.scene.battle_info.defeat_texts.each do |text|
+          next unless text
+
+          handler.scene.display_message_and_wait(text)
+        end
+
+        # Add money
+        money = handler.scene.battle_info.total_money(handler.logic)
+        next unless money > 0
+
+        PFM.game_state.add_money(money)
+        handler.scene.display_message_and_wait(parse_text(18, 60, PFM::Text::TRNAME[0] => $trainer.name, PFM::Text::NUMXR => money.to_s))
+      else
+        victory_bgm = handler.scene.battle_info.victory_bgm
+        Audio.bgm_play(*victory_bgm) if victory_bgm
+        handler.scene.visual.show_transition_battle_end
+        # Trainer victory message
+        handler.scene.battle_info.victory_texts.each do |text|
+          next unless text
+
+          handler.scene.display_message_and_wait(text)
+        end
+      end
+
+      handler.scene.message_window.blocking = false
+      handler.scene.visual.unlock
+    end
+
+    BattleEndHandler.register('PSDK wild victory') do |handler|
+      next if $game_temp.trainer_battle || handler.logic.battle_result.between?(1, 2)
+
+      # TODO: until give_pokemon_procedure is reworked to be part of BattleEnd
+      Audio.bgm_play(*handler.scene.battle_info.defeat_bgm) if handler.logic.battle_info.caught_pokemon.nil?
+      handler.logic.battle_phase_exp
+      if (v = handler.scene.battle_info.additional_money) > 0
+        PFM.game_state.add_money(v)
+        handler.scene.display_message_and_wait(parse_text(18, 61, PFM::Text::TRNAME[0] => $trainer.name, PFM::Text::NUMXR => v.to_s))
+      end
+    end
+
+    BattleEndHandler.register_no_defeat('PSDK natural cure') do |_, players_pokemon|
+      players_pokemon.each do |pokemon|
+        pokemon.cure if pokemon.original.ability_db_symbol == :natural_cure
+      end
+    end
+
+    BattleEndHandler.register_no_defeat('PSDK honey gather') do |handler, players_pokemon|
+      players_pokemon.each do |pokemon|
+        unless pokemon.original.ability_db_symbol == :honey_gather && pokemon.item_holding == 0 && handler.logic.generic_rng.rand(100) < (pokemon.level / 2)
+          next
+        end
+        next if pokemon.original.egg?
+
+        pokemon.item_holding = data_item(:honey).id
+      end
+    end
+
+    BattleEndHandler.register_no_defeat('PSDK pickup') do |handler, players_pokemon|
+      players_pokemon.each do |pokemon|
+        next unless pokemon.original.ability_db_symbol == :pickup && pokemon.item_holding == 0 && handler.logic.generic_rng.rand(100) < 10
+        next unless handler.logic.battle_result == 0
+        next if pokemon.original.egg?
+
+        pokemon.item_holding = handler.pickup_item(pokemon.original)
+      end
+    end
+
+    BattleEndHandler.register('PSDK form calibration') do |_, players_pokemon|
+      players_pokemon.each(&:unmega_evolve)
+      players_pokemon.each(&:form_calibrate)
+    end
+
+    BattleEndHandler.register('PSDK burmy calibration') do |_, players_pokemon|
+      players_pokemon.each do |pokemon|
+        next unless pokemon.db_symbol == :burmy
+
+        pokemon.form = pokemon.form_generation(-1)
+      end
+    end
+
+    BattleEndHandler.register_no_defeat('PSDK Evolve') do |handler, players_pokemon|
+      players_pokemon.each do |pokemon|
+        next unless handler.logic.evolve_request.include?(pokemon) && pokemon.alive?
+
+        original = pokemon.original
+        id, form = original.evolve_check(:level_up)
+        handler.scene.instance_variable_set(:@cfi_type, :none) # Prevent fade in in case of multiple evolution
+        next unless id
+
+        GamePlay.make_pokemon_evolve(original, id, form)
+        $pokedex.mark_seen(original.id, original.form, forced: true)
+        $pokedex.mark_captured(original.id, original.form)
+        $quests.see_pokemon(original.db_symbol)
+        $quests.catch_pokemon(original)
+        pokemon.id = original.id
+        pokemon.form = original.form
+      end
+    end
+
+    BattleEndHandler.register('PSDK stop cycling') do |handler, players_pokemon|
+      $game_player.leave_cycling_state if players_pokemon.all?(&:dead?) && !$game_temp.battle_can_lose && handler.logic.battle_result == 2
+    end
+
+    BattleEndHandler.register('Reset Z position of the player') do |handler, players_pokemon|
+      $game_player.z = 0 if players_pokemon.all?(&:dead?) && !$game_temp.battle_can_lose && handler.logic.battle_result == 2
+    end
+
+    BattleEndHandler.register('PSDK send player back to Pokemon Center') do |handler, players_pokemon|
+      next unless players_pokemon.all?(&:dead?) || handler.logic.debug_end_of_battle
+      next if handler.logic.battle_result != 2
+
+      unless $game_temp.battle_can_lose
+        handler.player_loose_sequence
+        $wild_battle.reset
+        $wild_battle.reset_encounters_history
+        $game_temp.transition_processing = true
+        $game_temp.player_transferring = true
+        $game_map.setup($game_temp.player_new_map_id = $game_variables[::Yuki::Var::E_Return_ID])
+        $game_temp.player_new_x = $game_variables[::Yuki::Var::E_Return_X] + ::Yuki::MapLinker.get_OffsetX
+        $game_temp.player_new_y = $game_variables[::Yuki::Var::E_Return_Y] + ::Yuki::MapLinker.get_OffsetY
+        $game_temp.player_new_direction = 8
+        $game_switches[Yuki::Sw::FM_NoReset] = true
+        $game_temp.common_event_id = 3
+      end
+    end
+
+    BattleEndHandler.register('PSDK Update Pokedex') do |handler|
+      handler.logic.all_battlers do |battler|
+        next if battler.from_party? || battler.last_sent_turn == -1
+
+        $pokedex.mark_seen(battler.id, battler.form, forced: true)
+        $pokedex.increase_creature_fought(battler.id) unless battler.alive?
+      end
+    end
+
+    BattleEndHandler.register('PSDK Update Quest') do |handler|
+      handler.logic.all_battlers do |battler|
+        next if battler.from_party?
+
+        $quests.see_pokemon(battler.db_symbol) unless battler.last_sent_turn == -1
+        $quests.beat_pokemon(battler.db_symbol) unless battler.alive?
+      end
+    end
+
+    BattleEndHandler.register('PSDK give back the items for Bestow Effects') do |handler|
+      next if (effects = handler.logic.terrain_effects.get_all(:bestow)).empty?
+
+      effects.each(&:give_back_item)
+    end
+
+    BattleEndHandler.register("Evolve Farfetch'd-G into Sirftech'd") do |handler, players_pokemon|
+      players_pokemon.each do |pokemon|
+        next unless pokemon.evolution_condition_function?(:elv_sirfetchd)
+
+        # Make sure original gets the value before the BEH evolve check (which is before back_properties)
+        # Reset the evolve var if we haven't reached 3 critical hits
+        if (pokemon.evolve_var || 0) >= 3
+          pokemon.original.evolve_var = pokemon.evolve_var
+          handler.logic.evolve_request << pokemon
+        else
+          pokemon.original.reset_evolve_var
+          pokemon.reset_evolve_var
+        end
+      end
+    end
+
+    BattleEndHandler.register('Evolve Primeape into Annihilape') do |handler, players_pokemon|
+      players_pokemon.each do |pokemon|
+        next unless pokemon.evolution_condition_function?(:elv_annihilape)
+
+        # Make sure original gets the value before the BEH evolve check (which is before back_properties)
+        pokemon.original.evolve_var = pokemon.evolve_var || 0
+        handler.logic.evolve_request << pokemon
+      end
+    end
+
+    BattleEndHandler.register_nuzlocke('PSDK Nuzlocke') do |handler|
+      PFM.game_state.nuzlocke.clear_dead_pokemon
+      handler.logic.all_battlers do |battler|
+        PFM.game_state.nuzlocke.lock_catch_in_current_zone(battler.id) unless battler.from_party?
+      end
+      caught_pokemon = handler.logic.battle_info.caught_pokemon
+      PFM.game_state.nuzlocke.lock_catch_in_current_zone(caught_pokemon.id) if caught_pokemon
+    end
+
+    BattleEndHandler.register_battle_last('PSDK Pokerus battle management') do |handler|
+      $pokemon_party.actors.select(&:pokerus_infected?).each do |pokemon|
+        log_debug("Infecting neighboring pokemon of #{pokemon}")
+        $pokemon_party.adjacent_in_party(pokemon).each do |ally|
+          log_debug("Infecting #{ally} with pokerus")
+          ally.infect_with_pokerus({ force_pokerus: true })
+          log_debug("#{ally} affected with pokerus? #{ally.pokerus_infected?}")
+        end
+      end
+
+      handler.logic.all_battlers.select(&:from_player_party?).each do |battler|
+        next unless battler.last_battle_turn > 0
+
+        battler.original.infect_with_pokerus
+      end
+    end
+  end
+end

@@ -1,0 +1,31 @@
+================================Erreur de script================================
+Message :
+C:/Pokemon-main/vierge/scripts/00100 Summary_UI.rb:435: syntax error, unexpected [, expecting ']'
+      [x05 = 38..60, y05 = 45..60],
+      ^
+C:/Pokemon-main/vierge/scripts/00100 Summary_UI.rb:435: syntax error, unexpected ',', expecting `end'
+...  [x05 = 38..60, y05 = 45..60],
+...                              ^
+
+
+Type : SyntaxError
+Script : ScriptLoad.rb (PSDK)
+Ligne : 94
+Date : 26/07/2025 12:08:18
+Game Version : 256
+Logiciel : PSDK 26.45
+===================================Backtraces===================================
+[12] : ScriptLoad.rb (PSDK) | ligne 94 require
+[11] : ScriptLoad.rb (PSDK) | ligne 94 load_scripts
+[10] : ScriptLoad.rb (PSDK) | ligne 91 each
+[9] : ScriptLoad.rb (PSDK) | ligne 91 load_scripts
+[8] : ScriptLoad.rb (PSDK) | ligne 82 load_vscode_scripts
+[7] : ScriptLoad.rb (PSDK) | ligne 42 start
+[6] : tools/GameLoader/50_load_game_uncompiled.rb (PSDK) | ligne 7 <top (required)>
+[5] : ScriptLoad.rb (PSDK) | ligne 198 require
+[4] : ScriptLoad.rb (PSDK) | ligne 198 load_tool
+[3] : tools/GameLoader/Z_load_uncompiled.rb (PSDK) | ligne 17 <top (required)>
+[2] : ScriptLoad.rb (PSDK) | ligne 198 require
+[1] : ScriptLoad.rb (PSDK) | ligne 198 load_tool
+[0] : Game.rb (RMXP) | ligne 11 <main>
+===================================Fin du log===================================
