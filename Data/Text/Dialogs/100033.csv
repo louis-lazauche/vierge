@@ -141,7 +141,7 @@ Move,Capacité,Mosse,Attacke,Movimiento,기술,わざ
 [VAR MOVE(0000)],[VAR MOVE(0000)],[VAR MOVE(0000)],[VAR MOVE(0000)],[VAR MOVE(0000)],[VAR MOVE(0000)],[VAR MOVE(0000)]
 TMs & HMs,CT & CS,MT e MN,TM & VM,MT y MO,기술머신,わざマシン
 [VAR MOVE(0000)],[VAR MOVE(0000)],[VAR MOVE(0000)],[VAR MOVE(0000)],[VAR MOVE(0000)],[VAR MOVE(0000)],[VAR MOVE(0000)]
-Ability,Talent,Abilità,Fähigkeit,Habilidad,특성,とくせい
+Ability,CAP SPÉ,Abilità,Fähigkeit,Habilidad,특성,とくせい
 [VAR ABILITY(0000)],[VAR ABILITY(0000)],[VAR ABILITY(0000)],[VAR ABILITY(0000)],[VAR ABILITY(0000)],[VAR ABILITY(0000)],[VAR ABILITY(0000)]
 Nature,Nature,Natura,Wesen,Naturaleza,성격,せいかく
 [VAR ITEM1(0000)],[VAR ITEM1(0000)],[VAR ITEM1(0000)],[VAR ITEM1(0000)],[VAR ITEM1(0000)],[VAR ITEM1(0000)],[VAR ITEM1(0000)]
@@ -149,7 +149,7 @@ Gender,Sexe,Sesso,Geschlecht,Sexo,성별,せいべつ
 ♂,♂,♂,♂,♂,♂,♂
 ♀,♀,♀,♀,♀,♀,♀
 Unknown,?,Sconosciuto,?,Desconocido,성별 없음,せいべつなし
--,"",-,-,-,-,-
+-,,-,-,-,-,-
 Held Item,Objet,Strumento,Item,Objeto,지닌물건,もちもの
 [VAR ITEM2(0000)],[VAR ITEM2(0000)],[VAR ITEM2(0000)],[VAR ITEM2(0000)],[VAR ITEM2(0000)],[VAR ITEM2(0000)],[VAR ITEM2(0000)]
 Mark,Marque,Simboli,Markierung,Marca,마크,マーク

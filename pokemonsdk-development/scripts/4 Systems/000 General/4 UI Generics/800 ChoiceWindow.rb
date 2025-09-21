@@ -186,7 +186,7 @@ module Yuki
         return text_obj1.real_width + text_obj2.real_width + 2 * Fonts.line_height(current_layout.default_font)
       end
       text_obj = @texts.add_text(cursor_rect.width + cursor_rect.x, i * default_line_height, 0, default_line_height,
-                                 text, color: @colors[i])
+                                 text, color: @colors[i])                 
       return text_obj.real_width
     end
 
@@ -234,7 +234,7 @@ module Yuki
       if $game_switches[::Yuki::Sw::MSG_ChoiceOnTop]
         choice_window.set_position(choice_window.default_horizontal_margin, choice_window.default_vertical_margin)
       else
-        choice_window.x = window.x + window.width - choice_window.width
+        choice_window.x = z
         if $game_system.message_position == 2
           choice_window.y = window.y - choice_window.height - choice_window.default_vertical_margin
         else

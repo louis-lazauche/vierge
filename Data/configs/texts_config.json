@@ -1,7 +1,7 @@
 {
   "klass": "Configs::Project::Texts",
   "fonts": {
-    "isSupportsPokemonNumber": true,
+    "isSupportsPokemonNumber": false,
     "ttfFiles": [
       {
         "id": 0,
@@ -43,6 +43,31 @@
         "id": 4,
         "size": 22,
         "lineHeight": 23
+      },
+      {
+        "id": 5,
+        "size": 18,
+        "lineHeight": 25
+      },
+      {
+        "id": 6,
+        "size": 15,
+        "lineHeight": 25
+      },
+      {
+        "id": 7,
+        "size": 19,
+        "lineHeight": 20
+      },
+      {
+        "id": 8,
+        "size": 17,
+        "lineHeight": 20
+      },
+      {
+        "id": 9,
+        "size": 21,
+        "lineHeight": 20
       }
     ]
   },
@@ -51,9 +76,9 @@
       "windowSkin": null,
       "nameWindowSkin": null,
       "lineCount": 2,
-      "borderSpacing": 2,
+      "borderSpacing": 3,
       "defaultFont": 0,
-      "defaultColor": 0,
+      "defaultColor": 35,
       "colorMapping": {}
     },
     "Battle::Scene": {
@@ -71,7 +96,7 @@
       "windowSkin": null,
       "borderSpacing": 2,
       "defaultFont": 0,
-      "defaultColor": 0,
+      "defaultColor": 36,
       "colorMapping": {}
     }
   }

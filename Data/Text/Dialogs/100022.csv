@@ -1,12 +1,12 @@
 en,fr,it,de,es,ko,kana
-USE,Utiliser,Usa,Einsetzen,Usar,사용한다,つかう
-DISCARD,Jeter,Butta,Müll,Tirar,버린다,すてる
-REGISTER,Enregistrer,Assegna,Registrieren,Asignar,등록,とうろく
-GIVE,Donner,Dai,Geben,Dar,건네준다,もたせる
+USE,UTILISER,Usa,Einsetzen,Usar,사용한다,つかう
+DISCARD,JETER,Butta,Müll,Tirar,버린다,すてる
+REGISTER,ENREGISTRER,Assegna,Registrieren,Asignar,등록,とうろく
+GIVE,DONNER,Dai,Geben,Dar,건네준다,もたせる
 [~ 4],[~ 4],[~ 4],[~ 4],[~ 4],[~ 4],[~ 4]
 WALK,Marcher,Scendi,Laufen,Andar,내린다,おりる
 [~ 6],[~ 6],[~ 6],[~ 6],[~ 6],[~ 6],[~ 6]
-CANCEL,Retour,Indietro,Zurück,Salir,취소,やめる
+CANCEL,RETOUR,Indietro,Zurück,Salir,취소,やめる
 [~ 8],[~ 8],[~ 8],[~ 8],[~ 8],[~ 8],[~ 8]
 [~ 9],[~ 9],[~ 9],[~ 9],[~ 9],[~ 9],[~ 9]
 [~ 10],[~ 10],[~ 10],[~ 10],[~ 10],[~ 10],[~ 10]
@@ -34,10 +34,10 @@ L,L,L,L,L,L,L
 ×,x,×,x, x,×,×
 [~ 33],[~ 33],[~ 33],[~ 33],[~ 33],[~ 33],[~ 33]
 [~ 34],[~ 34],[~ 34],[~ 34],[~ 34],[~ 34],[~ 34]
-[VAR ITEM2(0000)] selected.,Sélection : [VAR ITEM2(0000)],Hai selezionato [VAR 1500(0000)][VAR ITEM2(0000)]!,[VAR ITEM2(0000)] ausgewählt.,Has seleccionado [VAR 1700(0000)][VAR ITEM2(0000)].,[VAR ITEM2(0000)][VAR 1900(0002)] 어떻게 할까요?,[VAR ITEM2(0000)]を　どうしますか？
+[VAR ITEM2(0000)] selected.,Sélection: [VAR ITEM2(0000)],Hai selezionato [VAR 1500(0000)][VAR ITEM2(0000)]!,[VAR ITEM2(0000)] ausgewählt.,Has seleccionado [VAR 1700(0000)][VAR ITEM2(0000)].,[VAR ITEM2(0000)][VAR 1900(0002)] 어떻게 할까요?,[VAR ITEM2(0000)]を　どうしますか？
 [~ 36],[~ 36],[~ 36],[~ 36],[~ 36],[~ 36],[~ 36]
 This is a Key Item. You can’t throw it away.,Vous ne pouvez pas jeter un objet rare !,"Questo è uno strumento base, non puoi buttarlo via!",Basis-Items können nicht weggeworfen werden!,Este objeto es muy importante. ¡No puedes tirarlo!,이것은 중요한 물건이므로 버릴 수 없습니다!,これは　たいせつなもの　なので すてることが　できません！
-Throw away how many [VAR ITEMPLUR1][VAR ITEM2(0000)]?,Combien [VAR ITEMPLUR1][VAR 1408(0000)][VAR ITEM2(0000)] voulez-vous jeter ?,"Quant[VAR ITEMPLUR1][VAR 1102(0000,0101,0101)]oaie [VAR ITEM2(0000)] vuoi buttare?",Wie viele [VAR ITEMPLUR1][VAR ITEM2(0000)] sollen in den Müll wandern?,"¿Cuánt[VAR GENDBR(0000,0101)]oas [VAR ITEMPLUR1][VAR ITEM2(0000)] quieres tirar?",[VAR ITEM2(0000)][VAR 1900(0002)] 몇 개 버리겠습니까?,[VAR ITEM2(0000)]を いくつ　すてますか？
+Throw away how many [VAR ITEMPLUR1][VAR ITEM2(0000)]?,En jeter combien?,"Quant[VAR ITEMPLUR1][VAR 1102(0000,0101,0101)]oaie [VAR ITEM2(0000)] vuoi buttare?",Wie viele [VAR ITEMPLUR1][VAR ITEM2(0000)] sollen in den Müll wandern?,"¿Cuánt[VAR GENDBR(0000,0101)]oas [VAR ITEMPLUR1][VAR ITEM2(0000)] quieres tirar?",[VAR ITEM2(0000)][VAR 1900(0002)] 몇 개 버리겠습니까?,[VAR ITEM2(0000)]を いくつ　すてますか？
 Threw away [VAR NUM3(0001)] [VAR ITEM2(0000)].,Vous jetez [VAR NUM3(0001)] [VAR ITEM2(0000)].,Hai buttato [VAR NUM3(0001)] [VAR ITEM2(0000)]!,"[VAR NUM3(0001)] Exemplar[VAR NUMBRNCH(0001,0100)]e des Items [VAR ITEMPLUR0][VAR ITEM2(0000)] wurde[VAR NUMBRNCH(0001,0100)]n weggeworfen.",¡Has tirado [VAR NUM3(0001)] [VAR ITEM2(0000)]!,[VAR ITEM2(0000)][VAR 1900(0002)] [VAR NUM3(0001)]개 버렸습니다,[VAR ITEM2(0000)]を [VAR NUM3(0001)]コ　すてました
 [~ 40],[~ 40],[~ 40],[~ 40],[~ 40],[~ 40],[~ 40]
 Is it OK to throw away [VAR NUM3(0001)] [VAR ITEM2(0000)]?,Voulez-vous jeter [VAR NUM3(0001)] [VAR ITEM2(0000)] ?,Vuoi buttare [VAR NUM3(0001)] [VAR ITEM2(0000)]?,"Willst du wirklich [VAR NUM3(0001)] Exemplar[VAR NUMBRNCH(0001,0100)]e des Items [VAR ITEMPLUR0][VAR ITEM2(0000)] wegwerfen?",¿Seguro que quieres tirar [VAR NUM3(0001)] [VAR ITEM2(0000)]?,[VAR ITEM2(0000)][VAR 1900(0002)] [VAR NUM3(0001)]개 버려도 괜찮겠습니까?,[VAR ITEM2(0000)]を [VAR NUM3(0001)]コ　すてても　よろしいですか？
@@ -67,10 +67,10 @@ Nothing,Vide,La Tasca è vuota.,Nichts,Vacío,비어 있습니다,ありませ�
 [~ 65],[~ 65],[~ 65],[~ 65],[~ 65],[~ 65],[~ 65]
 [~ 66],[~ 66],[~ 66],[~ 66],[~ 66],[~ 66],[~ 66]
 [~ 67],[~ 67],[~ 67],[~ 67],[~ 67],[~ 67],[~ 67]
-Sorted items by type!,Les objets sont maintenant classés par catégorie !,Strumenti riordinati per categoria!,"So, jetzt ist alles fein säuberlich nach Kategorie sortiert!",Los objetos se han ordenado por clase.,종류 순으로 지닌물건을 정리했습니다!,しゅるいじゅんに もちものを　せいり　しました！
-Sorted items by name!,Les objets sont maintenant classés par nom !,Strumenti riordinati per nome!,"So, jetzt ist alles fein säuberlich alphabetisch sortiert!",Los objetos se han ordenado alfabéticamente.,이름 순으로 지닌물건을 정리했습니다!,なまえじゅんに もちものを　せいり　しました！
-Sorted items from most to fewest held!,Les objets sont maintenant classés par quantité décroissante !,Strumenti riordinati per quantità in ordine decrescente!,"So, jetzt ist alles fein säuberlich nach Anzahl (absteigend) sortiert!",Los objetos se han ordenado de mayor a menor número de unidades.,많은 순으로 지닌물건을 정리했습니다!,おおいじゅんに もちものを　せいり　しました！
-Sorted items from fewest to most held!,Les objets sont maintenant classés par quantité croissante !,Strumenti riordinati per quantità in ordine crescente!,"So, jetzt ist alles fein säuberlich nach Anzahl (aufsteigend) sortiert!",Los objetos se han ordenado de menor a mayor número de unidades.,적은 순으로 지닌물건을 정리했습니다!,すくないじゅんに もちものを　せいり　しました！
+Sorted items by type!,Les objets sont maintenant classés par catégorie!,Strumenti riordinati per categoria!,"So, jetzt ist alles fein säuberlich nach Kategorie sortiert!",Los objetos se han ordenado por clase.,종류 순으로 지닌물건을 정리했습니다!,しゅるいじゅんに もちものを　せいり　しました！
+Sorted items by name!,Les objets sont maintenant classés par nom!,Strumenti riordinati per nome!,"So, jetzt ist alles fein säuberlich alphabetisch sortiert!",Los objetos se han ordenado alfabéticamente.,이름 순으로 지닌물건을 정리했습니다!,なまえじゅんに もちものを　せいり　しました！
+Sorted items from most to fewest held!,Les objets sont maintenant classés par nombre décroissant!,Strumenti riordinati per quantità in ordine decrescente!,"So, jetzt ist alles fein säuberlich nach Anzahl (absteigend) sortiert!",Los objetos se han ordenado de mayor a menor número de unidades.,많은 순으로 지닌물건을 정리했습니다!,おおいじゅんに もちものを　せいり　しました！
+Sorted items from fewest to most held!,Les objets sont maintenant classés par nombre croissant!,Strumenti riordinati per quantità in ordine crescente!,"So, jetzt ist alles fein säuberlich nach Anzahl (aufsteigend) sortiert!",Los objetos se han ordenado de menor a mayor número de unidades.,적은 순으로 지닌물건을 정리했습니다!,すくないじゅんに もちものを　せいり　しました！
 [~ 72],[~ 72],[~ 72],[~ 72],[~ 72],[~ 72],[~ 72]
 [~ 73],[~ 73],[~ 73],[~ 73],[~ 73],[~ 73],[~ 73]
 [~ 74],[~ 74],[~ 74],[~ 74],[~ 74],[~ 74],[~ 74]
@@ -78,14 +78,14 @@ Sorted items from fewest to most held!,Les objets sont maintenant classés par q
 [~ 76],[~ 76],[~ 76],[~ 76],[~ 76],[~ 76],[~ 76]
 [~ 77],[~ 77],[~ 77],[~ 77],[~ 77],[~ 77],[~ 77]
 [~ 78],[~ 78],[~ 78],[~ 78],[~ 78],[~ 78],[~ 78]
-How do you want to sort your items?,Comment voulez-vous les classer ?,Come vuoi modificare l’ordine?,Wonach möchtest du sortieren?,¿Cómo quieres ordenar tus objetos?,어떤 순서로 바꾸겠습니까?,どの　ならびに　かえますか？
-By Type,Par catégorie,Per categoria,Kategorie,Por clase,종류 순,しゅるいじゅん
-By Name,Par nom,Per nome,Alphabet,Alfabéticamente,이름 순,なまえじゅん
-From Most,Qté décroissante,Quantità maggiore,Anzahl (abst.),De más a menos,많은 순,おおいじゅん
-From Fewest,Qté croissante,Quantità minore,Anzahl (aufst.),De menos a más,적은 순,すくないじゅん
-By Number,Par numéro,Per numero,Numerisch,Por número,번호 순,ばんごうじゅん
+How do you want to sort your items?,Comment voulez-vous les classer?,Come vuoi modificare l’ordine?,Wonach möchtest du sortieren?,¿Cómo quieres ordenar tus objetos?,어떤 순서로 바꾸겠습니까?,どの　ならびに　かえますか？
+By Type,PAR CATÉGORIE,Per categoria,Kategorie,Por clase,종류 순,しゅるいじゅん
+By Name,PAR NOM,Per nome,Alphabet,Alfabéticamente,이름 순,なまえじゅん
+From Most,PLUS NOMBREUX,Quantità maggiore,Anzahl (abst.),De más a menos,많은 순,おおいじゅん
+From Fewest,MOINS NOMBREUX,Quantità minore,Anzahl (aufst.),De menos a más,적은 순,すくないじゅん
+By Number,PAR NUMÉRO,Per numero,Numerisch,Por número,번호 순,ばんごうじゅん
 [~ 85],[~ 85],[~ 85],[~ 85],[~ 85],[~ 85],[~ 85]
-Sorted items by number!,Les objets sont maintenant classés par numéro !,Strumenti riordinati per numero!,"So, jetzt ist alles fein säuberlich nach Nummern sortiert!",Se han ordenado por número.,번호 순으로 지닌물건을 정리했습니다!,ばんごうじゅんに もちものを　せいり　しました！
+Sorted items by number!,Les objets ont été classés par numéro!,Strumenti riordinati per numero!,"So, jetzt ist alles fein säuberlich nach Nummern sortiert!",Se han ordenado por número.,번호 순으로 지닌물건을 정리했습니다!,ばんごうじゅんに もちものを　せいり　しました！
 [~ 87],[~ 87],[~ 87],[~ 87],[~ 87],[~ 87],[~ 87]
 Give to which Pokémon?,À quel Pokémon voulez-vous donner l’objet ?,A chi vuoi dare lo strumento?,Welchem Pokémon zum Tragen geben?,¿A qué Pokémon quieres darle este objeto?,누구에게 지니게 하겠습니까?,だれに　もたせますか？
 [VAR PKNICK(0001)] is already holding [VAR iCOLOR2(0000)][VAR ITEM2(0000)]. Would you like to switch the two items?,[VAR PKNICK(0001)] tient déjà [VAR 1402(0000)][VAR ITEM2(0000)] ! Voulez-vous échanger les deux objets ?,[VAR PKNICK(0001)] ha già [VAR 1500(0000)][VAR ITEM2(0000)]. Vuoi scambiare i due strumenti?,[VAR PKNICK(0001)] trägt bereits das Item [VAR ITEM2(0000)]. Sollen die Items ausgetauscht werden?,¡[VAR PKNICK(0001)] ya lleva [VAR 1702(0000)][VAR ITEM2(0000)]! ¿Quieres cambiar un objeto por otro?,[VAR PKNICK(0001)][VAR 1900(0001)] 이미 [VAR ITEM2(0000)][VAR 1900(0002)] 지니고 있습니다 지니고 있는 도구를 교환하겠습니까?,[VAR PKNICK(0001)]は　すでに [VAR ITEM2(0000)]を　もっています もっている　どうぐを とりかえますか？
@@ -199,3 +199,4 @@ JAMMING,Blocage,Intralcio,Störfaktor,Interferencia,방해,ぼうがい
 ,,,,,,
 How many [VAR ITEM2(0000)] would you like to use?,Combien de [VAR ITEM2(0000)] voulez-vous utiliser ?,Quanti [VAR ITEM2(0000)] vuoi usare?,Wie viele [VAR ITEM2(0000)] möchten Sie verwenden?,¿Cuántos [VAR ITEM2(0000)] quieres usar?,[VAR ITEM2(0000)]을(를) 몇 개 사용하시겠습니까?,[VAR ITEM2(0000)]をいくつ使いますか？
 ,,,,,,
+, ,,,,,

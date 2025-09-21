@@ -1,31 +1,31 @@
 en,fr,it,de,es,ko,kana
-Dex No.,Nº Pokédex,N° Pokédex,Pokédex-Nr.,N.º Pokédex,도감No.,ずかんNo.
+Dex No.,Nº POKÉDEX,N° Pokédex,Pokédex-Nr.,N.º Pokédex,도감No.,ずかんNo.
 [VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)]
-Name,Nom,Nome,Name,Nombre,이름,なまえ
-Type,Type,Tipo,Typ,Tipo,타입,タイプ
+Name,NOM,Nome,Name,Nombre,이름,なまえ
+Type,TYPE,Tipo,Typ,Tipo,타입,タイプ
 [VAR COLOR(0002)]♂[VAR COLOR(0000)],[VAR COLOR(0002)]♂[VAR COLOR(0000)],[VAR COLOR(0002)]♂[VAR COLOR(0000)],[VAR COLOR(0002)]♂[VAR COLOR(0000)],[VAR COLOR(0002)]♂[VAR COLOR(0000)],[VAR COLOR(0002)]♂[VAR COLOR(0000)],[VAR COLOR(0002)]♂[VAR COLOR(0000)]
 [VAR COLOR(0001)]♀[VAR COLOR(0000)],[VAR COLOR(0001)]♀[VAR COLOR(0000)],[VAR COLOR(0001)]♀[VAR COLOR(0000)],[VAR COLOR(0001)]♀[VAR COLOR(0000)],[VAR COLOR(0001)]♀[VAR COLOR(0000)],[VAR COLOR(0001)]♀[VAR COLOR(0000)],[VAR COLOR(0001)]♀[VAR COLOR(0000)]
 [~ 6],[~ 6],[~ 6],[~ 6],[~ 6],[~ 6],[~ 6]
 —,-,-,—,-,-,－
 OT,D.O.,AO,OT,EO,어버이,おや
 ID No.,Nº ID,ID,ID-Nummer,N.º ID,IDNo.,IDNo.
-Exp. Points,Points Exp.,Punti Esperienza,Aktuelle Erfahrungspunkte,Puntos de Experiencia,현재 경험치,げんざいのけいけんち
+Exp. Points,POINTS EXP.,Punti Esperienza,Aktuelle Erfahrungspunkte,Puntos de Experiencia,현재 경험치,げんざいのけいけんち
 "[VAR NUM7(0000,002C)]","[VAR NUM7(0000,E07F)]","[VAR NUM7(0000,002E)]","[VAR NUM7(0000,0020)]","[VAR NUM7(0000,E07F)]","[VAR NUM7(0000,0000)]","[VAR NUM7(0000,0000)]"
-To Next Lv.,Niveau suivant,Al livello successivo,Bis zum nächsten Lv.,Para subir de nivel,다음 레벨까지,つぎのレベルまで
-"","","","","","",あと
+To Next Lv.,NIVEAU SUIVANT,Al livello successivo,Bis zum nächsten Lv.,Para subir de nivel,다음 레벨까지,つぎのレベルまで
+,,,,,,あと
 "[VAR NUM7(0000,002C)]","[VAR NUM7(0000,E07F)]","[VAR NUM7(0000,002E)]","[VAR NUM7(0000,0020)]","[VAR NUM7(0000,E07F)]","[VAR NUM7(0000,0000)]","[VAR NUM7(0000,0000)]"
 HP,PV,PS,KP,PS,HP,HP
 [VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)]
 [VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)]
-Attack,Attaque,Attacco,Angriff,Ataque,공격,こうげき
+Attack,ATTAQUE,Attacco,Angriff,Ataque,공격,こうげき
 [VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)]
-Defense,Défense,Difesa,Vert.,Defensa,방어,ぼうぎょ
+Defense,DÉFENSE,Difesa,Vert.,Defensa,방어,ぼうぎょ
 [VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)]
-Sp. Atk,Atq. Spé.,Att. Sp.,Sp.-Ang.,At. Esp.,특수공격,とくこう
+Sp. Atk,ATQ SPÉ,Att. Sp.,Sp.-Ang.,At. Esp.,특수공격,とくこう
 [VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)]
-Sp. Def,Déf. Spé.,Dif. Sp.,Sp.-Vert.,Def. Esp.,특수방어,とくぼう
+Sp. Def,DÉF SPÉ,Dif. Sp.,Sp.-Vert.,Def. Esp.,특수방어,とくぼう
 [VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)]
-Speed,Vitesse,Velocità,Initiative,Velocidad,스피드,すばやさ
+Speed,VITESSE,Velocità,Initiative,Velocidad,스피드,すばやさ
 [VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)]
 [~ 28],[~ 28],[~ 28],[~ 28],[~ 28],[~ 28],[~ 28]
 Lv.,N.,L. ,Lv.,Nv.,Lv.,Lv.
@@ -35,14 +35,14 @@ PP,PP,PP,AP,PP,PP,PP
 /,/,/,/,/,/,/
 [VAR NUM2(0000)],[VAR NUM2(0000)],[VAR NUM2(0000)],[VAR NUM2(0000)],[VAR NUM2(0000)],[VAR NUM2(0000)],[VAR NUM2(0000)]
 [VAR NUM2(0000)],[VAR NUM2(0000)],[VAR NUM2(0000)],[VAR NUM2(0000)],[VAR NUM2(0000)],[VAR NUM2(0000)],[VAR NUM2(0000)]
-Category,Catégorie,Categoria,Kategorie,Categoría,분류,ぶんるい
-Power,Puissance,Potenza,Stärke,Potencia,위력,いりょく
+Category,CAT,Categoria,Kategorie,Categoría,분류,ぶんるい
+Power,POUV,Potenza,Stärke,Potencia,위력,いりょく
 [VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)]
-Accuracy,Précision,Precisione,Genauigkeit,Precisión,명중,めいちゅう
+Accuracy,PRÉC,Precisione,Genauigkeit,Precisión,명중,めいちゅう
 [VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)],[VAR NUM3(0000)]
 [~ 41],[~ 41],[~ 41],[~ 41],[~ 41],[~ 41],[~ 41]
 [VAR NUM2(0000)],[VAR NUM2(0000)],[VAR NUM2(0000)],[VAR NUM2(0000)],[VAR NUM2(0000)],[VAR NUM2(0000)],[VAR NUM2(0000)]
-"","","","","",개,こ
+,,,,,개,こ
 [VAR PKNICK(0000)],[VAR PKNICK(0000)],[VAR PKNICK(0000)],[VAR PKNICK(0000)],[VAR PKNICK(0000)],[VAR PKNICK(0000)],[VAR PKNICK(0000)]
 [VAR PKNAME(0000)],[VAR PKNAME(0000)],[VAR PKNAME(0000)],[VAR PKNAME(0000)],[VAR PKNAME(0000)],[VAR PKNAME(0000)],[VAR PKNAME(0000)]
 [VAR ITEM2(0000)],[VAR ITEM2(0000)],[VAR ITEM2(0000)],[VAR ITEM2(0000)],[VAR ITEM2(0000)],[VAR ITEM2(0000)],[VAR ITEM2(0000)]

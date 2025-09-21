@@ -1,7 +1,7 @@
 en,fr,it,de,es,ko,kana
-Choose the window's resolution,Choisir la résolution de la fenêtre,,,,,
-Resolution,Résolution,,,,,
-320x240,320x240,,,,,
-640x480,640x480,,,,,
-960x720,960x720,,,,,
-1280x960,1280x960,,,,,
+Choose the window's resolution,Vous pouvez choisir parmi 4 tailles de résolution d'écran.,,,,,
+Resolution,RÉSOLUTION,,,,,
+320x240,1,,,,,
+640x480,2,,,,,
+960x720,3,,,,,
+1280x960,4,,,,,
