@@ -91,15 +91,14 @@ module Battle
     # Group the action by priority
     # @return [Array<Actions::Base>]
     def sort_action_and_add_effects
-      highest_priority = @actions.reject { |action| action.is_a?(Actions::Attack) }
+      highest_priority = @actions.reject { |action| action.is_a?(Actions::Attack) || action.is_a?(Actions::Shift) }
       switching = process_and_list_switching_actions(highest_priority)
       # @type [Array<Actions::Attack>]
-      move_action = @actions.select { |action| action.is_a?(Actions::Attack) }
+      move_action = @actions.select { |action| action.is_a?(Actions::Attack) || action.is_a?(Actions::Shift) }
       # Setting pursuit priority
       if switching.any?
         move_action.each do |action|
           next unless action.move.db_symbol == :pursuit
-
           target = action.target
           action.pursuit_enabled = switching.any? { |switch| switch.who == target }
         end

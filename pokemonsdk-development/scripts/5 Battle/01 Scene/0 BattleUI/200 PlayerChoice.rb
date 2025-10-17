@@ -106,7 +106,7 @@ module BattleUI
     class SpecialButton < UI::SpriteStack
       # Create a new special button
       # @param viewport [Viewport]
-      # @param type [Symbol] :last_item or :info
+      # @param type [Symbol] :last_item, :info, :shift
       def initialize(viewport, type)
         super(viewport)
         @type = type
@@ -115,21 +115,46 @@ module BattleUI
 
       # Update the special button content
       def refresh
-        @text.text = @type == :info ? 'Information' : $bag.last_battle_item.name
+        case @type
+        when :info
+          @text.text = 'Information'
+        when :last_item
+          @text.text = $bag.last_battle_item.name
+        when :shift
+          @text.text = text_get(32, 4) # "Shift"
+        else
+          log_error("Error: special button's type not known.")
+        end
       end
 
       private
 
       def create_sprites
-        add_background(@type == :info ? 'battle/button_y' : 'battle/button_x')
+        add_background(obtain_button_data[0])
         @text = add_text(23, 4, 0, 16, nil.to_s, color: 10)
-        add_sprite(3, 3, NO_INITIAL_IMAGE, @type == :info ? :Y : :X, type: UI::KeyShortcut)
+        add_sprite(3, 3, NO_INITIAL_IMAGE, obtain_button_data[1], type: UI::KeyShortcut)
+      end
+
+      # Get the data for the button
+      # @return [Array<String, Symbol>] the filename and key shortcut for the button
+      def obtain_button_data
+        case @type
+        when :last_item
+          return ['battle/button_x', :X]
+        when :info
+          return ['battle/button_y', :Y]
+        when :shift
+          return ['battle/button_y', :X]
+        else
+          log_error('Error: type is not known.')
+        end
       end
     end
 
     # UI showing the info about the last used item
     class ItemInfo < UI::SpriteStack
       include HideShow
+
       # Get the animation handler
       # @return [Yuki::Animation::Handler{ Symbol => Yuki::Animation::TimedAnimation}]
       attr_reader :animation_handler
@@ -193,6 +218,14 @@ module BattleUI
         super
         @item_info.update
         done? ? update_done : update_not_done
+
+        # Hide the X button if it is a triple battle and the choice is for the middle Pokemon
+        if @scene.player_actions.count == 1 && @scene.battle_info.vs_type == 3
+          @x_button.visible = false
+        else
+          @x_button.visible = true
+          @x_button.refresh
+        end
       end
 
       # Tell if the choice is done
@@ -204,8 +237,8 @@ module BattleUI
       def reset
         @item_info.visible = false
         @bar_visibility = false
-        @last_item_button.refresh
         @info_button.refresh
+        @x_button.refresh
       end
 
       private
@@ -240,6 +273,14 @@ module BattleUI
 
       # Action triggered when pressing X
       def action_x
+        if @scene.battle_info.vs_type == 3
+          action_shift
+        else
+          action_last_item
+        end
+      end
+
+      def action_last_item
         item = $bag.last_battle_item
         if item.id == 0 || !$bag.contain_item?(item.id)
           $game_system.se_play($data_system.buzzer_se)
@@ -249,7 +290,15 @@ module BattleUI
         @item_info.show
         @choice.hide
         @scene.visual.show_info_bars(bank: 0) unless @bar_visibility
+      end
+
+      def action_shift
+        return if @scene.player_actions.count == 1
+
         $game_system.se_play($data_system.decision_se)
+        @choice.shift_pokemon
+        @scene.visual.hide_info_bars(bank: 0) unless @bar_visibility
+        @choice.show
       end
 
       # Action triggered when pressing A
@@ -287,7 +336,8 @@ module BattleUI
       end
 
       def create_special_buttons
-        @last_item_button = add_sprite(12, 214, NO_INITIAL_IMAGE, :last_item, type: SpecialButton)
+        button_type = @scene.battle_info.vs_type == 3 ? :shift : :last_item
+        @x_button = add_sprite(12, 214, NO_INITIAL_IMAGE, button_type, type: SpecialButton)
         @info_button = add_sprite(2, 188, NO_INITIAL_IMAGE, :info, type: SpecialButton)
       end
 

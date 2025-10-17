@@ -360,11 +360,11 @@ module PFM
     # Set the gender of the Pokemon
     # @param gender [Integer]
     def gender=(gender)
-      if primary_data.female_rate == -1
+      if data.female_rate == -1
         @gender = 0
-      elsif primary_data.female_rate == 0
+      elsif data.female_rate == 0
         @gender = 1
-      elsif primary_data.female_rate == 100
+      elsif data.female_rate == 100
         @gender = 2
       else
         gender = %w[i m f].index(gender.downcase).to_i if gender.is_a?(String)

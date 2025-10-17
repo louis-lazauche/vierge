@@ -18,7 +18,7 @@ module Battle
         def on_move_prevention_target(user, target, move)
           return false unless move.type_fire?
 
-          move.scene.display_message_and_wait(parse_text_with_pokemon(18, 275, target))
+          move.scene.display_message_and_wait(parse_text(18, 275))
           return true
         end
 

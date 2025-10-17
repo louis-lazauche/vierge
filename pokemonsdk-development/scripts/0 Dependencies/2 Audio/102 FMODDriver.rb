@@ -18,6 +18,7 @@ module Audio
       @se_sounds = {}
       @cries_stack = []
       @fading_sounds = {}
+      @was_playing_callbacks = {}
       @mutexes = Hash.new { |h,k| h[k] = Mutex.new }
       FMOD::System.init(64, FMOD::INIT::NORMAL) unless @@BUG_FMOD_INITIALIZED
       @@BUG_FMOD_INITIALIZED = true
@@ -194,7 +195,7 @@ module Audio
     # @param fade_with_previous [Boolean] if the previous music should be faded with this one
     # @param position [Integer] optional starting position
     def play_music_internal(channel, filename, volume, pitch, fade_with_previous, position)
-      was_playing = was_sound_previously_playing?(filename, @names[channel], sound = @sounds[channel], @channels[channel], fade_with_previous)
+      was_playing = was_sound_previously_playing?(filename, @names[channel], sound = @sounds[channel], @channels[channel], channel, fade_with_previous)
       @names[channel] = filename
       fade_in = (fade_with_previous && sound && !was_playing)
       release_fading_sounds((was_playing || fade_in) ? nil : sound)
@@ -217,7 +218,7 @@ module Audio
       log_error("Le fichier #{filename} n'a pas pu être lu...\nErreur : #{$!.message}")
       stop_channel(channel)
     ensure
-      call_was_playing_callback
+      call_was_playing_callback(channel)
     end
 
     # Play a ME
@@ -225,7 +226,7 @@ module Audio
     # @param volume [Integer] volume of the sound (0~100)
     # @param pitch [Integer] pitch of the sound (50~150)
     def play_me_sound(filename, volume, pitch)
-      was_playing = was_sound_previously_playing?(filename, @names[:me], sound = @sounds[:me], @channels[:me])
+      was_playing = was_sound_previously_playing?(filename, @names[:me], sound = @sounds[:me], @channels[:me], :me)
       @names[:me] = filename
       release_fading_sounds(was_playing ? nil : sound)
       # Unless the sound was playing, we create it
@@ -241,7 +242,7 @@ module Audio
       log_error("Le fichier #{filename} n'a pas pu être lu...\nErreur : #{$!.message}")
       stop_channel(:me)
     ensure
-      call_was_playing_callback
+      call_was_playing_callback(:me)
     end
 
     # Play a SE
@@ -384,19 +385,20 @@ module Audio
     # @param old_filename [String] the filename of the old sound
     # @param sound [FMOD::Sound] the previous playing sound
     # @param channel [FMOD::Channel, nil] the previous playing channel
+    # @param channel_type [Symbol]
     # @param fade_out [Boolean, Integer] if the channel should fades out (Integer = time to fade)
     # @note If the sound wasn't the same, the channel will be stopped if not nil
     # @return [Boolean]
-    def was_sound_previously_playing?(filename, old_filename, sound, channel, fade_out = false)
+    def was_sound_previously_playing?(filename, old_filename, sound, channel, channel_type, fade_out = false)
       return false unless sound
       return true unless filename.downcase != old_filename.downcase
       return false unless channel && (channel.isPlaying rescue false)
 
       if fade_out && !@fading_sounds[sound]
         fade_time = fade_out == true ? FADE_IN_TIME : fade_out
-        @was_playing_callback = proc { fade(fade_time, @fading_sounds[sound] = channel) }
+        @was_playing_callbacks[channel_type] = proc { fade(fade_time, @fading_sounds[sound] = channel) }
       else
-        @was_playing_callback = proc { channel.stop }
+        @was_playing_callbacks[channel_type] = proc { channel.stop }
       end
       return false
     end
@@ -414,11 +416,12 @@ module Audio
     end
 
     # Automatically call the "was playing callback"
-    def call_was_playing_callback
-      @was_playing_callback&.call
-      @was_playing_callback = nil
+    # @param channel_type [Symbol]
+    def call_was_playing_callback(channel_type)
+      @was_playing_callbacks[channel_type]&.call
+      @was_playing_callbacks[channel_type] = nil
     rescue StandardError
-      @was_playing_callback = nil
+      @was_playing_callbacks[channel_type] = nil
     end
   end
 

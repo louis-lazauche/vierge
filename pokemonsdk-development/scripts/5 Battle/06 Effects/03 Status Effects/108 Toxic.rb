@@ -42,14 +42,13 @@ module Battle
           return unless battlers.include?(target)
           return if target.dead?
 
-          # Increase the toxic counter.
-          # Neither Poison Heal nor Magic Guard stops the counter from increasing.
+          # Neither Poison Heal nor Magic Guard stops the toxic counter from increasing.
           @toxic_counter += 1
-
           return if target.has_ability?(:magic_guard)
 
-          # If target of the effect has poison heal, we attempt to heal
           if target.has_ability?(:poison_heal)
+            return unless logic.damage_handler.can_heal?(target)
+
             scene.visual.show_ability(target, true)
             logic.damage_handler.heal(target, poison_effect)
             scene.visual.hide_ability(target)

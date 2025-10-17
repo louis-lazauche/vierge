@@ -64,10 +64,6 @@ module Graphics
       @last_interval_index += Graphics.frame_rate if @last_interval_index < 0
     end
 
-    Hooks.register(Graphics, :post_transition, 'Reset interval after transition') do
-      FPSBalancer.global.send(:update_intervals)
-    end
-
     class << self
       # Get if the FPS balancing is globally enabled
       # @return [Boolean]
@@ -91,9 +87,7 @@ module Graphics
     @global = new
   end
 
-  class << self
-    # Update the game without fps balancing
-    alias original_update update
+  module GraphicsFPSBalancer
     # Update with fps balancing
     def update
       FPSBalancer.global.update
@@ -102,8 +96,15 @@ module Graphics
         update_no_input
         fps_gpu_update if respond_to?(:fps_gpu_update, true)
       else
-        original_update
+        super
       end
     end
+
+    def transition(...)
+      super(...)
+      FPSBalancer.global.send(:update_intervals)
+    end
   end
+
+  singleton_class.prepend(GraphicsFPSBalancer)
 end

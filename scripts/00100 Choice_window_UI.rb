@@ -66,9 +66,6 @@ module Yuki
       # si c'est le bouton "Retour", on prend une autre image
       btn_graphic = text == text_get(22, 7) ? 'choice_back' : 'choice_icon'
       btn = @button_stack.add_sprite(0, 0, RPG::Cache.windowskin(btn_graphic))
-      
-      btn.zoom_x = 1.25
-      btn.zoom_y = 1.25
 
       btn_w = (btn.bitmap.width  * btn.zoom_x).to_i
       btn_h = (btn.bitmap.height * btn.zoom_y).to_i
@@ -181,3 +178,63 @@ module GamePlay
 end
 
 
+
+# -------------------------------------------------------------------------------
+## PAS TRES OPTI - REGARDER DU COTE DE LAYOUT ET WINDOW
+# -------------------------------------------------------------------------------
+
+module LogMessageWidthBeforeParsing
+  def parse_and_show_new_message
+    log_info("message_width=#{message_width}; viewport_width=#{viewport.rect.width}")
+    super
+  end
+end
+
+UI::Message::Window.prepend(LogMessageWidthBeforeParsing)
+
+class UI::Message::Window
+  alias update_old update  # Sauvegarde l'ancienne méthode update
+  def update
+    self.y = 145  # Nouveau comportement
+    update_old   # Appel de l'ancienne méthode update
+  end
+end
+
+module UI
+  module Message
+    # Module defining the Message layout
+    module Layout
+      def window_width
+        252
+      end
+
+      # Return the window height
+      def window_height
+        44 if windowskin
+      end
+
+      # Return the default horizontal margin
+      # @return [Integer]
+      def default_horizontal_margin
+        return 2
+      end
+    end
+  end
+end
+
+module Battle
+  class Scene
+    # Message Window of the Battle
+    class Message < UI::Message::Window
+      # Retrieve the current window_builder
+      # @return [Array]
+      def current_window_builder
+        return [16, 10, 288, 30, 16, 10] if current_windowskin == WINDOW_SKIN
+
+        return super
+      end
+    end
+  end
+end
+# -------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------

@@ -73,12 +73,15 @@ module BattleUI
       return 0, 173
     end
     alias base_position_v2 base_position_v1
+    alias base_position_v3 base_position_v1
 
     # Get the offset position of the Pokemon in 2v2+
     # @return [Array(Integer, Integer)]
     def offset_position_v2
       return 0, 0
     end
+    alias offset_position_v3 offset_position_v2
+
 
     # Creates the go_in animation
     # @return [Yuki::Animation::TimedAnimation]

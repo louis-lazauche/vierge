@@ -9,6 +9,7 @@ module Battle
         def on_end_turn_event(logic, scene, battlers)
           return unless battlers.include?(@target)
           return if @target.dead?
+          return unless logic.damage_handler.can_heal?(@target)
 
           logic.damage_handler.heal(@target, @target.max_hp / 16) do
             scene.display_message_and_wait(parse_text_with_pokemon(19, 914, @target, PFM::Text::ITEM2[1] => @target.item_name))

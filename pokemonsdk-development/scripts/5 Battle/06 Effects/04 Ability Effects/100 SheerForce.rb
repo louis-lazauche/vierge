@@ -31,7 +31,8 @@ module Battle
         # @return [:prevent, nil] :prevent if the status cannot be applied
         def on_status_prevention(handler, status, target, launcher, skill)
           return if target == @target
-          return unless skill || @activated
+          return unless @activated
+          return unless skill
 
           return handler.prevent_change
         end
@@ -45,7 +46,8 @@ module Battle
         # @return [:prevent, nil] :prevent if the stat increase cannot apply
         def on_stat_increase_prevention(handler, stat, target, launcher, skill)
           return if target != @target
-          return unless skill || @activated
+          return unless @activated
+          return unless skill
 
           return handler.prevent_change
         end
@@ -59,7 +61,8 @@ module Battle
         # @return [:prevent, nil] :prevent if the stat decrease cannot apply
         def on_stat_decrease_prevention(handler, stat, target, launcher, skill)
           return if target == @target
-          return unless skill || @activated
+          return unless @activated
+          return unless skill
 
           return handler.prevent_change
         end

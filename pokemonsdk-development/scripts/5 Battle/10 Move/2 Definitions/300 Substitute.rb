@@ -17,7 +17,7 @@ module Battle
 
         if user.hp_rate <= (1.0 / factor)
           usage_message(user)
-          scene.display_message_and_wait(parse_text_with_pokemon(18, 129, user))
+          scene.display_message_and_wait(parse_text(18, 129))
           return false
         end
 

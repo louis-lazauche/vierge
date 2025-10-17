@@ -59,8 +59,7 @@ module Battle
       bar = @info_bars.dig(pokemon.bank, pokemon.position)
       @team_info[pokemon.bank]&.refresh
       return log_error("No battle bar at position #{pokemon.bank}, #{pokemon.position}") unless bar
-
-      bar.refresh
+      bar.pokemon = pokemon
     end
 
     # Set the state info

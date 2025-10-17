@@ -183,10 +183,15 @@ module PFM
       all_creatures = (group.encounters * encounter_amount(group)).map do |encounter|
         encounter.to_creature(maxed ? encounter.level_setup.range.end : nil)
       end
-      creature_to_select = configure_creature(all_creatures)
+      altered_creatures = alter_creatures(all_creatures)
+      creature_to_select = configure_creature(altered_creatures)
       selected_creature = select_creature(group, creature_to_select)
       if selected_creature.empty?
         log_debug('Failed to select a creature for wild battle')
+        return nil
+      end
+      if weak_creature_intimidation_check?(selected_creature)
+        log_debug("Skipping battle due to Intimidate-like Ability")
         return nil
       end
 
@@ -205,8 +210,7 @@ module PFM
     # @return [Integer] the number of encounters available
     def encounter_amount(group)
       return 5 if group.vs_type == :horde
-      # TODO: Uncomment when the second allied trainer is implemented with triple battle
-      return 3 if group.vs_type == :triple # || $game_variables[Yuki::Var::Second_Allied_Trainer_ID] > 0
+      return 3 if group.vs_type == :triple || $game_variables[Yuki::Var::Second_Allied_Trainer_ID] > 0
       return 2 if group.vs_type == :double || $game_variables[Yuki::Var::Allied_Trainer_ID] > 0
 
       return 1
@@ -341,11 +345,20 @@ module PFM
         return false
       end
 
-      if WEAK_POKEMON_ABILITY.include?(creature_ability)
-        return current_group.encounters.any? { |encounter| encounter.level_setup.strong_selected(actor_level) } || rand(100) < 50
-      end
-
       return true
+    end
+
+    # Test whether one of the selected Creature is affected by Intimidation and alike Abilities
+    # defined in WEAK_POKEMON_ABILITY
+    # @param selected_pokemon [Array<PFM::Pokemon, nil>]
+    # @return [Boolean]
+    def weak_creature_intimidation_check?(selected_creature)
+      return false unless WEAK_POKEMON_ABILITY.include?(creature_ability)
+
+      weak_creature = selected_creature.find { |creature| creature.level <= $actors[0].level - 5 }
+      return true if weak_creature && (rand(100) < 50)
+
+      return false
     end
 
     # Function that returns the Creature ability of the Creature triggering all the stuff related to ability

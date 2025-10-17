@@ -61,9 +61,10 @@ module PFM
 
     # If the bag contain a specific item
     # @param db_symbol [Symbol] db_symbol of the item
-    # @return [Boolean]
-    def contain_item?(db_symbol)
-      return item_quantity(db_symbol) > 0
+    # @param quantity [Integer] minimum quantity of the item (optional, default: 1)
+    # @return [Boolean] whether the bag contains at least 'quantity' of the item.
+    def contain_item?(db_symbol, quantity = 1)
+      return item_quantity(db_symbol) >= quantity
     end
     alias has_item? contain_item?
 

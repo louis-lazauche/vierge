@@ -220,11 +220,12 @@ module Battle
 
         # Function to calculate positions based on number of sprites
         # @param trainer_is_couple [Boolean]
+        # @param trainer_is_triplet [Boolean]
         # @param vs_type [Array<Integer>]
         # @param width [Integer]
         # @return [Array<Integer>]
         def calculate_positions
-          position_count = @scene.logic.battle_info.trainer_is_couple ? 1 : $game_temp.vs_type
+          position_count = (@scene.logic.battle_info.trainer_is_couple || @scene.logic.battle_info.trainer_is_triplet) ? 1 : $game_temp.vs_type
           width = @viewport.rect.width
 
           case position_count

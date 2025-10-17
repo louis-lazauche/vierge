@@ -19,7 +19,7 @@ module Battle
           handler.scene.visual.show_ability(target)
           handler.scene.visual.wait_for_animation
 
-          battlers_affected = skill&.original_target&.empty? ? [launcher] : skill.original_target
+          battlers_affected = skill.nil? || skill.original_target&.empty? ? [launcher] : skill.original_target
           battlers_affected.each do |battler|
             next unless battler.can_fight?
 

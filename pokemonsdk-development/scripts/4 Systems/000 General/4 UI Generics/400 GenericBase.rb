@@ -47,7 +47,6 @@ module UI
         button.text = value[index]
       end
     end
-    
 
     # Show the "win text" (bottom text giving information to the player)
     # @param text [String] text to show

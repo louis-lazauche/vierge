@@ -104,7 +104,9 @@ class Scene_Map
     else
       battle_info = Battle::Logic::BattleInfo.from_old_psdk_settings($game_variables[Yuki::Var::Trainer_Battle_ID],
                                                                      $game_variables[Yuki::Var::Second_Trainer_ID],
-                                                                     $game_variables[Yuki::Var::Allied_Trainer_ID])
+                                                                     $game_variables[Yuki::Var::Allied_Trainer_ID],
+                                                                     $game_variables[Yuki::Var::Third_Trainer_ID],
+                                                                     $game_variables[Yuki::Var::Second_Allied_Trainer_ID])
     end
 
     scene.setup_start_battle(Battle::Scene, battle_info)
@@ -172,6 +174,9 @@ class Scene_Map
 
   # Call the shortcut interface
   def call_shortcut
-    GamePlay.open_shortcut if $game_system.menu_disabled != true
+    return if $game_system.menu_disabled
+    return if $game_system.map_interpreter.running?
+
+    GamePlay.open_shortcut
   end
 end

@@ -4,7 +4,7 @@ module Studio
   # @author Nuri Yuri
   module Text
     # List of lang id available in the game
-    Available_Langs = %w[en fr it de es ko kana]
+    Available_Langs = Configs.language.choosable_language_code
     # Base index of pokemon text in csv files
     CSV_BASE = 100_000
     # Name of the file containing all the dialogs

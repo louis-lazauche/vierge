@@ -91,14 +91,12 @@ module GamePlay
       @static_bg = Sprite.new(@viewport)
       @static_bg.load($trainer.playing_girl ? 'bag/static_bg_girl' : 'bag/static_bg', :interface)
       @static_bg.z = 0
-      @static_bg.zoom_x = 1.25
-      @static_bg.zoom_y = 1.25
     end
 
   end
 end
 
-#---------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------
 #                                         BAG ANIMATED SPRITE
 #---------------------------------------------------------------------------------------------------------------
 module UI
@@ -165,8 +163,6 @@ module UI
         set_bitmap(bag_filename, :interface)
         set_position(*COORDINATES)
         set_origin(0, 0)
-        self.zoom_x = 1.25   # élargir 1.5x
-        self.zoom_y = 1.25   # agrandir 1.5x
         self.z = 1
       end
 
@@ -590,8 +586,6 @@ module UI
       end
       def create_background
         @scrollbar = add_background(BACKGROUND).set_z(1)
-        @scrollbar.zoom_x = 1.25
-        @scrollbar.zoom_y = 1.25
       end
       def index=(value)
         @index = value.clamp(0, @max_index)
@@ -612,9 +606,7 @@ module GamePlay
       @base_ui = UI::GenericBase.new(@viewport, button_texts, bar_on_top: true)
       
       # Déplacer et recréer le win_text pour le sac
-      bg = @base_ui.add_sprite(2, 2, 'team/Win_Txt').set_z(502)
-      bg.zoom_x = 1.25
-      bg.zoom_y = 1.25
+      bg = @base_ui.add_sprite(10, 150, 'team/Win_Txt').set_z(502)
       @base_ui.instance_variable_set(:@win_text_background, bg)
 
       text = @base_ui.add_text(9, 11, 200, 15, nil.to_s, color: 35)
@@ -635,7 +627,7 @@ end
 
 #Removing shadows
 module GamePlay
-  class Bag
+  class Bag    
     def choice_a_menu
       item_id = @item_list[@index]
       if item_id.nil?
@@ -696,7 +688,6 @@ module GamePlay
             #  .register_choice(text_get(33, 130), on_validate: method(:search_item))
              .register_choice(text_get(22, 7))
       
-      @message_window.y_offset = 200
       # Process the actual choice
       y = 200 - 16 * choices.size
       choices.display_choice(@viewport, 381, 218, 200, on_update: method(:update_graphics), align_right: true)
@@ -714,7 +705,6 @@ module GamePlay
       $game_temp.num_input_start = $bag.item_quantity(item.db_symbol)
       PFM::Text.set_item_name(item.exact_name)
 
-      @message_window.y_offset = 200
       @base_ui.hide_win_text
       @base_ui.show_win_text(text_get(22, 38))
       display_message(parse_text(22, 200))
@@ -856,7 +846,7 @@ module GamePlay
       return true
     end
 
-    
+
     # Input update related to the item list
     # @return [Boolean] if another update can be done
     def update_list_input
@@ -1055,8 +1045,6 @@ module UI
       attr_reader :button
       def create_button
         btn = push(-3, 0, nil, type: ScrollBarGif)
-        btn.zoom_x = 1.25
-        btn.zoom_y = 1.25
         btn.z = 10
         btn
       end
@@ -1086,8 +1074,6 @@ module UI
           # Création du curseur GIF (indépendant des ItemButton)
           btn_cursor = push(-18, -1, nil, type: ButtonSelectGif)
           btn_cursor.z = 0
-          btn_cursor.zoom_x = 1.25
-          btn_cursor.zoom_y = 1.25
           btn_cursor
         end
 
@@ -1114,8 +1100,6 @@ module UI
       class ItemButton < SpriteStack
         def create_background
           @background = add_sprite(0, 0, 'bag/button_default', :interface)
-          @background.zoom_x = 1.25
-          @background.zoom_y = 1.25
         end
 
         def set_item(item_id)
@@ -1260,21 +1244,10 @@ module UI
       create_right
       create_money
       define_position
-      @width_accounting_sprites.each { |s| s.zoom_x = 1.25; s.zoom_y = 1.25 }
       @width_accounting_sprites.each { |s| s.y -= 94 } # ajuster la position verticale
     end
   end
 end
 
-
-class UI::Message::Window
-  attr_accessor :y_offset
-
-  alias update_y_offset update
-  def update
-    self.y = 50 + (y_offset || 0)
-    update_y_offset
-  end
-end
 
 

@@ -1,7 +1,5 @@
 # Module responsive of showing graphics into the main window
 module Graphics
-  include Hooks
-  extend Hooks
   # List of all task to call on start
   @on_start = []
   # List of all viewport currently shown in Graphics
@@ -198,13 +196,10 @@ module Graphics
     def transition(frame_count_or_sec = 8, texture = nil)
       return unless @window
 
-      exec_hooks(Graphics, :transition, binding)
+      Scheduler.start(:on_transition)
       return if frame_count_or_sec <= 0 || !@frozen_sprite
 
       transition_internal(frame_count_or_sec, texture)
-      exec_hooks(Graphics, :post_transition, binding)
-    rescue Hooks::ForceReturn => e
-      return e.data
     ensure
       @frozen_sprite&.bitmap&.dispose
       @frozen_sprite&.shader = nil
@@ -218,8 +213,8 @@ module Graphics
       return unless @window
       return update_freeze if frozen?
 
-      exec_hooks(Graphics, :update, bnd = binding)
-      exec_hooks(Graphics, :pre_update_internal, bnd)
+      Scheduler.start(:on_update)
+      pre_update_internal
       Input.swap_states
       Mouse.swap_states
       Audio.update
@@ -227,9 +222,15 @@ module Graphics
       @last_time = @current_time
       @current_time = Time.new
       @frame_count += 1
-      exec_hooks(Graphics, :post_update_internal, bnd)
-    rescue Hooks::ForceReturn => e
-      return e.data
+      post_update_internal
+    end
+
+    # Execute everything that happens before internal update proceeds
+    def pre_update_internal
+    end
+
+    # Execute everything that happens after internal update proceeds
+    def post_update_internal
     end
 
     # Update the graphics window content. This method might wait for vsync before returning
@@ -293,12 +294,10 @@ module Graphics
 
     # Reset frame counter (for FPS reason)
     def frame_reset
-      exec_hooks(Graphics, :frame_reset, binding)
     end
 
     # Init the Sprite used by the Graphics module
     def init_sprite
-      exec_hooks(Graphics, :init_sprite, binding)
     end
 
     # Sort the graphics in z
@@ -331,8 +330,6 @@ module Graphics
       if @frozen == 0
         log_error('Graphics were frozen for too long, calling transition...')
         transition
-      else
-        exec_hooks(Graphics, :update_freeze, binding)
       end
     end
 
@@ -369,7 +366,7 @@ module Graphics
       # Process
       while (current_time = Time.new) < next_time
         @frozen_sprite.shader.set_float_uniform('param', ((current_time - initial_time) / total_time).clamp(0, 1))
-        exec_hooks(Graphics, :update_transition_internal, binding)
+        update_transition_internal
         window.update
         @last_time = @current_time
         @current_time = Time.new
@@ -377,6 +374,10 @@ module Graphics
       # Show all previously visible viewport back
       viewports.each_with_index { |v, i| v.visible = visibilities[i] }
       next_frame.dispose
+    end
+
+    # Update everything that happens while transition internal is running
+    def update_transition_internal
     end
   end
 
@@ -416,6 +417,3 @@ module Graphics
     }
   EOFRAGMENT
 end
-
-Hooks.register(Graphics, :transition, 'PSDK Graphics.transition') { Scheduler.start(:on_transition) }
-Hooks.register(Graphics, :update, 'PSDK Graphics.update') { Scheduler.start(:on_update) }

@@ -21,7 +21,36 @@ module Battle
       battle_phase_switch_exp_check
       log_debug('battle_phase_switch_exp_check called')
       all_alive_battlers.each { |pokemon| pokemon.switching = false }
+
+      # In 3v3, unmark the Pokemon which have been marked as having just shifted
+      unmark_shifted_pokemon
+
+      # In 3v3, do automatic shifting
+      battle_phase_3v3_automatic_shifting
+
       @scene.on_battle_turn_end
+    end
+
+    # Automatically reposition battlers in 3v3
+    def battle_phase_3v3_automatic_shifting
+      return unless @battle_info.vs_type == 3
+
+      # Check that there is only two Pokemon left on each side, and that they are two positions
+      # away from each other
+      return unless alive_battlers(0).length == 1 && alive_battlers(1).length == 1
+      return unless (alive_battlers(0).first.position - alive_battlers(1).first.position).abs == 2
+
+      log_debug('battle_phase_3v3_automatic_shifting will shift the Pokemon')
+
+      Actions::Shift.new(@scene, all_alive_battlers[0]).execute
+      Actions::Shift.new(@scene, all_alive_battlers[1]).execute
+    end
+
+    # Unmark the Pokemon which have been marked as having just shifted in 3v3
+    def unmark_shifted_pokemon
+      return unless @battle_info.vs_type == 3
+
+      all_battlers.each { |battler| battler.has_just_shifted = false }
     end
 
     # Function that test the experience distribution

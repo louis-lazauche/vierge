@@ -22,8 +22,8 @@ module Battle
       @catch_rate_modifier = 0
       @flee_rate_modifier = 0
 
-      @safari_pokemon.effects.add(Effects::AbilitySuppressed.new(@logic, @safari_pokemon))
-      player_pkmn.effects.add(Effects::AbilitySuppressed.new(@logic, player_pkmn))
+      @safari_pokemon.effects.add(Effects::AbilitySuppressed.new(@logic, @safari_pokemon, :safari))
+      player_pkmn.effects.add(Effects::AbilitySuppressed.new(@logic, player_pkmn, :safari))
 
       logic.item_change_handler.change_item(:none, false, @safari_pokemon, @safari_pokemon, self)
       logic.item_change_handler.change_item(:none, false, player_pkmn, player_pkmn, self)

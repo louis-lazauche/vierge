@@ -5,10 +5,14 @@ module BattleUI
     include UI
     include GoingInOut
     include MultiplePosition
+
     # The information of the HP Bar
     HP_BAR_INFO = [92, 4, 0, 0, 6] # bw, bh, bx, by, nb_states
+    HP_BAR_INFO_V3 = [63, 4, 0, 0, 6]
     # The information of the Exp Bar
     EXP_BAR_INFO = [88, 2, 0, 0, 1]
+    EXP_BAR_INFO_V3 = [58, 2, 0, 0, 1]
+
     # Get the Pokemon shown by the InfoBar
     # @return [PFM::PokemonBattler]
     attr_reader :pokemon
@@ -33,6 +37,7 @@ module BattleUI
     # @param position [Integer]
     def initialize(viewport, scene, pokemon, bank, position)
       super(viewport)
+      @is_triple_battle = $game_temp.vs_type == 3
       @bank = bank
       @position = position
       @scene = scene
@@ -80,6 +85,12 @@ module BattleUI
       @star.visible = pokemon.shiny && !pokemon.egg?
     end
 
+    # Return a suffix for 3v3 battle resources
+    # @return [String]
+    def suffix_3v3
+      return $game_temp.vs_type == 3 ? '_3v3' : ''
+    end
+
     private
 
     # Get the base position of the Pokemon in 1v1
@@ -98,12 +109,28 @@ module BattleUI
       return 2, 195
     end
 
+    # Get the base position of the Pokemon in 3v3
+    # @return [Array(Integer, Integer)]
+    def base_position_v3
+      return 2, 5 if enemy?
+
+      return 2, 193
+    end
+
     # Get the offset position of the Pokemon in 2v2+
     # @return [Array(Integer, Integer)]
     def offset_position_v2
       return 136, 3 if enemy?
 
       return 136, -3
+    end
+
+    # Get the offset position of the Pokemon in 3v3
+    # @return [Array(Integer, Integer)]
+    def offset_position_v3
+      return 106, 3 if enemy?
+
+      return 106, 3
     end
 
     def create_sprites
@@ -123,19 +150,22 @@ module BattleUI
     end
 
     def create_hp
-      @hp_background = add_sprite(*hp_background_coordinates, 'battle/battlebar_')
+      hp_bar_info = @is_triple_battle ? HP_BAR_INFO_V3 : HP_BAR_INFO
+      hp_text_x = @is_triple_battle ? 36 : 66
+
+      @hp_background = add_sprite(*hp_background_coordinates, "battle/battlebar#{suffix_3v3}_")
       # @type [UI::Bar]
-      @hp_bar = push_sprite Bar.new(@viewport, *hp_bar_coordinates, RPG::Cache.interface('battle/bars_hp'), *HP_BAR_INFO)
+      @hp_bar = push_sprite Bar.new(@viewport, *hp_bar_coordinates, RPG::Cache.interface("battle/bars_hp#{suffix_3v3}"), *hp_bar_info)
       @hp_bar.data_source = :hp_rate
-      @hp_text = add_text(66, 17, 0, 10, enemy? ? :void_string : :hp_pokemon_number, type: SymText, color: 10)
+      @hp_text = add_text(hp_text_x, 17, 0, 10, enemy? ? :void_string : :hp_pokemon_number, type: SymText, color: 10)
     end
 
     def create_exp
       return if enemy?
 
-      add_sprite(36, 30, 'battle/battlebar_exp')
+      add_sprite(36, 30, "battle/battlebar_exp#{suffix_3v3}")
       # @type [UI::Bar]
-      @exp_bar = push_sprite Bar.new(@viewport, 37, 31, RPG::Cache.interface('battle/bars_exp'), *EXP_BAR_INFO)
+      @exp_bar = push_sprite Bar.new(@viewport, 37, 31, RPG::Cache.interface("battle/bars_exp#{suffix_3v3}"), *EXP_BAR_INFO_V3)
       @exp_bar.data_source = :exp_rate
     end
 
@@ -154,15 +184,18 @@ module BattleUI
     end
 
     def create_catch_sprite
-      add_sprite(118, 10, 'battle/ball', type: PokemonCaughtSprite)
+      ball_sprite_x = @is_triple_battle ? 89 : 118
+      add_sprite(ball_sprite_x, 10, 'battle/ball', type: PokemonCaughtSprite)
     end
 
     def create_gender_sprite
-      add_sprite(81, -3, NO_INITIAL_IMAGE, type: GenderSprite)
+      gender_sprite_x = @is_triple_battle ? 71 : 81
+      add_sprite(gender_sprite_x, -3, NO_INITIAL_IMAGE, type: GenderSprite)
     end
 
     def create_level
-      add_text(91, -6, 0, 16, :level_pokemon_number, 0, 1, color: 10, type: SymText)
+      level_text_x = @is_triple_battle ? 80 : 91
+      add_text(level_text_x, -6, 0, 16, :level_pokemon_number, 0, 1, color: 10, type: SymText)
     end
 
     def create_status
@@ -170,7 +203,10 @@ module BattleUI
     end
 
     def create_star
-      return push(119, -4, 'shiny') if enemy?
+      star_x = @is_triple_battle ? 90 : 119
+      star_y = @is_triple_battle ? 24 : -4
+
+      return push(star_x, star_y, 'shiny') if enemy?
 
       return push(6, 10, 'shiny')
     end
@@ -212,10 +248,16 @@ module BattleUI
       # @param pokemon [PFM::PokemonBattler]
       # @return [String]
       def background_filename(pokemon)
-        return 'battle/battlebar_enemy' if pokemon.bank != 0
-        return 'battle/battlebar_actor' if pokemon.from_party?
+        return "battle/battlebar_enemy#{suffix_3v3}" if pokemon.bank != 0
+        return "battle/battlebar_actor#{suffix_3v3}" if pokemon.from_party?
 
-        return 'battle/battlebar_ally'
+        return "battle/battlebar_ally#{suffix_3v3}"
+      end
+
+      # Return a suffix for 3v3 battle resources
+      # @return [String]
+      def suffix_3v3
+        return $game_temp.vs_type == 3 ? '_3v3' : ''
       end
     end
   end

@@ -149,11 +149,3 @@ module GamePlay
 end
 
 GamePlay.player_info_class = GamePlay::TCard
-
-
-
-
-
-
-
-

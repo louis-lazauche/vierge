@@ -68,7 +68,8 @@ module Battle
       # Get the money the player looses when he lose a battle
       # @return [Integer]
       def calculate_lost_money
-        base_payout * @logic.battler(0, 0).level
+        lost_money = base_payout * @logic.battler(0, 0).level
+        return lost_money.clamp(0, PFM.game_state.money)
       end
 
       # Get the base payout to calculate the lost money

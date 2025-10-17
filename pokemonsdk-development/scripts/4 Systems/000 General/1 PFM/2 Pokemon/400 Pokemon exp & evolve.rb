@@ -1,6 +1,5 @@
 module PFM
   class Pokemon
-    include Hooks
     # List of key in evolution Hash that corresponds to the expected ID when evolution is valid
     # @return [Array<Symbol>]
     SPECIAL_EVOLUTION_ID = %i[trade id]
@@ -271,26 +270,6 @@ module PFM
       $pokedex.increase_creature_caught_count(self.id)
       # Refresh hp
       self.hp = (max_hp - hp_diff) if hp > 0
-      exec_hooks(PFM::Pokemon, :evolution, binding)
-    end
-
-    # Add Shedinja evolution
-    Hooks.register(PFM::Pokemon, :evolution, 'Shedinja Evolution') do
-      next unless db_symbol == :ninjask && !PFM.game_state.full? && $bag.contain_item?(:poke_ball)
-
-      shedinja = Pokemon.new(:shedinja, level, shiny?, !shiny?, 0, {
-                               nature: nature_db_symbol,
-                               stats: [iv_hp, iv_atk, iv_dfe, iv_spd, iv_ats, iv_dfs],
-                               bonus: [ev_hp, ev_atk, ev_dfe, ev_spd, ev_ats, ev_dfs],
-                               trainer_name: trainer_name, trainer_id: trainer_id,
-                               captured_in: captured_in, captured_at: captured_at, captured_level: captured_level,
-                               egg_in: egg_in, egg_at: egg_at,
-                               moves: skills_set.map(&:id)
-                             })
-      $actors << shedinja
-      $bag.remove_item(:poke_ball, 1)
-      $pokedex.mark_seen(:shedinja, forced: true)
-      $pokedex.mark_captured(:shedinja)
     end
 
     # Change the id of the Pokemon

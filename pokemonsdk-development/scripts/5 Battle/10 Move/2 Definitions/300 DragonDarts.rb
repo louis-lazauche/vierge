@@ -100,11 +100,8 @@ module Battle
           play_animation(user, [target]) if @nb_hit > 1
           hp = damages(user, target)
           @logic.damage_handler.damage_change_with_process(hp, target, user, self) do
-            if critical_hit?
-              scene.display_message_and_wait(@all_targets.size == 1 ? parse_text(18, 84) : parse_text_with_pokemon(19, 384, target))
-            elsif hp > 0 && @nb_hit == @hit_amount
-              efficent_message(effectiveness, target)
-            end
+            hit_criticality_message(actual_targets, target)
+            efficent_message(effectiveness, target) if hp > 0 && @nb_hit == @hit_amount
           end
           recoil(hp, user) if recoil?
         end

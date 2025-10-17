@@ -27,6 +27,7 @@ module Battle
       def <=>(other)
         return 1 if other.is_a?(HighPriorityItem)
         return 1 if other.is_a?(Attack) && Attack.from(other).pursuit_enabled
+        return 1 if other.is_a?(Shift)
         return Item.from(other).user.spd <=> @user.spd if other.is_a?(Item)
 
         return -1

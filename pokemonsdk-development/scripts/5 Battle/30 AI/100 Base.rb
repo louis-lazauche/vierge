@@ -3,7 +3,6 @@ module Battle
   module AI
     # Base class of AI, it holds the most important data
     class Base
-      include Hooks
       # Get the scene that initialized the AI
       # @return [Battle::Scene]
       attr_reader :scene
@@ -86,7 +85,7 @@ module Battle
         actions.concat(item_actions_for(pokemon, move_heuristics)) if @can_use_item
         actions.concat([flee_action_for(pokemon)].compact) if @can_flee
 
-        exec_hooks(Base, :battle_action_for, binding)
+        debug_process_actions(actions) if respond_to?(:debug_process_actions)
         final_action = actions.compact.shuffle(random: @scene.logic.generic_rng).max_by(&:first)&.last
         pokemon.bag.remove_item(final_action.item_wrapper.item.db_symbol, 1) if final_action.is_a?(Actions::Item)
         mega = nil if final_action.is_a?(Actions::Switch)

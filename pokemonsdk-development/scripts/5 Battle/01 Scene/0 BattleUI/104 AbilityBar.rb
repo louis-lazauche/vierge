@@ -72,13 +72,29 @@ module BattleUI
 
       return 2, 59
     end
-    alias base_position_v2 base_position_v1
+
+    # Get the base position of the Pokemon in 2v2
+    # @return [Array(Integer, Integer)]
+    def base_position_v2
+      return 177, 115 if enemy?
+
+      return 2, 59
+    end
+
+    # Get the base position of the Pokemon in 3v3
+    # @return [Array(Integer, Integer)]
+    def base_position_v3
+      return 177, 80 if enemy?
+
+      return 2, 59
+    end
 
     # Get the offset position of the Pokemon in 2v2+
     # @return [Array(Integer, Integer)]
     def offset_position_v2
-      return 0, 38
+      return 0, 35
     end
+    alias offset_position_v3 offset_position_v2
 
     # Creates the go_in animation
     # @param [Boolean] no_go_out Set if the out animation should be not played automatically

@@ -59,34 +59,55 @@ module Battle
         damage_change(hp, target, launcher, skill, &messages)
       end
 
-      # Function that proceed the heal of a Pokemon
+      # Whether a battler can be healed
       # @param target [PFM::PokemonBattler]
-      # @param hp [Integer] number of HP to heal
       # @param test_heal_block [Boolean]
-      # @param animation_id [Symbol, Integer] animation to use instead of the original one
-      # @yieldparam hp [Integer] the actual hp healed
-      # @return [Boolean] if the heal was successful or not
-      # @note this method yields a block in order to show the message after the animation
-      # @note this shows the default message if no block has been given
-      def heal(target, hp, test_heal_block: true, animation_id: nil)
-        if test_heal_block && target.effects.has?(:heal_block)
-          @scene.display_message_and_wait(parse_text_with_pokemon(19, 890, target))
-          return false
-        end
+      # @return [Boolean]
+      def can_heal?(target, test_heal_block: true)
+        reset_prevention_reason
+        log_data("# can_heal?(#{target}, test_heal_block: #{test_heal_block})")
+        exec_hooks(DamageHandler, :heal_prevention, binding)
+        return true
+      rescue Hooks::ForceReturn => e
+        log_data("# FR: can_heal? #{e.data} from #{e.hook_name} (#{e.reason})")
+        return e.data
+      end
 
-        if target.hp >= target.max_hp
-          @scene.display_message_and_wait(parse_text_with_pokemon(19, 896, target))
-          return false
-        end
-
+      # Function that actually performs the heal
+      # @param target [PFM::PokemonBattler]
+      # @param hp [Integer] Number of HP to heal
+      # @yieldparam hp [Integer] The actual HP healed
+      # @note This method yields a block in order to show the message after the animation
+      # @note This shows the default message if no block has been given
+      def heal_change(target, hp, animation_id: nil)
         actual_hp = hp.clamp(1, target.max_hp - target.hp)
         # TODO: play the animation that should be played on all hp heal (+think about animation_id)
         target.position == -1 ? target.hp += actual_hp : @scene.visual.show_hp_animations([target], [actual_hp])
+
         if block_given?
           yield(actual_hp)
         else
           @scene.display_message_and_wait(parse_text_with_pokemon(19, 387, target))
         end
+      end
+
+      # Function that proceed the heal of a Pokemon
+      # @param target [PFM::PokemonBattler]
+      # @param hp [Integer] number of HP to heal
+      # @param test_heal_block [Boolean]
+      # @param animation_id [Symbol, Integer] animation to use instead of the original one
+      # @param block [Proc] block to show messages after the animation
+      # @yieldparam hp [Integer] the actual hp healed
+      # @return [Boolean] if the heal was successful or not
+      # @note this method yields a block in order to show the message after the animation
+      # @note this shows the default message if no block has been given
+      def heal(target, hp, test_heal_block: true, animation_id: nil, &block)
+        unless can_heal?(target, test_heal_block: test_heal_block)
+          process_prevention_reason
+          return false
+        end
+
+        heal_change(target, hp, animation_id: animation_id, &block)
         return true
       end
 
@@ -113,7 +134,8 @@ module Battle
         exec_hooks(DamageHandler, :drain_prevention, binding)
         log_data("# drain drain_appliable? #{hp_healed > 0} after drain_prevention hook")
 
-        @scene.display_message_and_wait(parse_text_with_pokemon(19, 905, target)) if hp_healed > 0 && launcher.alive? && heal(launcher, hp_healed)
+        @scene.display_message_and_wait(parse_text_with_pokemon(19, 905, target)) if
+          hp_healed > 0 && launcher.alive? && can_heal?(launcher) && heal(launcher, hp_healed) {}
 
         exec_hooks(DamageHandler, :post_damage, binding) if target.hp > 0
         if target.hp <= 0
@@ -206,6 +228,34 @@ module Battle
           end
         end
 
+        # Function that registers a heal_prevention hook
+        # @param reason [String] reason of the heal_prevention registration
+        # @yieldparam handler [DamageHandler]
+        # @yieldparam target [PFM::PokemonBattler]
+        def register_heal_prevention_hook(reason)
+          Hooks.register(DamageHandler, :heal_prevention, reason) do |hook_binding|
+            result = yield(
+              self,
+              hook_binding.local_variable_get(:target)
+            )
+            force_return(false) if result == :prevent
+          end
+        end
+
+        # Register Heal Block's heal_prevention hook
+        def register_heal_block_hook
+          Hooks.register(DamageHandler, :heal_prevention, 'PSDK heal prevention: Heal Block') do |hook_binding|
+            target      = hook_binding.local_variable_get(:target)
+            test_effect = hook_binding.local_variable_get(:test_heal_block)
+            next unless test_effect && target.effects.has?(:heal_block)
+
+            prevent_change do
+              @scene.display_message_and_wait(parse_text_with_pokemon(19, 890, target))
+            end
+            force_return(false)
+          end
+        end
+
         # Function that registers a pre_drain hook
         # @param reason [String] reason of the pre_drain registration
         # @yieldparam handler [DamageHandler]
@@ -263,6 +313,9 @@ module Battle
       target.ability_effect.on_post_damage_death(handler, hp, target, launcher, skill)
       handler.pre_checked_effects << target.ability_effect
     end
+
+    # Heal Block
+    DamageHandler.register_heal_block_hook
 
     # Effects
     DamageHandler.register_damage_prevention_hook('PSDK damage prev: Effects') do |handler, hp, target, launcher, skill|
@@ -356,6 +409,15 @@ module Battle
       next unless launcher.db_symbol == :primeape
 
       launcher.increase_evolve_var if skill.db_symbol == :rage_fist
+    end
+
+    # Native impossibilities
+    DamageHandler.register_heal_prevention_hook('PSDK heal prevention: HP already full') do |handler, target|
+      next if target.hp < target.max_hp
+
+      next handler.prevent_change do
+        handler.scene.display_message_and_wait(parse_text_with_pokemon(19, 896, target))
+      end
     end
   end
 end

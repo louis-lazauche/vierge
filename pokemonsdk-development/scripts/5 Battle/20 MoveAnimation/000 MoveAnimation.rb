@@ -58,7 +58,7 @@ module Battle
       animations = animations.dup
       # @type [Yuki::Animation::TimedAnimation]
       user_animation = animations.shift
-      animations << Marshal.load(Marshal.dump(animations.last)) while animations.size > targets.size
+      animations << Marshal.load(Marshal.dump(animations.last)) while animations.size < targets.size
       user_sprite = visual.battler_sprite(user.bank, user.position)
       target_sprites = targets.map { |target| visual.battler_sprite(target.bank, target.position) }
 

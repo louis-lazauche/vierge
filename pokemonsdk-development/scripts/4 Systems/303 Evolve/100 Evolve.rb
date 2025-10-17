@@ -52,8 +52,7 @@ module GamePlay
         @running = false
         @evolved = true
       elsif @counter < SECOND_STEP && !@forced && Input.trigger?(:B)
-        
-        _step
+        stop_evolution_step
         return
       else
         update_animation

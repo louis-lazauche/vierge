@@ -120,6 +120,25 @@ module BattleUI
       # Get the cursor
       # @return [Cursor]
       attr_reader :cursor
+      # Get the cursor
+      # @return [Cursor]
+      attr_reader :row_size
+
+      ELEMENTS_POSITION = {
+        'POS_ICON' => [1, 1],
+        'POS_NAME' => [41, 16],
+        'POS_GENDER' => [5, 16],
+        'POS_EFFICIENCY_TEXT' => [18, 35],
+        'POS_CURSOR' => [-10, 12]
+      }
+
+      ELEMENTS_POSITION_3V3 = {
+        'POS_ICON' => [6, 0],
+        'POS_NAME' => [8, 34],
+        'POS_GENDER' => [8, 38],
+        'POS_EFFICIENCY_TEXT' => [1, 51],
+        'POS_CURSOR' => [2, 12]
+      }
 
       # Create a new button
       # @param viewport [Viewport]
@@ -131,6 +150,7 @@ module BattleUI
       # @param is_target [Boolean]
       def initialize(viewport, index, row_size, pokemon, launcher, move, is_target)
         super(viewport, *process_coordinates(index, row_size))
+        @row_size = row_size
         create_sprites
         @move = move
         @selected = is_target
@@ -143,7 +163,9 @@ module BattleUI
       # @param selected [Boolean]
       def selected=(selected)
         @selected = selected
-        @cursor.set_position(@x - 10, @y + 12)
+
+        cursor_x_offset = @row_size < 3 ? -10 : 2
+        @cursor.set_position(@x + cursor_x_offset, @y + 12)
         @cursor.register_positions
         @cursor.visible = selected
       end
@@ -169,12 +191,15 @@ module BattleUI
 
       def create_sprites
         @background = add_background(NO_INITIAL_IMAGE, type: Background)
-        @icon = add_sprite(1, 1, NO_INITIAL_IMAGE, false, type: UI::PokemonIconSprite)
-        @name = add_text(41, 16, 0, 16, :name, color: 10, type: UI::SymText)
-        @gender = add_sprite(5, 16, NO_INITIAL_IMAGE, type: UI::GenderSprite)
-        @efficiency_text = add_text(18, 35, 102, 16, nil.to_s, 1, color: 10)
+
+        element_position = @row_size < 3 ? ELEMENTS_POSITION : ELEMENTS_POSITION_3V3
+        @icon = add_sprite(*element_position['POS_ICON'], NO_INITIAL_IMAGE, false, type: UI::PokemonIconSprite)
+        @name = add_text(*element_position['POS_NAME'], 0, 16, :name, color: 10, type: UI::SymText)
+        @gender = add_sprite(*element_position['POS_GENDER'], NO_INITIAL_IMAGE, type: UI::GenderSprite)
+        @efficiency_text = add_text(*element_position['POS_EFFICIENCY_TEXT'], 102, 16, nil.to_s, 1, color: 10)
         # @type [Cursor]
-        @cursor = add_sprite(-10, 12, 'battle/arrow', type: Cursor)
+        @cursor = add_sprite(*element_position['POS_CURSOR'], 'battle/arrow', type: Cursor)
+
         @cursor.z = 1
         @cursor.register_positions
         @cursor.visible = false
@@ -193,8 +218,13 @@ module BattleUI
 
       def process_coordinates(index, row_size)
         x = index % row_size
-        y = index / row_size
-        return (29 - 10 * y + 141 * x), 65 + y * 58
+        y = (index / row_size)
+
+        if row_size < 3
+          return (29 - 10 * y + 141 * x), 65 + y * 58
+        else
+          return (3 + 105 * x), 32 + y * 104
+        end
       end
 
       # Background of the target
@@ -212,10 +242,12 @@ module BattleUI
         # Get the image that should be shown by the UI
         # @param pokemon [PFM::PokemonBattler]
         def image_name(pokemon)
-          return 'battle/target_bar_enemy' if pokemon.bank != 0
-          return 'battle/target_bar_ally' unless pokemon.from_party?
+          suffix_3v3 = $game_temp.vs_type == 3 ? '_3v3' : ''
 
-          return 'battle/target_bar_player'
+          return "battle/target_bar_enemy#{suffix_3v3}" if pokemon.bank != 0
+          return "battle/target_bar_ally#{suffix_3v3}" unless pokemon.from_party?
+
+          return "battle/target_bar_player#{suffix_3v3}"
         end
       end
     end

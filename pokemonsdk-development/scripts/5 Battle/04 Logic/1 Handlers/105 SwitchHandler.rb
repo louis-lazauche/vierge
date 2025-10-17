@@ -128,20 +128,19 @@ module Battle
       end
     end
 
+    # Hook for handling Neutralizing Gas
     SwitchHandler.register_switch_event_hook('PSDK switch: Neutralizing Gas Effect') do |handler, who, with|
-      if who != with && who.has_ability?(:neutralizing_gas) && who.ability_effect.activated?
-        who.ability_effect.on_switch_event(handler, who, with)
-        handler.pre_checked_effects << who.ability_effect
-      end
-
-      battlers = handler.logic.all_alive_battlers.find_all { |battler| battler.has_ability?(:neutralizing_gas) }
+      battlers = (handler.logic.all_alive_battlers + [who, with]).uniq.select { |battler| battler.has_ability?(:neutralizing_gas) }
       next if battlers.empty?
 
+      # Prevents a reactivation in the base hook
       battlers.each { |battler| handler.pre_checked_effects << battler.ability_effect }
-      next if battlers.any? { |battler| battler.ability_effect.activated? }
 
-      # @type [PFM::PokemonBattler]
-      battler = battlers.sort_by(&:spd).reverse.first
+      # Ability management based on the availability of a replacement
+      battlers.reject! { |battler| battler == who } if who != with
+      next who.ability_effect.on_switch_event(handler, who, with) if battlers.empty?
+
+      battler = battlers.find { |b| b.ability_effect.activated? } || battlers.max_by(&:spd)
       battler.ability_effect.on_switch_event(handler, battler, battler)
     end
 

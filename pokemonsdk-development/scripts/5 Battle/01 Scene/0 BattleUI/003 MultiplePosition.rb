@@ -40,15 +40,24 @@ module BattleUI
     # Get the sprite position
     # @return [Array(Integer, Integer)]
     def sprite_position
-      if scene.battle_info.vs_type == 1
+      case scene.battle_info.vs_type
+      when 1
         x, y = base_position_v1
-      else
+        dx = 0
+        dy = 0
+      when 2
         x, y = base_position_v2
         dx, dy = offset_position_v2
-        x += dx * position
-        y += dy * position
+      when 3
+        x, y = base_position_v3
+        dx, dy = offset_position_v3
       end
+
+      x += dx * position
+      y += dy * position
+
       return x, y
     end
+    
   end
 end

@@ -2,7 +2,7 @@ module GamePlay
   # Load game scene
   class Load < BaseCleanUpdate
 
-    ACTIONS = %i[action_a action_a action_a action_b action_b action_a action_a action_a action_a action_b]
+    ACTIONS = %i[action_a action_a action_a action_a action_a action_a action_b]
 
     def create_graphics
       super
@@ -18,7 +18,7 @@ module GamePlay
     end
 
     def button_texts
-      [nil, nil, nil, nil, nil, nil, nil, nil, nil, ""]
+      [nil, nil, nil, nil, nil, nil, ""]
     end
 
     def create_static_background

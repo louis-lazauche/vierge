@@ -113,6 +113,7 @@ pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/200 Pokemon Graphics.rb
 pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/300 Pokemon EV.rb
 pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/400 Pokemon exp & evolve.rb
 pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/401 ExpList.rb
+pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/402 Shedinja Evolution.rb
 pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/500 Pokemon Forms.rb
 pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/600 Pokemon Skills.rb
 pokemonsdk/scripts/4 Systems/000 General/1 PFM/2 Pokemon/700 Pokemon Stats.rb
@@ -235,6 +236,8 @@ pokemonsdk/scripts/4 Systems/005 Animation/200 EllipseAnimation.rb
 pokemonsdk/scripts/4 Systems/005 Animation/200 FallingAnimation.rb
 pokemonsdk/scripts/4 Systems/005 Animation/200 RadialAnimation.rb
 pokemonsdk/scripts/4 Systems/005 Animation/200 ToneAnimation.rb
+pokemonsdk/scripts/4 Systems/005 Animation/300 Anchor.rb
+pokemonsdk/scripts/4 Systems/005 Animation/301 EqOffsetAnimation.rb
 pokemonsdk/scripts/4 Systems/100 Menu/099 MenuMixin.rb
 pokemonsdk/scripts/4 Systems/100 Menu/100 Menu.rb
 pokemonsdk/scripts/4 Systems/100 Menu/300 MenuButtonBase.rb
@@ -599,6 +602,7 @@ pokemonsdk/scripts/5 Battle/05 Actions/005 Switch.rb
 pokemonsdk/scripts/5 Battle/05 Actions/006 Flee.rb
 pokemonsdk/scripts/5 Battle/05 Actions/007 HighPriorityItem.rb
 pokemonsdk/scripts/5 Battle/05 Actions/008 NoAction.rb
+pokemonsdk/scripts/5 Battle/05 Actions/009 Shift.rb
 pokemonsdk/scripts/5 Battle/06 Effects/001 EffectsHandler.rb
 pokemonsdk/scripts/5 Battle/06 Effects/100 EffectBase.rb
 pokemonsdk/scripts/5 Battle/06 Effects/200 PokemonTiedEffectBase.rb
@@ -634,6 +638,7 @@ pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Drowsiness.rb
 pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 EchoedVoice.rb
 pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Electrify.rb
 pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Embargo.rb
+pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 FairyLock.rb
 pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 Flinch.rb
 pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 FocusEnergy.rb
 pokemonsdk/scripts/5 Battle/06 Effects/02 Move Effects/001 FocusPunch.rb
@@ -973,6 +978,7 @@ pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 MirrorHerb.rb
 pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Persim Berry.rb
 pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 PoisonBarb.rb
 pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 PowerHerb.rb
+pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 PrimalOrbs.rb
 pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Quick Powder.rb
 pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Red Card.rb
 pokemonsdk/scripts/5 Battle/06 Effects/05 Item Effects/100 Rocky Helmet.rb
@@ -1079,6 +1085,7 @@ pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Embargo.rb
 pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Encore.rb
 pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Endeavor.rb
 pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Eruption.rb
+pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FairyLock.rb
 pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FakeOut.rb
 pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 FalseSwipe.rb
 pokemonsdk/scripts/5 Battle/10 Move/2 Definitions/300 Fangs.rb

@@ -3,7 +3,7 @@ module UI
   # Generica base UI for most of the scenes
   class GenericBase < SpriteStack
 
-   DEFAULT_KEYS = %i[Z W X B L R S V G H A T Y F D E]
+   DEFAULT_KEYS = %i[Z W X B L R S V G H A T Y F D E C Q]
 
     # def button_texts=(value)
     #   @button_texts = value
@@ -29,9 +29,16 @@ module UI
     end
 
     def create_graphics_top
-      create_background
       create_button_background_top
       create_control_button
+    end
+
+    # Hold the wintexts in the interfaces
+    def win_text
+      @win_text_background ||= add_sprite(0, 170, 'team/Win_Txt').set_z(502)
+      @win_text ||= add_text(5, 222, 200, 15, nil.to_s, color: 9)
+      @win_text.z = 502
+      @win_text
     end
 
     def show_win_text(text)
@@ -68,26 +75,21 @@ module UI
         button_favorite
         button_x
         button_b
+        button_x
+        button_b
       ]
 
-      @ctrl = Array.new(16) do |index|
+      @ctrl = Array.new(18) do |index|
         ControlButton.new(@viewport, index, images[index])
       end
     end
 
-    def create_background_animation
-      ya = Yuki::Animation
-      duration = 2
-      @background_animation = ya.timed_loop_animation(duration)
-      @background_animation.play_before(ya.shift(duration, @background, 0, 0, 40, 40))
-      @on_update_background_animation = proc do
-        @background_animation.start
-        @on_update_background_animation = nil
-      end
+    # Update the background animation
+    def update_background_animation
     end
     
     def create_button_background
-      @button_background = add_sprite(0, 210, button_background_filename).set_z(500)
+      @button_background = add_sprite(0, 168, button_background_filename).set_z(500)
     end
 
     def create_button_background_top
@@ -97,22 +99,24 @@ module UI
     class ControlButton < SpriteStack
       # Array of button coordinates
       COORDINATES = [
-        [3,   213],
-        [47,  213],
-        [91,  213],
-        [148, 215],
-        [179, 213],
-        [208, 214],
-        [252, 214],
-        [294, 215],
-        [75,  215],
-        [225, 214],
+        [3,   171],
+        [47,  171],
+        [91,  171],
+        [148, 173],
+        [179, 171],
+        [208, 172],
+        [252, 172],
+        [294, 173],
+        [75,  173],
+        [225, 172],
         [5, 7],
         [156, 7],
         [184, 3],
         [217, 6],
         [247, 7],
-        [287, 7]
+        [287, 7],
+        [201, 173],
+        [229, 173]
       ]
 
       # Create a new Button
@@ -122,8 +126,6 @@ module UI
       def initialize(viewport, coords_index, image_name)
         super(viewport, *COORDINATES[coords_index], default_cache: :pokedex)
         @background = add_background(image_name)
-        @background.zoom_x = 1.25
-        @background.zoom_y = 1.25
         @coords_index = coords_index
         self.pressed = false
         self.z = 501

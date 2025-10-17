@@ -71,7 +71,9 @@ class Interpreter
       yield if block_given?
       $game_variables[Yuki::Var::Trainer_Battle_ID] = 0
       $game_variables[Yuki::Var::Second_Trainer_ID] = 0
+      $game_variables[Yuki::Var::Third_Trainer_ID] = 0
       $game_variables[Yuki::Var::Allied_Trainer_ID] = 0
+      $game_variables[Yuki::Var::Second_Allied_Trainer_ID] = 0
       set_self_switch(true, enable, @event_id) if n == 0
       $game_system.battle_bgm = original_battle_bgm
     end
@@ -103,6 +105,47 @@ class Interpreter
     start_trainer_battle(trainer_id, bgm: bgm, disable: disable, enable: enable, troop_id: troop_id, &block)
     $game_variables[Yuki::Var::Second_Trainer_ID] = second_trainer_id
     $game_variables[Yuki::Var::Allied_Trainer_ID] = friend_trainer_id
+  end
+
+  # Start a triple trainer battle
+  # @param trainer_id [Integer] ID of the trainer in Ruby Host
+  # @param second_trainer_id [Integer] ID of the second trainer in Ruby Host
+  # @param third_trainer_id [Integer] ID of the third trainer in Ruby Host
+  # @param bgm [String, Array] BGM to play for battle
+  # @param disable [String] Name of the local switch to disable (if defeat)
+  # @param enable [String] Name of the local switch to enable (if victory)
+  # @param troop_id [Integer] ID of the troop to use : 3 = trainer, 4 = Gym Leader, 5 = Elite, 6 = Champion
+  def start_triple_trainer_battle(trainer_id, second_trainer_id, third_trainer_id, bgm: DEFAULT_TRAINER_BGM, disable: 'A', enable: 'B', troop_id: 3, &block)
+    start_trainer_battle(trainer_id, bgm: bgm, disable: disable, enable: enable, troop_id: troop_id, &block)
+    $game_variables[Yuki::Var::Second_Trainer_ID] = second_trainer_id
+    $game_variables[Yuki::Var::Third_Trainer_ID] = third_trainer_id
+  end
+
+  # Start a triple trainer battle
+  # @param trainer_id [Integer] ID of the trainer in Ruby Host
+  # @param second_trainer_id [Integer] ID of the second trainer in Ruby Host
+  # @param third_trainer_id [Integer] ID of the third trainer in Ruby Host
+  # @param friend_trainer_id [Integer] ID of the friend trainer in Ruby Host
+  # @param second_friend_trainer_id [Integer] ID of the second friend trainer in Ruby Host
+  # @param bgm [String, Array] BGM to play for battle
+  # @param disable [String] Name of the local switch to disable (if defeat)
+  # @param enable [String] Name of the local switch to enable (if victory)
+  # @param troop_id [Integer] ID of the troop to use : 3 = trainer, 4 = Gym Leader, 5 = Elite, 6 = Champion
+  def start_triple_trainer_battle_with_friend(trainer_id,
+                                              second_trainer_id,
+                                              third_trainer_id,
+                                              friend_trainer_id,
+                                              second_friend_trainer_id,
+                                              bgm: DEFAULT_TRAINER_BGM,
+                                              disable: 'A',
+                                              enable: 'B',
+                                              troop_id: 3,
+                                              &block)
+    start_trainer_battle(trainer_id, bgm: bgm, disable: disable, enable: enable, troop_id: troop_id, &block)
+    $game_variables[Yuki::Var::Second_Trainer_ID] = second_trainer_id
+    $game_variables[Yuki::Var::Third_Trainer_ID] = third_trainer_id
+    $game_variables[Yuki::Var::Allied_Trainer_ID] = friend_trainer_id
+    $game_variables[Yuki::Var::Second_Allied_Trainer_ID] = second_friend_trainer_id
   end
 
   # Sequence to call before start trainer battle

@@ -181,13 +181,6 @@ module Studio
         def repel_rejected(actor_level)
           return @range.end < actor_level
         end
-
-        # Tell if that level setup makes the encounter being selected because actor is weaker
-        # @param actor_level [Integer]
-        # @return [Boolean]
-        def strong_selected(actor_level)
-          return @range.end + 5 >= actor_level
-        end
       end
     end
   end

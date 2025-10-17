@@ -1,6 +1,6 @@
 module Battle
   class Move
-    # Round deals damage. If multiple Pokémon on the same team use it in the same turn, the power doubles to 120 and the 
+    # Round deals damage. If multiple Pokémon on the same team use it in the same turn, the power doubles to 120 and the
     # slower Pokémon move immediately after the fastest Pokémon uses it, regardless of their Speed.
     # @see https://pokemondb.net/move/round
     # @see https://bulbapedia.bulbagarden.net/wiki/Round_(move)
@@ -23,15 +23,15 @@ module Battle
       # @param actual_targets [Array<PFM::PokemonBattler>] targets that will be affected by the move
       def deal_effect(user, actual_targets)
         logic.force_sort_actions do |a, b|
-          next a <=> b unless a.is_a?(Actions::Attack) && b.is_a?(Actions::Attack)
+          next b <=> a unless a.is_a?(Actions::Attack) && b.is_a?(Actions::Attack)
 
           a_is_ally_and_round = logic.allies_of(user).include?(a.launcher) && a.move.db_symbol == :round
           b_is_ally_and_round = logic.allies_of(user).include?(b.launcher) && b.move.db_symbol == :round
-          next b.launcher.speed <=> a.launcher.speed if a_is_ally_and_round && b_is_ally_and_round
+          next b.launcher.spd <=> a.launcher.spd if a_is_ally_and_round && b_is_ally_and_round
           next 1 if a_is_ally_and_round
           next -1 if b_is_ally_and_round
 
-          next a <=> b
+          next b <=> a
         end
       end
 

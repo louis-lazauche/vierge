@@ -45,6 +45,15 @@ module BattleUI
       @action = Battle::Actions::Item.new(scene, item_wrapper, $bag, user)
     end
 
+    # Force the action to shift a Pokemon
+    # @return [Boolean]
+    def shift_pokemon
+      return false unless @can_switch
+
+      @result = :shift
+      return true
+    end
+
     private
 
     # Check if a ball can be used

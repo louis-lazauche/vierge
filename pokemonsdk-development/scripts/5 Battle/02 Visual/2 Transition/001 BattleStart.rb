@@ -21,9 +21,21 @@ module Battle
     # @return [String]
     def wild_battle_appearance
       sentence_index = @battle_info.wild_battle_reason.to_i % 7
-      name = @logic.battler(1, 0)&.name
-      @text.reset_variables
-      @text.parse(18, 1 + sentence_index, PKNAME[0] => name.to_s)
+      name, name2, name3 = @logic.all_battlers.reject(&:from_party?).map(&:name)
+
+      hash = {
+        PKNAME[0] => name,
+        PKNAME[1] => name2,
+        PKNAME[2] => name3
+      }
+
+      if name2.nil?
+        @text.parse(18, 1 + sentence_index, hash)
+      elsif name3.nil?
+        @text.parse(73, 2, hash)
+      else
+        @text.parse(73, 3, hash)
+      end
     end
 
     # Trainer issuing a challenge
@@ -31,7 +43,15 @@ module Battle
     def trainer_issuing_a_challenge
       @text.reset_variables
       @text.set_plural(@battle_info.names[1].size > 1)
-      @battle_info.names[1].size > 1 ? trainer_issuing_a_challenge_multi : trainer_issuing_a_challenge_single
+
+      case @battle_info.names[1].size
+      when 1
+        trainer_issuing_a_challenge_single
+      when 2
+        trainer_issuing_a_challenge_double_trainer
+      when 3
+        trainer_issuing_a_challenge_triple_trainer
+      end
     end
 
     # Player sending out its Pokemon
@@ -46,7 +66,7 @@ module Battle
     # @return [String]
     def trainer_sending_pokemon_start
       @text.reset_variables
-      @text.set_plural(@battle_info.trainer_is_couple)
+      @text.set_plural(@battle_info.trainer_is_couple || @battle_info.trainer_is_triplet)
       text = []
       @battle_info.names[1].each_with_index do |name, index|
         if (class_name = @battle_info.classes[1][index])
@@ -60,7 +80,7 @@ module Battle
 
     # Trainer issuing a challenge with 2 trainers
     # @return [String]
-    def trainer_issuing_a_challenge_multi
+    def trainer_issuing_a_challenge_double_trainer
       text_id = @battle_info.classes[1].empty? ? 11 : 10
       if @battle_info.classes[1].empty?
         hash = {
@@ -78,6 +98,32 @@ module Battle
         hash['[VAR 019E(0002)]'] = "#{hash['[VAR 010E(0002)]']} #{hash[TRNAME[3]]}"
       end
       @text.parse(18, text_id, hash)
+    end
+
+    # Trainer issuing a challenge with 3 trainers
+    # @return [String]
+    def trainer_issuing_a_challenge_triple_trainer
+      text_id = @battle_info.classes[1].empty? ? 1 : 0
+      if @battle_info.classes[1].empty?
+        hash = {
+          TRNAME[1] => @battle_info.names[1][0],
+          TRNAME[2] => @battle_info.names[1][1],
+          TRNAME[3] => @battle_info.names[1][2]
+        }
+      else
+        hash = {
+          TRNAME[1] => @battle_info.names[1][0],
+          TRNAME[2] => @battle_info.names[1][1],
+          TRNAME[3] => @battle_info.names[1][2],
+          '[VAR 010E(0000)]' => @battle_info.classes[1][0],
+          '[VAR 010E(0001)]' => @battle_info.classes[1][1] || @battle_info.classes[1][0],
+          '[VAR 010E(0002)]' => @battle_info.classes[1][2] || @battle_info.classes[1][0]
+        }
+        hash['[VAR 019E(0000)]'] = "#{hash['[VAR 010E(0000)]']} #{hash[TRNAME[1]]}"
+        hash['[VAR 019E(0001)]'] = "#{hash['[VAR 010E(0001)]']} #{hash[TRNAME[2]]}"
+        hash['[VAR 019E(0002)]'] = "#{hash['[VAR 010E(0002)]']} #{hash[TRNAME[3]]}"
+      end
+      @text.parse(73, text_id, hash)
     end
 
     # Trainer issuing a challenge with one trainer

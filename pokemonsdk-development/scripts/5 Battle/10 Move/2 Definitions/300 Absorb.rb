@@ -44,11 +44,8 @@ module Battle
         actual_targets.each do |target|
           hp = damages(user, target)
           @logic.damage_handler.drain_with_process(hp, target, user, self, hp_overwrite: hp, drain_factor: drain_factor) do
-            if critical_hit?
-              scene.display_message_and_wait(actual_targets.size == 1 ? parse_text(18, 84) : parse_text_with_pokemon(19, 384, target))
-            elsif hp > 0
-              efficent_message(effectiveness, target)
-            end
+            hit_criticality_message(actual_targets, target)
+            efficent_message(effectiveness, target) if hp > 0
           end
           recoil(hp, user) if recoil?
         end

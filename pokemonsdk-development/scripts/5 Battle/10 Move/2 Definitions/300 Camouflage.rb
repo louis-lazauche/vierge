@@ -22,7 +22,7 @@ module Battle
       def deal_effect(user, actual_targets)
         type = data_type(element_by_location).id
         actual_targets.each do |target|
-          target.change_types(type)
+          target.change_types(type, 0, 0)
           scene.display_message_and_wait(deal_message(user, target, type))
         end
       end

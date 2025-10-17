@@ -72,6 +72,10 @@ module Yuki
     Second_Trainer_ID = 35
     # ID (in the database) of the allied trainer of the duo battle
     Allied_Trainer_ID = 36
+    # ID (in the database) of the third trainer of the triple battle
+    Third_Trainer_ID = 37
+    # ID (in the database) of the second allied trainer of the triple battle
+    Second_Allied_Trainer_ID = 38
 
     # Coin case amount of coin
     CoinCase = 41

@@ -143,9 +143,23 @@ module Debug
       end
     end
   end
+
+  module AiWindowBinding
+    def create_ais
+      Debug::AiWindow.reset
+      super
+    end
+  end
 end
 
-Hooks.register(Battle::AI::Base, :battle_action_for, 'Register AiWindow append') do |hook_binding|
-  Debug::AiWindow.append(self, hook_binding.local_variable_get(:actions).compact)
+module Battle
+  module AI
+    class Base
+      def debug_process_actions(actions)
+        Debug::AiWindow.append(self, actions.compact)
+      end
+    end
+  end
+  
+  Scene.prepend(Debug::AiWindowBinding)
 end
-Hooks.register(Battle::Scene, :create_ais, 'Register AiWindow reset') { Debug::AiWindow.reset }

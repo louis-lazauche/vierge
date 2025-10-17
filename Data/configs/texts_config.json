@@ -26,6 +26,30 @@
         "name": "PowerGreenSmall",
         "size": 11,
         "lineHeight": 13
+      },
+      {
+        "id": 21,
+        "name": "Battle_names",
+        "size": 8,
+        "lineHeight": 1
+      },
+      {
+        "id": 22,
+        "name": "Battle_Hp",
+        "size": 8,
+        "lineHeight": 1
+      },
+      {
+        "id": 23,
+        "name": "Clock_menu",
+        "size": 8,
+        "lineHeight": 1
+      },
+      {
+        "id": 24,
+        "name": "Level_battle",
+        "size": 8,
+        "lineHeight": 1
       }
     ],
     "altSizes": [
@@ -68,6 +92,11 @@
         "id": 9,
         "size": 21,
         "lineHeight": 20
+      },
+      {
+        "id": 10,
+        "size": 11,
+        "lineHeight": 1
       }
     ]
   },
@@ -95,7 +124,7 @@
     "any": {
       "windowSkin": null,
       "borderSpacing": 2,
-      "defaultFont": 0,
+      "defaultFont": 21,
       "defaultColor": 36,
       "colorMapping": {}
     }

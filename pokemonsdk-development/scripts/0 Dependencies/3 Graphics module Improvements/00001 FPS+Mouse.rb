@@ -1,17 +1,61 @@
 module Graphics
-  class << self
+  # Graphics.singleton_class.prepend(XXX)
+  module FPSAndMouse
     # Function that resets the mouse viewport
     def reset_mouse_viewport
       @mouse_fps_viewport&.rect&.set(0, 0, width, height)
     end
 
+    def init_sprite
+      super
+      mouse_fps_create_viewport
+      mouse_create_graphics
+      init_fps_text
+    end
+
+    def frame_reset
+      super
+      reset_fps_info
+    end
+
+    def transition(...)
+      super(...)
+      reset_fps_info
+    end
+
+    def pre_update_internal
+      super
+      fps_update
+      mouse_update_graphics
+    end
+
+    def post_update_internal
+      super
+      fps_gpu_update
+    end
+
+    def update_transition_internal
+      super
+      fps_update
+      mouse_update_graphics
+    end
+
+    def update_freeze
+      unfrozen = @frozen <= 0
+      super
+
+      return if unfrozen
+
+      fps_update
+      mouse_update_graphics
+    end
+
     private
 
-    def mouse_fps_create_graphics
+    def mouse_fps_create_viewport
       @mouse_fps_viewport = Viewport.new(0, 0, width, height, 999_999)
       unregitser_viewport(@mouse_fps_viewport)
     end
-    Hooks.register(Graphics, :init_sprite, 'PSDK Graphics mouse_fps_create_graphics') { mouse_fps_create_graphics }
 
     def reset_fps_info
       @ruby_time = @current_time = @before_g_update = @last_fps_update_time = Time.new
@@ -19,7 +63,6 @@ module Graphics
       reset_ruby_time
       @last_frame_count = Graphics.frame_count
     end
-    Hooks.register(Graphics, :frame_reset, 'PSDK Graphics reset_fps_info') { reset_fps_info }
 
     def update_gc_time(delta_time)
       @gc_accu += delta_time
@@ -48,7 +91,6 @@ module Graphics
       @ruby_fps_text = Text.new(0, @mouse_fps_viewport, 0, 32, w, 13, '', 2, 1, 9)
       fps_visibility(PARGV[:"show-fps"])
     end
-    Hooks.register(Graphics, :init_sprite, 'PSDK Graphics init_fps_text') { init_fps_text }
 
     def fps_visibility(visible)
       @ingame_fps_text.visible = @gpu_fps_text.visible = @ruby_fps_text.visible = visible
@@ -69,16 +111,11 @@ module Graphics
         reset_ruby_time
       end
     end
-    Hooks.register(Graphics, :pre_update_internal, 'PSDK Graphics fps_update') { fps_update }
-    Hooks.register(Graphics, :update_freeze, 'PSDK Graphics fps_update') { fps_update }
-    Hooks.register(Graphics, :update_transition_internal, 'PSDK Graphics fps_update') { fps_update }
-    Hooks.register(Graphics, :post_transition, 'PSDK Graphics reset_fps_info') { reset_fps_info }
 
     def fps_gpu_update
       update_gc_time(Time.new - @before_g_update)
       @ruby_time = Time.new
     end
-    Hooks.register(Graphics, :post_update_internal, 'PSDK Graphics fps_gpu_update') { fps_gpu_update }
 
     def mouse_create_graphics
       return if (@no_mouse = (Configs.devices.is_mouse_disabled && %i[tags worldmap].none? { |arg| PARGV[arg] }))
@@ -88,7 +125,6 @@ module Graphics
         @mouse.bitmap = RPG::Cache.windowskin(mouse_skin)
       end
     end
-    Hooks.register(Graphics, :init_sprite, 'PSDK Graphics mouse_create_graphics') { mouse_create_graphics }
 
     def mouse_update_graphics
       return if @no_mouse
@@ -98,9 +134,8 @@ module Graphics
 
       @mouse.set_position(Mouse.x, Mouse.y)
     end
-    Hooks.register(Graphics, :pre_update_internal, 'PSDK Graphics mouse_update_graphics') { mouse_update_graphics }
-    Hooks.register(Graphics, :update_freeze, 'PSDK Graphics mouse_update_graphics') { mouse_update_graphics }
-    Hooks.register(Graphics, :update_transition_internal, 'PSDK Graphics mouse_update_graphics') { mouse_update_graphics }
   end
+
+  singleton_class.prepend(FPSAndMouse)
   reset_fps_info
 end

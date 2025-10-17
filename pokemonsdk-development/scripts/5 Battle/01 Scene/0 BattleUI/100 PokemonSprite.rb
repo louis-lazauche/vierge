@@ -422,11 +422,25 @@ module BattleUI
 
       return 58, 179
     end
+    
+    # Get the base position of the Pokemon in 3v3
+    # @return [Array(Integer, Integer)]
+    def base_position_v3
+      return 130, 110 if enemy?
+
+      return 45, 160
+    end
 
     # Get the offset position of the Pokemon in 2v2+
     # @return [Array(Integer, Integer)]
     def offset_position_v2
       return 60, 10
+    end
+
+    # Get the offset position of the Pokemon in 3v3
+    # @return [Array(Integer, Integer)]
+    def offset_position_v3
+      return 65, 20
     end
 
     # Load the battler of the Pokemon

@@ -126,16 +126,18 @@ class Spriteset_Map
 
   def reset_zoom
     @zoom_animation = nil
+    return unless @viewport1 && !@viewport1.disposed?
     @viewport1.zoom = 1
   end
+
   Hooks.register(self, :reload, 'Reset Zoom') { reset_zoom }
   Hooks.register(self, :dispose, 'Reset Zoom') { reset_zoom }
 
   def update_zoom_animation
     return unless @zoom_animation
-
     @zoom_animation.update
     @zoom_animation = nil if @zoom_animation.done?
   end
+
   Hooks.register(self, :update, 'Zoom Animation') { update_zoom_animation }
 end

@@ -4,6 +4,16 @@ module Battle
     # @return [Boolean]
     attr_accessor :forced_next_move_decrease_pp
 
+    # Show the critical hit message
+    # @param actual_targets [Array<PFM::PokemonBattler>] targets that are or will be affected by the move
+    # @param target [PFM::PokemonBattler] current target
+    def hit_criticality_message(actual_targets, target)
+      return unless critical_hit?
+
+      message = actual_targets.size == 1 ? parse_text(18, 84) : parse_text_with_pokemon(19, 384, target)
+      scene.display_message_and_wait(message)
+    end
+
     # Show the effectiveness message
     # @param effectiveness [Numeric]
     # @param target [PFM::PokemonBattler]
@@ -61,9 +71,16 @@ module Battle
     # @param target_position [Integer]
     def proceed_one_target(user, possible_targets, target_bank, target_position)
       right_target = possible_targets.find { |pokemon| pokemon.bank == target_bank && pokemon.position == target_position }
-      right_target ||= possible_targets.find { |pokemon| pokemon.bank == target_bank && (pokemon.position - target_position).abs == 1 }
-      right_target ||= possible_targets.find { |pokemon| pokemon.bank == target_bank }
-      right_target = target_redirected(user, right_target)
+
+      if user.has_just_shifted && user.position == target_position && user.bank == target_bank
+        # If the user has been shifted then it automatically misses its move if its target is now out of range or is itself
+        # (unless the user was targetting itself from the start)
+        right_target = nil
+      else
+        right_target ||= possible_targets.find { |pokemon| pokemon.bank == target_bank && (pokemon.position - target_position).abs == 1 }
+        right_target ||= possible_targets.find { |pokemon| pokemon.bank == target_bank }
+        right_target = target_redirected(user, right_target)
+      end
 
       specific_procedure = check_specific_procedure(user, [right_target].compact)
       return send(specific_procedure, user, [right_target].compact) if specific_procedure

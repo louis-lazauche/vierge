@@ -9,7 +9,6 @@ module Battle
     # Speed up factor
     SPEED_UP_FACTOR = 4
 
-    include Hooks
     # @return [Battle::Visual]
     attr_reader :visual
     # @return [Battle::Logic]
@@ -140,7 +139,6 @@ module Battle
     # Create all the AIs
     # @return [Array<Battle::AI::Base>]
     def create_ais
-      exec_hooks(Scene, :create_ais, binding)
       return @battle_info.ai_levels.flat_map.with_index do |ai_bank, bank|
         ai_bank.map.with_index do |ai_level, party_id|
           ai_level && AI::Base.registered(ai_level).new(self, bank, party_id, ai_level) || nil

@@ -17,12 +17,12 @@ module Battle
     # @param types [Array<Integer>] list of definitive types of the move
     # @return [Numeric]
     def calc_stab(user, types)
-      if types.any? { |type| user.type1 == type || user.type2 == type || user.type3 == type }
-        return 2 if user.has_ability?(:adaptability)
+      move_types = types.reject(&:zero?)
 
-        return 1.5
-      end
-      return 1
+      return 1 if move_types.none? { |type| user.type?(type) }
+      return 2 if user.has_ability?(:adaptability)
+
+      return 1.5
     end
 
     # Get the types of the move with 1st type being affected by effects
@@ -61,7 +61,14 @@ module Battle
     # @return [Float] definitive multiplier
     def calc_single_type_multiplier(target, target_type, type)
       exec_hooks(Move, :single_type_multiplier_overwrite, binding)
-      return data_type(type).hit(data_type(target_type).db_symbol)
+
+      effectiveness = data_type(type).hit(data_type(target_type).db_symbol)
+      if effectiveness == 0 && target.battle_item_db_symbol == :ring_target
+        log_data("# Immunity to type #{data_type(type).name} ignored by Ring Target")
+        return 1
+      end
+
+      return effectiveness
     rescue Hooks::ForceReturn => e
       log_data("# calc_single_type_multiplier(#{target}, #{target_type}, #{type})")
       log_data("# FR: calc_single_type_multiplier #{e.data} from #{e.hook_name} (#{e.reason})")
@@ -140,7 +147,7 @@ module Battle
       next if target.grounded? || type != data_type(:ground).id || move.db_symbol == :thousand_arrows
 
       # Flying Effects activated ?
-      is_flying_type = target.type_flying?
+      is_flying_type = target.type_flying? && !target.hold_item?(:ring_target)
       is_flying_item = target.hold_item?(:air_balloon)
       is_flying_ability = target.has_ability?(:levitate) && move&.user&.can_be_lowered_or_canceled? # Special Interaction with Mold Breaker effect
       is_flying_effects = target.effects.has? { |effect| %i[magnet_rise telekinesis].include?(effect.name) }

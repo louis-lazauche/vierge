@@ -62,11 +62,8 @@ module Battle
       def deal_damage_to_target(user, actual_targets, target)
         hp = damages(user, target)
         @logic.damage_handler.damage_change_with_process(hp, target, user, self) do
-          if critical_hit?
-            critical_hit_message(target, actual_targets, target)
-          elsif hp > 0 && target == actual_targets.last
-            efficent_message(effectiveness, target)
-          end
+          hit_criticality_message(actual_targets, target)
+          efficent_message(effectiveness, target) if hp > 0 && target == actual_targets.last
         end
         recoil(hp, user) if recoil?
       end
@@ -76,15 +73,6 @@ module Battle
       # @return [Array[PFM::Battler]]
       def battlers_that_hit(user)
         logic.alive_battlers_without_check(user.bank)
-      end
-
-      # Display the right message in case of critical hit
-      # @param user [PFM::PokemonBattler] user of the move
-      # @param actual_targets [Array<PFM::PokemonBattler>] targets that will be affected by the move
-      # @param target [PFM::PokemonBattler] the current target
-      # @return [String]
-      def critical_hit_message(user, actual_targets, target)
-        scene.display_message_and_wait(actual_targets.size == 1 ? parse_text(18, 84) : parse_text_with_pokemon(19, 384, target))
       end
 
       # Display the message after all the hit have been performed

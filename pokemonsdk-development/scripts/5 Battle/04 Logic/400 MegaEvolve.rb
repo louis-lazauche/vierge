@@ -2,10 +2,6 @@ module Battle
   class Logic
     # Logic for mega evolution
     class MegaEvolve
-      # List of tools that allow MEGA Evolution
-      MEGA_EVOLVE_TOOLS = %i[mega_ring mega_bracelet mega_pendant mega_glasses mega_anchor mega_stickpin mega_tiara mega_anklet
-                             mega_cuff mega_charm mega_glove]
-
       # Create the MegaEvolve checker
       # @param scene [Battle::Scene]
       def initialize(scene)
@@ -20,7 +16,7 @@ module Battle
       # @return [Boolean]
       def can_pokemon_mega_evolve?(pokemon)
         bag = pokemon.bag
-        return false unless MEGA_EVOLVE_TOOLS.any? { |item_db_symbol| bag.contain_item?(item_db_symbol) }
+        return false unless each_data_item.any? { |item| item.is_allowing_mega && bag.contain_item?(item.db_symbol) }
         return false if pokemon.from_party? && any_mega_player_action?
 
         return !@used_mega_tool_bags.include?(bag) && pokemon.can_mega_evolve?
@@ -37,8 +33,8 @@ module Battle
       # @return [String]
       def mega_tool_name(pokemon)
         bag = pokemon.bag
-        symbol = MEGA_EVOLVE_TOOLS.find { |item_db_symbol| bag.contain_item?(item_db_symbol) }
-        return data_item(symbol || 0).name
+        item = each_data_item.find { |item| item.is_allowing_mega && bag.contain_item?(item.db_symbol) }
+        return data_item(item&.db_symbol || 0).name
       end
 
       private

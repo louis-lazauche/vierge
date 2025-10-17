@@ -36,7 +36,6 @@ module Battle
       # @param with [PFM::PokemonBattler] Pokemon that is switched in
       def on_switch_event(handler, who, with)
         return unless with.grounded?
-        return if with.has_ability?(:magic_guard)
         return if with.hold_item?(:heavy_duty_boots)
 
         handler.scene.display_message_and_wait(message(with))

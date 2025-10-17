@@ -14,7 +14,7 @@ module Battle
       # Lists of abilities that cannot be gained
       RECEIVER_CANT_COPY_ABILITIES = %i[
         as_one battle_bond comatose commander disguise flower_gift forecast gulp_missile hadron_engine
-        hunger_switch ice_face illusion imposter multitype neutralising_gas orichalcum_pulse poison_puppeteer power_construct power_of_alchemy
+        hunger_switch ice_face illusion imposter multitype neutralizing_gas orichalcum_pulse poison_puppeteer power_construct power_of_alchemy
         prokosynthesis protosynthesis quark_drive receiver rks_system schooling shields_down stance_change
         trace wonder_guard zen_mode zero_to_hero
       ]
@@ -34,6 +34,19 @@ module Battle
       def change_ability(target, ability_symbol, launcher = nil, skill = nil)
         exec_hooks(AbilityChangeHandler, :pre_ability_change, binding)
         target.ability = data_ability(ability_symbol)&.id || 0
+        exec_hooks(AbilityChangeHandler, :post_ability_change, binding)
+      end
+
+      # Function that disable the ability of a Pokemon
+      # @param target [PFM::PokemonBattler] Target of ability changing
+      # @param origin [Symbol] Origin of the ability change (e.g. :gastro_acid)
+      # @param launcher [PFM::PokemonBattler, nil] Potentiel launcher of ability changing
+      # @param skill [Battle::Move, nil] Potential move used
+      def disable_ability(target, origin, launcher = nil, skill = nil)
+        ability_symbol = :__undef__
+
+        exec_hooks(AbilityChangeHandler, :pre_ability_change, binding)
+        target.effects.add(Effects::AbilitySuppressed.new(@logic, target, origin))
         exec_hooks(AbilityChangeHandler, :post_ability_change, binding)
       end
 

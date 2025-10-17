@@ -25,7 +25,7 @@ module Battle
         hp = @move.damages(@origin, target)
         damage_handler = @logic.damage_handler
         damage_handler.damage_change_with_process(hp, target, @origin, @move) do
-          @logic.scene.display_message_and_wait(parse_text(18, 84)) if @move.critical_hit?
+          @move.hit_criticality_message([target], target)
           @move.efficent_message(@move.effectiveness, target) if hp > 0
         end
       end
@@ -53,7 +53,7 @@ module Battle
       # Message displayed when the effect proc
       # @return [String]
       def message(target)
-        parse_text_with_pokemon(19, 1086, target)
+        return parse_text_with_pokemon(19, 1086, target, '[VAR MOVE(0001)]' => @move.name)
       end
     end
   end

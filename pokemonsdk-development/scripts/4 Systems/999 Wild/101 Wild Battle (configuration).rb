@@ -6,17 +6,36 @@ module PFM
       intimidate: :rate_intimidate_keen_eye,
       cute_charm: :rate_cute_charm,
       magnet_pull: :rate_magnet_pull,
-      compound_eyes: :rate_compound_eyes,
-      super_luck: :rate_compound_eyes,
       static: :rate_static,
       lightning_rod: :rate_static,
       flash_fire: :rate_flash_fire,
-      synchronize: :rate_synchronize,
       storm_drain: :rate_storm_drain,
       harvest: :rate_harvest
     }
 
+    # Hash describing which method to seek to change the Pokemon data depending on the player's leading Pokemon's talent
+    DATA_ALTERING_ABILITIES = {
+      synchronize: :copy_nature_synchronize,
+      compound_eyes: :change_item_compound_eyes,
+      super_luck: :change_item_compound_eyes
+    }
+
     private
+
+    # Alter the creatures' data from sources
+    # @param creatures [Array<PFM::Pokemon>]
+    # @return [Array<PFM::Pokemon>]
+    def alter_creatures(creatures)
+      return [] unless creatures && !creatures.empty?
+
+      main_creature = $actors[0]
+      ability = creature_ability
+
+      return creatures.map do |creature|
+        send(DATA_ALTERING_ABILITIES[ability], creature, main_creature) if respond_to?(DATA_ALTERING_ABILITIES[ability] || :__undef__, true)
+        creature
+      end
+    end
 
     # Configure the creature array for later selection
     # @param creatures [Array<PFM::Pokemon>]
@@ -63,14 +82,6 @@ module PFM
       return creature.type_steel? ? 1.5 : 1
     end
 
-    # Get rate for Compound Eyes case
-    # @param creature [PFM::Pokemon] creature to select
-    # @param main_creature [PFM::Pokemon] pokemon that caused the rate verification
-    # @return [Float] new rate or 1
-    def rate_compound_eyes(creature, main_creature)
-      return creature.item_db_symbol == :__undef__ ? 1 : 1.5
-    end
-
     # Get rate for Statik case
     # @param creature [PFM::Pokemon] creature to select
     # @param main_creature [PFM::Pokemon] pokemon that caused the rate verification
@@ -103,12 +114,33 @@ module PFM
       return creature.type_grass? ? 1.5 : 1
     end
 
-    # Get rate for Synchronize case
+    # Changes the nature of the wild pokemon to the nature of the Synchronize pokemon (50% chance)
     # @param creature [PFM::Pokemon] creature to select
     # @param main_creature [PFM::Pokemon] pokemon that caused the rate verification
-    # @return [Float] new rate or 1
-    def rate_synchronize(creature, main_creature)
-      return creature.nature_id == main_creature.nature_id ? 1.5 : 1
+    def copy_nature_synchronize(creature, main_creature)
+      creature.nature = main_creature.nature_id if Random::WILD_BATTLE.rand(100) < 50
+    end
+
+    # Enhance the item rate if the leader has Compound Eyes or Super Luck
+    # @param creature [PFM::Pokemon] creature to select
+    # @param main_creature [PFM::Pokemon] pokemon that caused the rate verification
+    # @note This method is used for both Compound Eyes and Super Luck starting from gen 8
+    # @note In base games, rates go from 5% and 50% to 20% and 60%
+    def change_item_compound_eyes(creature, main_creature)
+      return unless creature.item_holding == 0
+
+      items = data_creature_form(creature.db_symbol, creature.form).item_held
+      log_debug("Compound Eyes proc on #{creature.name}")
+      rng = rand(100)
+      item_holding = items.find do |item|
+        chance = item.chance <= 10 ? item.chance * 4 : item.chance * 1.2
+        log_debug("New item odd: #{data_item(item.db_symbol).name} => #{chance}")
+        next true if rng < chance
+
+        rng -= chance
+        next false
+      end
+      creature.item_holding = item_holding ? data_item(item_holding.db_symbol).id : 0
     end
 
     # Select the creatures that will be in the battle
@@ -153,10 +185,11 @@ module PFM
       info = Battle::Logic::BattleInfo.new
       info.add_party(0, *info.player_basic_info)
       add_ally_trainer(info, $game_variables[Yuki::Var::Allied_Trainer_ID])
+      add_ally_trainer(info, $game_variables[Yuki::Var::Second_Allied_Trainer_ID])
       info.add_party(1, enemy_arr, nil, nil, nil, nil, nil, has_roaming ? -1 : 0)
       info.battle_id = battle_id
       info.fishing = !@fish_battle.nil?
-      info.vs_type = 2 if enemy_arr.size >= 2
+      info.vs_type = enemy_arr.size > 3 ? 3 : enemy_arr.size
       return info
     end
 
@@ -164,7 +197,7 @@ module PFM
     # @param bi [Battle::Logic::BattleInfo]
     # @param allied_trainer_id [Integer]
     def add_ally_trainer(bi, allied_trainer_id)
-      return unless (allied_trainer_id = $game_variables[Yuki::Var::Allied_Trainer_ID]).positive?
+      return unless allied_trainer_id.positive?
 
       ally = data_trainer(allied_trainer_id)
       bag = PFM::Bag.new

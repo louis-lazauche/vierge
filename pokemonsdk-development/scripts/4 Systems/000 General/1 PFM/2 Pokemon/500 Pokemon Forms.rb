@@ -69,6 +69,13 @@ module PFM
       return @mega_evolved != false
     end
 
+    # Primal Reversion of the Pokemon
+    def primal_evolve
+      @form = 1
+      @ability = data_ability(data.abilities.sample).id
+      self.ability = nil if self.is_a?(PFM::PokemonBattler)
+    end
+
     # Absofusion of the Pokemon (if possible)
     # @param pokemon PFM::Pokemon The Pokemon used in the fusion
     def absofusion(pokemon)
@@ -267,8 +274,6 @@ module PFM
     FORM_CALIBRATE[:zacian] = proc { @form = item_db_symbol == :rusted_sword ? 1 : 0 }
     FORM_CALIBRATE[:zamazenta] = proc { @form = item_db_symbol == :rusted_shield ? 1 : 0 }
     FORM_CALIBRATE[:calyrex] = proc { |reason| @form = calyrex_form(reason) }
-    FORM_CALIBRATE[:groudon] = proc { @form = item_db_symbol == :red_orb ? 1 : 0 }
-    FORM_CALIBRATE[:kyogre] = proc { @form = item_db_symbol == :blue_orb ? 1 : 0 }
     FORM_CALIBRATE[:wishiwashi] = proc { |reason| @form = hp_rate >= 0.25 && level >= 20 && reason == :battle ? 1 : 0 }
     FORM_CALIBRATE[:minior] = proc { |reason| @form = hp_rate <= 0.5 && reason == :battle ? @form | 1 : 0 }
     FORM_CALIBRATE[:zygarde] = proc { |reason| @form = zygarde_form(reason) }

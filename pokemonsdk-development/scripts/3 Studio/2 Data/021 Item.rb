@@ -43,6 +43,10 @@ module Studio
     # @return [Boolean]
     attr_reader :is_holdable
 
+    # If the item allow the use of Mega evolution when possessed by the player
+    # @return [Boolean]
+    attr_reader :is_allowing_mega
+
     # Power of the Fling move when item is thrown
     # @return [Integer]
     attr_reader :fling_power

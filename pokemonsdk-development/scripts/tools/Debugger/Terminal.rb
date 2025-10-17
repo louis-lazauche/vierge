@@ -1,6 +1,17 @@
 
 module Graphics
-  class << self
+  module Debugger
+
+    def post_update_internal
+      super
+      update_cmd_eval
+    end
+
+    def init_sprite
+      super
+      io_initialize
+    end
+
     private
 
     def io_initialize
@@ -13,7 +24,6 @@ module Graphics
     rescue StandardError
       puts 'Failed to initialize IO related things'
     end
-    Hooks.register(Graphics, :init_sprite, 'PSDK Graphics io_initialize') { io_initialize }
 
     # Create the Command thread
     def create_command_thread
@@ -59,8 +69,9 @@ module Graphics
       end
       @cmd_thread&.wakeup
     end
-    Hooks.register(Graphics, :post_update_internal, 'PSDK Graphics update_cmd_eval') { update_cmd_eval }
   end
+
+  singleton_class.prepend(Debugger)
 end
 
 class Object

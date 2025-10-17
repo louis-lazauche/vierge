@@ -10,15 +10,28 @@ module Battle
         # @param skill [Battle::Move, nil] Potential move used
         def on_post_damage(handler, hp, target, launcher, skill)
           return if target != @target || launcher == target
-          return unless skill && launcher&.alive?
+          return unless skill
 
-          if handler.logic.stat_change_handler.stat_decreasable?(:spd, launcher)
-            handler.scene.visual.show_ability(target)
-            handler.logic.stat_change_handler.stat_change_with_process(:spd, -1, launcher, handle_mirror_armor_effect(launcher, target))
+          stat_change_handler = handler.logic.stat_change_handler
+          battlers = handler.logic.all_alive_battlers.reject { |battler| battler == target }
+          return if battlers.none? { |battler| stat_change_handler.stat_decreasable?(stat, battler) }
+
+          handler.scene.visual.show_ability(target)
+
+          battlers.each do |battler|
+            next unless stat_change_handler.stat_decreasable?(stat, battler)
+
+            stat_change_handler.stat_change(stat, -1, battler, handle_mirror_armor_effect(battler, target))
           end
         end
 
         private
+
+        # The stat that this effect lowers
+        # @return [Symbol]
+        def stat
+          return :spd
+        end
 
         # Handle the mirror armor effect (special case)
         # @param target [PFM::PokemonBattler]

@@ -150,7 +150,7 @@ module UI
       # @return [Hash]
       def earning_pokemon
         data = @reward.earning_args[0]
-        pokemon = PFM::Quests::Quest.pokemon_from_data(data)
+        pokemon = PFM::Quests::Quest.pokemon_from_data(data, nil)
         return {
           type: UI::PokemonIconSprite,
           pokemon: pokemon,
@@ -163,9 +163,10 @@ module UI
       # @return [Hash]
       def earning_egg
         data = @reward.earning_args[0]
+        pokemon = PFM::Quests::Quest.pokemon_from_data(data, nil)
         return {
           type: UI::PokemonIconSprite,
-          pokemon: PFM::Quests::Quest.pokemon_from_data(data),
+          pokemon: pokemon,
           name: text_file_get(0)[0],
           quantity: 1
         }

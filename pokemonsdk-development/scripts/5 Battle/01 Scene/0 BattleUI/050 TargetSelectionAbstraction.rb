@@ -38,7 +38,7 @@ module BattleUI
 
       target = @allow_selection ? @buttons[@index].data : @targets.first
       target = @targets.sample(random: @logic.generic_rng) if @move.target == :random_foe
-      if @targets.include?(target)
+      if @targets.include?(target) || (target.dead? || target.nil?)
         @result = [target.bank, target.position]
         return true
       end

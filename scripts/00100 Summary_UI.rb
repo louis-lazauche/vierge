@@ -400,6 +400,7 @@ end
 module GamePlay
   # Scene displaying the Summary of a Pokemon
   class Summary < BaseCleanUpdate::FrameBalanced
+  SUMMARY_ARROW_COOLDOWN = 200 # ms
 
     def initialize(pokemon, mode = :view, party = [pokemon], extend_data = nil)
       super()
@@ -491,12 +492,12 @@ module GamePlay
 
     def button_texts
       [
-        ["","","","","","","","", nil, nil], # état 0
-        ["","","","","","","","", nil, nil], # état 1
-        ["","","","","","","","", nil, nil], # état 2
-        ["","","","","","","","", nil, nil], # état 3
-        ["","","","","","","","", nil, nil], # état 4
-        ["","","","","","","","", nil, nil]  # état 5
+        ["","","","","","","",""], # état 0
+        ["","","","","","","",""], # état 1
+        ["","","","","","","",""], # état 2
+        ["","","","","","","",""], # état 3
+        ["","","","","","","",""], # état 4
+        ["","","","","","","",""]  # état 5
       ]
     end
 
@@ -519,10 +520,22 @@ module GamePlay
         end
       end
 
-      # Changement de Pokémon avec flèches haut/bas
-      if allow_up_down && index_changed(:@party_index, :UP, :DOWN, @party.size - 1)
-        update_switch_pokemon
-        return true
+      @last_arrow_time ||= 0
+      if allow_up_down
+        now = Graphics.frame_count * (1000.0 / Graphics.frame_rate)
+        if (Input.trigger?(:UP) || Input.press?(:UP)) && now - @last_arrow_time > SUMMARY_ARROW_COOLDOWN
+          @party_index -= 1
+          @party_index = @party.size - 1 if @party_index < 0
+          update_switch_pokemon
+          @last_arrow_time = now
+          return true
+        elsif (Input.trigger?(:DOWN) || Input.press?(:DOWN)) && now - @last_arrow_time > SUMMARY_ARROW_COOLDOWN
+          @party_index += 1
+          @party_index = 0 if @party_index >= @party.size
+          update_switch_pokemon
+          @last_arrow_time = now
+          return true
+        end
       end
 
       # Annulation avec B
@@ -541,6 +554,19 @@ module GamePlay
       end
 
       return false
+    end
+
+    # Update the move index from inputs
+    def update_inputs_move_index
+      if Input.trigger?(:UP)
+        @uis[2].index -= 2
+      elsif Input.trigger?(:DOWN)
+        @uis[2].index += 2
+      elsif Input.repeat?(:LEFT)
+        @uis[2].index -= 1
+      elsif Input.repeat?(:RIGHT)
+        @uis[2].index += 1
+      end
     end
   end
 end

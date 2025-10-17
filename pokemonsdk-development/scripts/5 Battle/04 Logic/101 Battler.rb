@@ -166,6 +166,28 @@ module Battle
       with.last_battle_turn = $game_temp.battle_turn
     end
 
+    # Get the battler at the middle position
+    # @param bank [Integer] the bank of the battler
+    # @return [PFM::PokemonBattler]
+    def get_middle_battler(bank)
+      return @battlers[bank][1]
+    end
+
+    # Shift two pokemon (logically)
+    # @param who [PFM::PokemonBattler] Pokemon who's shifting to the middle
+    # @param with [PFM::PokemonBattler] Pokemon being shifted to the side
+    def shift_battlers(who, with)
+      with_position = @battlers[who.bank].index(with)
+      who_position = @battlers[who.bank].index(who)
+      @battlers[who.bank][who_position] = with
+      @battlers[with.bank][with_position] = who
+      with.position, who.position = who.position, with.position
+      with.place_in_party, who.place_in_party = who.place_in_party, with.place_in_party
+      # Mark the Pokemon as having just shifted
+      who.has_just_shifted = true
+      with.has_just_shifted = true
+    end
+
     # Iterate through all battlers
     # @yieldparam battler [PFM::PokemonBattler]
     # @return [Enumerable<PFM::PokemonBattler>]

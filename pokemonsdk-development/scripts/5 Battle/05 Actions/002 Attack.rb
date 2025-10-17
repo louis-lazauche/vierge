@@ -2,6 +2,9 @@ module Battle
   module Actions
     # Class describing the Attack Action
     class Attack < Base
+      # Has to be 7 because of Logic::MOVE_PRIORITY_OFFSET which offset everything
+      SHIFT_PRIORITY_WITH_OFFSET = 7
+
       # Get the move of this action
       # @return [Battle::Move]
       attr_reader :move
@@ -36,6 +39,11 @@ module Battle
       # @return [Integer]
       def <=>(other)
         return 1 if other.is_a?(HighPriorityItem)
+
+        # Comparison with Shift action
+        priority_return = SHIFT_PRIORITY_WITH_OFFSET <=> @move.priority(@launcher)
+        return priority_return if priority_return != 0 && other.is_a?(Shift)
+        return Shift.from(other).launcher.spd <=> @launcher.spd if other.is_a?(Shift)
 
         unless @pursuit_enabled && other.is_a?(Attack) && other.pursuit_enabled
           return -1 if @pursuit_enabled

@@ -29,8 +29,9 @@ module Battle
           return if target.dead?
           return if target.has_ability?(:magic_guard)
 
-          # If target of the effect has poison heal, we attempt to heal
           if target.has_ability?(:poison_heal)
+            return unless logic.damage_handler.can_heal?(target)
+
             scene.visual.show_ability(target, true)
             logic.damage_handler.heal(target, poison_effect)
             scene.visual.hide_ability(target)

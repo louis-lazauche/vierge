@@ -56,6 +56,9 @@ module Battle
 
         @player_actions << forced_action
         @next_update = can_player_make_another_action_choice? ? :player_action_choice : :trigger_all_AI
+      when :shift
+        # The player wants to shift a Pokemon
+        shift_choice
       else
         # The visual interface detected an anomaly, we go to the end of the battle
         @next_update = :battle_end
@@ -243,6 +246,13 @@ module Battle
         # If the player canceled we return to the player action
         @next_update = :player_action_choice
       end
+    end
+
+    # Method that says the player is going to shift a Pokemon
+    def shift_choice
+      pokemon_to_shift = @logic.battler(0, @player_actions.size)
+      @player_actions << Actions::Shift.new(self, pokemon_to_shift)
+      @next_update = can_player_make_another_action_choice? ? :player_action_choice : :trigger_all_AI
     end
 
     # Clean the action that was removed from the stack (Make sure we don't lock things)

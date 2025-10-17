@@ -20,6 +20,7 @@ module Battle
       def <=>(other)
         return roaming_comparison_result(attack) if $wild_battle.is_roaming?(target.original) && other.is_a?(Attack) && (attack = Attack.from(other))
         return 1 if other.is_a?(Attack) && Attack.from(other).move.relative_priority > 0
+        return 1 if other.is_a?(Shift)
 
         return -1
       end

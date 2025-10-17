@@ -7,7 +7,7 @@ module Battle
 
       # Return the list of the moves that can reach the pokemon event in out_of_reach, nil if all attack reach the user
       # @return [Array<Symbol>]
-      CAN_HIT_MOVES = %i[gust hurricane sky_uppercut smack_down thousand_arrows thunder twister]
+      CAN_HIT_MOVES = %i[gust hurricane sky_uppercut smack_down thousand_arrows thunder twister fairy_lock]
 
       # Return the list of the moves that can reach the pokemon event in out_of_reach, nil if all attack reach the user
       # @return [Array<Symbol>]

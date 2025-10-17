@@ -15,7 +15,6 @@ module Battle
           move.scene.visual.show_ability(target)
           move.scene.visual.wait_for_animation
           move.logic.damage_handler.heal(target, target.max_hp / factor)
-          move.scene.display_message_and_wait(parse_text_with_pokemon(19, target.hp >= target.max_hp ? 896 : 387, target))
 
           return true
         end

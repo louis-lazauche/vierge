@@ -49,6 +49,15 @@ module Battle
       @battlers.dig(bank, position)
     end
 
+    # Shift two battler sprites
+    # @param who [PFM::PokemonBattler] the Pokemon who started the shift
+    # @param with [PFM::PokemonBattler] the Pokemon being shifted
+    def shift_battler_sprite(who, with)
+      who_battler = @battlers[who.bank][who.position]
+      @battlers[who.bank][who.position] = @battlers[with.bank][with.position]
+      @battlers[with.bank][with.position] = who_battler
+    end
+
     class << self
       # Register the transition resource type for a specific transition
       # @note If no resource type was registered, will send the default sprite one

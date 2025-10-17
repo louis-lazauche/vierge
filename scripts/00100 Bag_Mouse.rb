@@ -18,7 +18,7 @@ module GamePlay
       # update_info_visibility
       # update_info
     end
-        
+    
     def update_mouse_scrollbar
       return true unless Mouse.press?(:LEFT)
 
@@ -49,7 +49,7 @@ module GamePlay
 
     #---------------------------------------------------------------------------------------------------------------
 
-    ACTIONS = %i[NA NA NA NA NA NA NA NA NA NA mouse_left mouse_right action_y mouse_favorite action_b action_b]
+    ACTIONS = %i[NA NA NA NA NA NA NA NA NA NA mouse_left mouse_right action_y mouse_favorite action_return_map action_b]
 
     # Action pour le control button "gauche"
     def mouse_left   # ex: mouse_left
@@ -79,6 +79,14 @@ module GamePlay
 
     def mouse_favorite
       # todo
+    end
+        
+    # Return diretly to map 
+    def action_return_map
+      play_cancel_se
+      # On nettoie toutes les scènes en cours
+      $scene = Scene_Map.new
+      @running = false
     end
   end
 end

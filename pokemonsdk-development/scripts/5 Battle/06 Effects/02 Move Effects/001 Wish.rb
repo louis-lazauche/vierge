@@ -17,7 +17,7 @@ module Battle
         pkm = @logic.battler(bank, position)
         return unless pkm&.alive?
 
-        @logic.damage_handler.heal(pkm, @hp, test_heal_block: false) do
+        @logic.damage_handler.heal(pkm, @hp) do
           @logic.scene.display_message_and_wait(message)
         end
       end

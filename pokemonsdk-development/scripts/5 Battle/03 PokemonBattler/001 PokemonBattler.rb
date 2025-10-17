@@ -146,6 +146,10 @@ module PFM
     # @return [PFM::PokemonBattler, nil]
     attr_reader :illusion
 
+    # If the Pokemon has shifted this turn
+    # @return [Boolean]
+    attr_accessor :has_just_shifted
+
     # Create a new PokemonBattler from a Pokemon
     # @param original [PFM::Pokemon] original Pokemon (protected during the battle)
     # @param scene [Battle::Scene] current battle scene
@@ -180,6 +184,7 @@ module PFM
       @item_consumed = false
       @consumed_item = :__undef__
       @ko_count = 0
+      @has_just_shifted = false
       @sleep_turns = 0
       self.hp = hp_rate > 0 ? (max_hp * hp_rate).to_i.clamp(1, max_hp) : 0
       $game_switches[Yuki::Sw::FollowMe_LetsGoMode] ? initialize_letsgo_set_is_follower : initialize_set_is_follower

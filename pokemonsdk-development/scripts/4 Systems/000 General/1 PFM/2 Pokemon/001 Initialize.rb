@@ -48,8 +48,8 @@ module PFM
     def initialize(id, level, force_shiny = false, no_shiny = false, form = -1, opts = {})
       primary_data_initialize(id, level, force_shiny, no_shiny)
       pokerus_initialize(opts)
-      catch_data_initialize(opts)
       form_data_initialize(form)
+      catch_data_initialize(opts)
       stat_data_initialize(opts)
       moves_initialize(opts)
       item_holding_initialize(opts)
@@ -148,7 +148,7 @@ module PFM
       @captured_in = opts[:captured_in] || $env.master_zone
       @given_name = opts[:given_name]
       @memo_text = opts[:memo_text]
-      self.gender = opts[:gender] || (rand(100) < primary_data.female_rate ? 2 : 1)
+      self.gender = opts[:gender] || (rand(100) < data.female_rate ? 2 : 1)
       # Set flags
       self.flags = (FLAG_UNKOWN_USE | FLAG_FROM_THIS_GAME | FLAG_PRESENT_TIME)
       self.flags |= FLAG_CAUGHT_BY_PLAYER if @trainer_id == $trainer.id && @trainer_name == $trainer.name

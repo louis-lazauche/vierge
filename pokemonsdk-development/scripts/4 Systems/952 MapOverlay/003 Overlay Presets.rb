@@ -170,15 +170,37 @@ module PFM
       end
     end
 
-    # Static image overlay
-    class PresetStaticImage < PresetBase
-      # Get or set the extra texture name
-      # @return [String]
-      attr_accessor :extra_texture_name
-
+    # Abstraction for shader using the 'dist_factor' uniform
+    module PresetWithDistanceFactor
       # Get or set the distance factor
       # @return [Numeric]
       attr_accessor :distance_factor
+
+      private
+
+      # Update the preset in UI space
+      # @param preset [PresetWithDistanceFactor]
+      def update(preset)
+        super
+        update_distance_factor(preset)
+      end
+
+      # Update the distance factor
+      # @param preset [PresetWithDistanceFactor]
+      def update_distance_factor(preset)
+        return if preset.distance_factor == @distance_factor
+
+        @shader.set_float_uniform('dist_factor', @distance_factor = preset.distance_factor)
+      end
+    end
+
+    # Static image overlay
+    class PresetStaticImage < PresetBase
+      prepend PresetWithDistanceFactor
+
+      # Get or set the extra texture name
+      # @return [String]
+      attr_accessor :extra_texture_name
 
       private
 
@@ -193,7 +215,6 @@ module PFM
       # @param preset [PresetStaticImage]
       def update(preset)
         super
-        update_distance_factor(preset)
         update_extra_texture(preset)
       end
 
@@ -205,14 +226,6 @@ module PFM
         @extra_texture&.dispose unless @extra_texture&.disposed?
         @extra_texture = RPG::Cache.fog(@extra_texture_name = preset.extra_texture_name)
         @shader.set_texture_uniform('extra_texture', @extra_texture)
-      end
-
-      # Update the distance factor
-      # @param preset [PresetStaticImage]
-      def update_distance_factor(preset)
-        return if preset.distance_factor == @distance_factor
-
-        @shader.set_float_uniform('dist_factor', @distance_factor = preset.distance_factor)
       end
 
       def dispose
@@ -269,6 +282,8 @@ module PFM
 
     # Water overlay
     class PresetWaterOverlay < PresetBase
+      prepend PresetWithDistanceFactor
+
       # Get or set the noise texture name
       # @return [String]
       attr_accessor :noise_texture_name
@@ -297,6 +312,7 @@ module PFM
         @noise_texture_name = 'noise_texture'
         @color_gradient_texture_name = 'water_color_gradient'
         @blend_mode = :multiply
+        @distance_factor = 1.5
       end
 
       # Update the preset in UI space
@@ -338,6 +354,7 @@ module PFM
     # Fog overlay
     class PresetFogOverlay < PresetBase
       prepend PresetWithSampleColor
+      prepend PresetWithDistanceFactor
 
       # Get or set the noise texture name
       # @return [String]
@@ -362,6 +379,7 @@ module PFM
         super
         @noise_texture_name = 'noise_texture'
         @sample_color = Color.new(204, 204, 204)
+        @distance_factor = 1.5
       end
 
       # Update the preset in UI space

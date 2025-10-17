@@ -40,6 +40,8 @@ module Battle
       attr_accessor :wild_battle_reason
       # @return [Boolean] if the trainer battle is a "couple" battle
       attr_accessor :trainer_is_couple
+      # @return [Boolean] if the trainer battle is a "couple" battle
+      attr_accessor :trainer_is_triplet
       # @return [Integer] ID of the battle (for event loading)
       attr_accessor :battle_id
       # Get the number of time the player tried to flee
@@ -77,6 +79,7 @@ module Battle
         @max_level = hash[:max_level] || nil
         @vs_type = hash[:vs_type] || 1
         @trainer_is_couple = hash[:couple] || false
+        @trainer_is_triplet = hash[:triplet] || false
         @battle_id = hash[:battle_id] || -1
         @flee_attempt_count = 0
         @fishing = hash[:fishing] || false
@@ -99,19 +102,30 @@ module Battle
         # Configure a PSDK battle from old settings
         # @param id_trainer1 [Integer]
         # @param id_trainer2 [Integer]
+        # @param id_trainer3 [Integer]
         # @param id_friend [Integer]
+        # @param id_friend2 [Integer]
         # @return [Battle::Logic::BattleInfo]
-        def from_old_psdk_settings(id_trainer1, id_trainer2 = 0, id_friend = 0)
+        def from_old_psdk_settings(id_trainer1, id_trainer2 = 0, id_friend = 0, id_trainer3 = 0, id_friend2 = 0)
           battle_info = BattleInfo.new
           # Add Player party
           battle_info.add_party(0, *battle_info.player_basic_info)
+
           # Add 1st enemy
           add_trainer(battle_info, 1, id_trainer1)
           # Add 2nd enemy
           add_trainer(battle_info, 1, id_trainer2) if id_trainer2 != 0
+          # Add 3rd enemy
+          add_trainer(battle_info, 1, id_trainer3) if id_trainer3 != 0
+
           # Add friend
           add_trainer(battle_info, 0, id_friend) if id_friend != 0
+
+          # Add 2nd friend
+          add_trainer(battle_info, 0, id_friend2) if id_friend2 != 0
+
           battle_info.vs_type = 2 if battle_info.trainer_is_couple || battle_info.parties.any? { |party| party.size == 2 }
+          battle_info.vs_type = 3 if battle_info.trainer_is_triplet || battle_info.parties.any? { |party| party.size == 3 }
           return battle_info
         end
 
@@ -133,6 +147,7 @@ module Battle
           # We add the base money only for the enemy side (prevents the ally to have a base money)
           battle_info.base_moneys[bank] << trainer.base_money if bank == 1
           battle_info.trainer_is_couple = battle_info.parties[1].size == 1 if bank == 1 && trainer.vs_type == 2
+          battle_info.trainer_is_triplet = battle_info.parties[1].size == 1 if bank == 1 && trainer.vs_type == 3
           battle_info.battle_id = trainer.battle_id if trainer.battle_id != 0
           change_battle_bgms(battle_info, trainer)
         end
