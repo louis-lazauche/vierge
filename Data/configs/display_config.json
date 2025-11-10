@@ -17,8 +17,8 @@
     "characterTileZoom": 0.5,
     "characterSpriteZoom": 1,
     "center": {
-      "x": 900,
-      "y": 900
+      "x": 964,
+      "y": 681
     },
     "maplinkerOffset": {
       "x": 10,

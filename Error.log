@@ -1,21 +1,28 @@
 ================================Erreur de script================================
 Message :
-undefined method `text=' for nil:NilClass
+undefined method `visible=' for nil:NilClass
 
 Type : NoMethodError
-Script : 00100 battle_interface.rb (user)
-Ligne : 580
-Date : 12/10/2025 15:47:02
+Script : 5_Battle_01_Scene.rb (PSDK)
+Ligne : 2903
+Date : 23/10/2025 15:50:59
 Game Version : 256
-Logiciel : PSDK 26.47
+Logiciel : PSDK 26.48
 ===================================Backtraces===================================
-[19] : 00100 battle_interface.rb (user) | ligne 580 refresh
-[18] : 00100 battle_interface.rb (user) | ligne 218 reset
-[17] : 5_Battle_01_Scene.rb (PSDK) | ligne 2514 reset
-[16] : 5_Battle_01_Scene.rb (PSDK) | ligne 1173 reset
-[15] : 5_Battle_02_Visual.rb (PSDK) | ligne 475 show_skill_choice_begin
-[14] : 5_Battle_02_Visual.rb (PSDK) | ligne 451 show_skill_choice
-[13] : 5_Battle_01_Scene.rb (PSDK) | ligne 212 skill_choice
+[26] : 5_Battle_01_Scene.rb (PSDK) | ligne 2903 update
+[25] : 4_Systems_000_General_4_UI_Generics.rb (PSDK) | ligne 352 update
+[24] : 4_Systems_000_General_4_UI_Generics.rb (PSDK) | ligne 352 each
+[23] : 4_Systems_000_General_4_UI_Generics.rb (PSDK) | ligne 352 update
+[22] : 5_Battle_01_Scene.rb (PSDK) | ligne 2588 update
+[21] : 5_Battle_02_Visual.rb (PSDK) | ligne 56 each
+[20] : 5_Battle_02_Visual.rb (PSDK) | ligne 56 update
+[19] : 5_Battle_02_Visual.rb (PSDK) | ligne 2837 update
+[18] : 5_Battle_01_Scene.rb (PSDK) | ligne 62 update
+[17] : 5_Battle_02_Visual.rb (PSDK) | ligne 98 scene_update_proc
+[16] : 5_Battle_02_Visual.rb (PSDK) | ligne 105 wait_for_animation
+[15] : 5_Battle_02_Visual.rb (PSDK) | ligne 2897 show_player_choice_begin
+[14] : 5_Battle_02_Visual.rb (PSDK) | ligne 390 show_player_choice
+[13] : 5_Battle_01_Scene.rb (PSDK) | ligne 176 player_action_choice
 [12] : 5_Battle_01_Scene.rb (PSDK) | ligne 72 next_update_process
 [11] : 5_Battle_01_Scene.rb (PSDK) | ligne 64 update
 [10] : 4_Systems_000_General_2_GamePlay__Base.rb (PSDK) | ligne 236 main_process

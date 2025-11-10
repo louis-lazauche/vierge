@@ -98,7 +98,6 @@ end
 
 module PFM
   class Pokemon
-    # removing the "/"" in the hp text
     def hp_pokemon_number
       "#@hp / #{self.max_hp}".to_pokemon_number
     end
@@ -255,7 +254,7 @@ end
 module BattleUI
   class PokemonSprite3D < PokemonSprite
     def base_position_v1
-      return 38, -37 if enemy?
+      return 58, -30 if enemy?
 
       return -34, 44
     end
@@ -280,74 +279,9 @@ module Battle
     def spc_show_message(pokemon_index)
       pokemon = @scene.logic.battler(0, pokemon_index)
       @scene.message_window.blocking = true
-      # @scene.message_window.wait_input = true
+      @scene.message_window.wait_input = true
       text_to_show = parse_text(18, 71, '[VAR 010C(0000)]' => pokemon.given_name)
       @scene.display_message(text_to_show) if @scene.message_window.last_text != text_to_show
-    end
-  end
-end
-
-
-
-
-module Battle
-  class Visual
-    # Begining of the show_player_choice
-    # @param pokemon_index [Integer] Index of the Pokemon in the party
-    def show_player_choice_begin(pokemon_index)
-      @message_box = UI::MessageBattleBox.new(@viewport)
-      @message_box.z=(0)
-      Graphics.sort_z
-      @message_box.visible = true
-      pokemon = @scene.logic.battler(0, pokemon_index)
-      @locking = true
-      @player_choice_ui.reset(@scene.logic.switch_handler.can_switch?(pokemon))
-      if @player_choice_ui.out?
-        @player_choice_ui.go_in
-        @animations << @player_choice_ui
-        wait_for_animation
-      end
-      spc_start_bouncing_animation(pokemon_index)
-    end
-
-    # Loop process of the player choice
-    def show_player_choice_loop
-      loop do
-        @scene.update
-        @player_choice_ui.update
-        Graphics.update
-        break if @player_choice_ui.validated?
-      end
-    end
-
-    # End of the show_player_choice
-    # @param pokemon_index [Integer] Index of the Pokemon in the party
-    def show_player_choice_end(pokemon_index)
-      @player_choice_ui.go_out
-      @animations << @player_choice_ui
-      if @player_choice_ui.result != :attack
-        spc_stop_bouncing_animation(pokemon_index)
-        wait_for_animation
-      end
-      @locking = false
-    end
-  end
-end
-
-
-module Battle
-  class Scene
-    # Message Window of the Battle
-    class Message < UI::Message::Window
-      # Process the wait user input phase
-      def wait_user_input
-        create_skipper_wait_animation unless @skipper_wait_animation
-        if @skipper_wait_animation.done?
-          terminate_message
-        else
-          @skipper_wait_animation.update
-        end
-      end
     end
   end
 end
@@ -606,6 +540,28 @@ module BattleUI
       def create_sprites
         @background = add_sprite(0, 0, 'battle/types', 1, each_data_type.size, type: SpriteSheet)
         @text = add_text(12, 3, 0, 16, :name, color: 38, type: UI::SymText)
+      end
+    end
+  end
+end
+
+
+#handle the new added x_button(for tripple battles I think) dont know exactly what it is for but it causes problems if not handled
+module BattleUI
+  class PlayerChoice < GenericChoice
+    class SubChoice < UI::SpriteStack
+      # Update the button
+      def update
+        super
+        @item_info.update
+        done? ? update_done : update_not_done
+      end
+
+      # Reset the sub choice
+      def reset
+        @item_info.visible = false
+        @bar_visibility = false
+        @info_button.refresh
       end
     end
   end
